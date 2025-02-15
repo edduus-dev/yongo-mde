@@ -1,4 +1,4 @@
-import throttle from "lodash.throttle"
+import { throttle } from "lodash"
 import { useCallback, useRef } from "react"
 import { Descendant, Editor, Element, Transforms } from "slate"
 import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
