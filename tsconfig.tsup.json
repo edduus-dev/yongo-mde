@@ -1,0 +1,14 @@
+/**
+ * Next.js insists on using the main `tsconfig.json` file so this is actually
+ * the config file for Next.js
+ */
+{
+  "extends": "tsconfig/tsconfig.tsup.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["*"]
+    },
+    "jsx": "react-jsx"
+  }
+}

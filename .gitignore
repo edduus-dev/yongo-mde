@@ -1,0 +1,47 @@
+# build
+.build/
+build/
+
+# dist (`dist` used by Vite)
+.dist/
+dist/
+
+# dotenv
+.env/
+
+# eslint
+eslint.log
+.eslintcache
+
+# mac
+.DS_Store
+
+# next.js
+.next/
+
+# node_modules
+node_modules/
+
+# temp
+.temp/
+
+# tsup
+tsup.config.bundled*.mjs
+
+# turborepo
+.turbo
+
+# typescript
+tsconfig.tsbuildinfo
+
+# vercel
+.vercel/
+
+# --- custom ---
+
+# https://roneo.org/markdown/ until I get permission
+roneo-crash-test.md
+roneo.md
+
+# yarn
+.yarn/
