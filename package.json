@@ -1,46 +1,22 @@
 {
-  "name": "@wysimark/react",
-  "version": "3.0.20",
+  "name": "wysimark_lite",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": "Sunny Hirai <thesunny@gmail.com>",
-  "main": ".dist/node/index.cjs.js",
-  "module": ".dist/node/index.esm.js",
-  "browser": ".dist/browser/index.cjs.js",
-  "types": ".dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "node": {
-        "require": "./.dist/node/index.cjs.js",
-        "import": "./.dist/node/index.esm.js"
-      },
-      "browser": {
-        "require": "./.dist/browser/index.cjs.js",
-        "import": "./.dist/browser/index.esm.js"
-      },
-      "types": "./.dist/types/index.d.ts"
-    }
-  },
+  "author": "takesy",
   "files": [
     "README.md",
-    ".dist/"
+    "dist/"
   ],
-  "description": "A modern and clean rich text editor for React that supports 100% of CommonMark and GitHub Flavored Markdown.",
-  "keywords": [
-    "contenteditable",
-    "commonmark",
-    "editor",
-    "gfm",
-    "githubflavoredmarkdown",
-    "markdown",
-    "portive",
-    "rich",
-    "richtext",
-    "rich-text",
-    "text",
-    "wysimark",
-    "wysiwyg"
-  ],
+  "description": "A modern and clean rich text editor for React",
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@storybook/addon-essentials": "^8.5.6",
+    "@storybook/addon-interactions": "^8.5.6",
+    "@storybook/addon-onboarding": "^8.5.6",
+    "@storybook/blocks": "^8.5.6",
+    "@storybook/react": "^8.5.6",
+    "@storybook/react-vite": "^8.5.6",
+    "@storybook/test": "^8.5.6",
     "@thesunny/assert-type": "^0.1.13",
     "@types/handlebars-helpers": "^0.5.3",
     "@types/is-hotkey": "^0.1.7",
@@ -56,6 +32,7 @@
     "csstype": "^3.0.2",
     "eslint": "^8.4.1",
     "eslint-config-custom": "*",
+    "eslint-plugin-storybook": "^0.11.3",
     "jest": "^29.6",
     "jest-config": "*",
     "json-beautify": "^1.1.1",
@@ -69,6 +46,7 @@
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "rimraf": "^4.1.2",
+    "storybook": "^8.5.6",
     "ts-node": "^10.9.1",
     "tsconfig": "*",
     "tsup": "^6.7.0",
@@ -98,15 +76,16 @@
     "slate": "^0.85.0",
     "slate-history": "^0.85.0",
     "slate-react": "^0.83.2",
+    "react": ">=17.x",
+    "react-dom": ">=17.x",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.2",
     "zustand": "^4.1.5"
   },
   "scripts": {
-    "dev": "vite",
-    "-- build": "# build with tsup.config.js",
-    "build": "rimraf .dist && tsup src/entry/index.tsx",
-    "build:cli": "rimraf .dist && tsup src/entry/index.tsx --dts --tsconfig=tsconfig.tsup.json --out-dir=.dist",
+    "dev": "vite --host",
+    "build": "rimraf dist && tsup src/wysimark.tsx",
+    "build:cli": "rimraf .dist && tsup src/wysimark.tsx --dts --tsconfig=tsconfig.tsup.json --out-dir=.dist",
     "build:watch": "pnpm build --watch",
     "-- fix": "# fix syntax",
     "fix": "pnpm fix:prettier && pnpm fix:eslint",
@@ -117,23 +96,15 @@
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check \"**/*.{css,md,js,jsx,json,ts,tsx}\"",
     "lint:tsc": "tsc --build ./ --force",
-    "-- next": "# NextJs",
     "open": "open -a 'google chrome' http://localhost:3732",
-    "start:local": "DOTENV=.env/local.env next dev -p 3732",
-    "-- plop": "# Plop: specify ts-node https://github.com/plopjs/plop/issues/192",
-    "plop": "TS_NODE_PROJECT=tsconfig.ts-node.json plop --plopfile plop/plopfile.ts",
-    "-- release": "# publish to npm",
-    "release": "pnpm build && npm publish",
     "--- test": "# Temporarily disabling tests as there are none yet",
     "test:clearcache": "jest --clearCache",
-    "# test:once:fast": "pnpm test:clearcache && jest --config=jest.fast.config.cjs",
-    "# test:once": "pnpm test:clearcache && jest --config=jest.config.cjs",
-    "# test:watch": "jest --watch --config=jest.fast.config.cjs",
-    "# test:watch:types": "pnpm test:clearcache && jest --watch --config=jest.config.cjs",
     "test:once": "FAST=0 jest --no-cache",
     "test:watch": "FAST=1 jest --watch",
     "-- preset": "# Run preset from ~/presets",
     "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
-    "-- end": "# end"
+    "-- end": "# end",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   }
 }
