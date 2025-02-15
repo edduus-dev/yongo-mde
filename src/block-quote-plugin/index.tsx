@@ -40,7 +40,6 @@ function matchBlockQuoteSafe(node: Node) {
      * !Element.isDependant(node)
      */
     (node.type === "paragraph" ||
-      node.type === "code-block" ||
       node.type === "table" ||
       node.type === "horizontal-rule" ||
       node.type === "task-list-item" ||

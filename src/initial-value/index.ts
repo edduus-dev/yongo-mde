@@ -1,7 +1,6 @@
 import { Descendant } from "slate"
 
 import { initialValueBlockQuotes } from "./initial-value-block-quotes"
-import { initialValueCodeBlocks } from "./initial-value-code-blocks"
 import { initialValueList } from "./initial-value-list"
 import { initialValueMarks } from "./initial-value-marks"
 import { initialValueTable } from "./initial-value-table"
@@ -31,7 +30,6 @@ export const initialValue: Descendant[] = [
   ...initialValueTable,
   { type: "horizontal-rule", children: [{ text: "" }] },
   { type: "horizontal-rule", children: [{ text: "" }] },
-  ...initialValueCodeBlocks,
   ...initialValueMarks,
   {
     type: "paragraph",

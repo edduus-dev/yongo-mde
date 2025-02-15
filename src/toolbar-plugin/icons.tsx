@@ -188,17 +188,6 @@ export const Plus = () => (
     <path d="M12 5v14M5 12h14" />
   </TablerIcon>
 )
-export const Superscript = () => (
-  <TablerIcon>
-    <path d="m5 7 8 10m-8 0 8-10M21 11h-4l3.5-4A1.73 1.73 0 0 0 17 5" />
-  </TablerIcon>
-)
-
-export const Subscript = () => (
-  <TablerIcon>
-    <path d="m5 7 8 10m-8 0 8-10M21 20h-4l3.5-4a1.73 1.73 0 0 0-3.5-2" />
-  </TablerIcon>
-)
 
 export const Strikethrough = () => (
   <TablerIcon>

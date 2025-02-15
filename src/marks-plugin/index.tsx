@@ -26,8 +26,6 @@ export type MarksText = {
   bold?: true
   italic?: true
   underline?: true
-  sup?: true
-  sub?: true
   strike?: true
 }
 
@@ -44,9 +42,7 @@ export const MarksPlugin = createPlugin<MarksPluginCustomTypes>((editor) => {
     "mod+i": editor.marksPlugin.toggleItalic,
     "mod+u": editor.marksPlugin.toggleUnderline,
     "super+0": editor.marksPlugin.removeMarks,
-    "super+b": editor.marksPlugin.toggleSub,
     "super+k": editor.marksPlugin.toggleStrike,
-    "super+p": editor.marksPlugin.toggleSup,
   })
   return {
     name: "marks",
@@ -61,8 +57,6 @@ export const MarksPlugin = createPlugin<MarksPluginCustomTypes>((editor) => {
               "--bold": leaf.bold,
               "--italic": leaf.italic,
               "--underline": leaf.underline,
-              "--sup": leaf.sup,
-              "--sub": leaf.sub,
               "--strike": leaf.strike,
             })}
           >

@@ -9,8 +9,6 @@ export const initialValueMarks: Descendant[] = [
       { text: "Italic ", italic: true },
       { text: "Underline", underline: true },
       { text: " " },
-      { text: "Superscript ", sup: true },
-      { text: "Subscript ", sub: true },
       { text: "Strikethrough", strike: true },
       { text: " " },
       {

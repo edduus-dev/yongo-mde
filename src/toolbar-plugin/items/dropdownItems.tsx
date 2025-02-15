@@ -1,7 +1,6 @@
 import { MenuItemData } from "~/src/shared-overlays"
 
 import * as Icon from "../icons"
-import { codeBlockItems } from "./codeBlockItems"
 import { listItems } from "./list-items"
 import { quoteItems } from "./quote-items"
 
@@ -17,11 +16,5 @@ export const dropdownItems: MenuItemData[] = [
     title: "Block Quote",
     more: true,
     children: quoteItems,
-  },
-  {
-    icon: Icon.Code,
-    title: "Code Block",
-    more: true,
-    children: codeBlockItems,
   },
 ]

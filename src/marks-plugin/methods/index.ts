@@ -12,8 +12,6 @@ export function createMarksMethods(editor: Editor) {
     toggleBold: () => toggleMark(editor, "bold"),
     toggleItalic: () => toggleMark(editor, "italic"),
     toggleUnderline: () => toggleMark(editor, "underline"),
-    toggleSup: () => toggleMark(editor, "sup", "sub"),
-    toggleSub: () => toggleMark(editor, "sub", "sup"),
     toggleStrike: () => toggleMark(editor, "strike"),
   }
 }

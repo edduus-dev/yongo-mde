@@ -5,12 +5,8 @@ import { Element } from "../types"
 export function parseHTML(content: HTML): Element[] {
   return [
     {
-      type: "code-block",
-      language: "html",
-      children: content.value.split("\n").map((line) => ({
-        type: "code-block-line",
-        children: [{ text: line }],
-      })),
+      type: "paragraph",
+      children: [{ text: content.value }],
     },
   ]
 }

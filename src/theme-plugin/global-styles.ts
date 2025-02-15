@@ -71,8 +71,6 @@ export const globalStyles = css`
     --link-color: var(--blue-600);
     --link-hover-color: var(--blue-700);
     /* Code Block Colors */
-    --code-block-bgcolor: var(--shade-50);
-    --code-block-border-color: var(--shade-300);
     /* Inline Code Colors */
     --inline-code-bgcolor: var(--shade-100);
     --inline-code-border-color: var(--shade-200);

@@ -10,14 +10,6 @@ export const $MarksSpan = styled("span")`
   &.--underline {
     text-decoration: underline;
   }
-  &.--sup {
-    vertical-align: super;
-    font-size: 0.75em;
-  }
-  &.--sub {
-    vertical-align: sub;
-    font-size: 0.75em;
-  }
   &.--strike {
     text-decoration: line-through;
   }

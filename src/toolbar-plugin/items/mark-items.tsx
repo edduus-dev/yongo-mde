@@ -19,19 +19,6 @@ const primaryMarkItems: MenuItemData[] = [
 
 const secondaryMarkItems: MenuItemData[] = [
   {
-    icon: Icon.Superscript,
-    title: "Superscript",
-    hotkey: "super+p",
-    action: (editor) => editor.marksPlugin.toggleSup(),
-  },
-  {
-    icon: Icon.Subscript,
-    title: "Subscript",
-    hotkey: "super+b",
-    action: (editor) => editor.marksPlugin.toggleSub(),
-  },
-  "divider",
-  {
     icon: Icon.Strikethrough,
     title: "Strikethrough",
     hotkey: "super+k",
