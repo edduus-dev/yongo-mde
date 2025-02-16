@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 import { MouseEvent, useCallback, useRef } from "react"
-import { ReactEditor, useSlateStatic } from "slate-react"
+import { ReactEditor, useSlate, useSlateStatic } from "slate-react"
 
 import { formatHotkey, Menu, MenuItemData } from "~/src/shared-overlays"
 import { useLayer } from "~/src/use-layer"
@@ -10,13 +10,13 @@ import * as Icon from "../../icons"
 import { $ToolbarButton } from "../../styles"
 
 export function ToolbarButton({
-  active,
   item,
 }: {
-  active?: boolean
   item: Exclude<MenuItemData, "divider">
 }) {
-  const editor = useSlateStatic()
+  const staticEditor = useSlateStatic()
+  const editor = useSlate()  // エディタの状態変更を検知
+  const isActive = item.active ? item.active(editor) : false
   const ref = useRef<HTMLDivElement>(null)
   const tooltip = useTooltip({
     title: item.title,
@@ -40,8 +40,8 @@ export function ToolbarButton({
 
   const onClick = useCallback(() => {
     if (item.action) {
-      item.action(editor)
-      ReactEditor.focus(editor)
+      item.action(staticEditor)
+      ReactEditor.focus(staticEditor)
       return
     }
     if (menuLayer.layer) {
@@ -74,7 +74,7 @@ export function ToolbarButton({
       onMouseEnter={onMouseEnter}
       onMouseLeave={tooltip.onMouseLeave}
       onClick={onClick}
-      className={clsx({ "--active": active, "--more": item.more })}
+      className={clsx({ "--active": isActive, "--more": item.more })}
     >
       <item.icon />
       {item.more ? <Icon.More /> : null}

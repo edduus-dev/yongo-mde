@@ -33,6 +33,10 @@ export type MenuItemData =
        */
       show?: (editor: Editor) => boolean
       /**
+       * If `true`, the button will be shown as selected/active
+       */
+      active?: (editor: Editor) => boolean
+      /**
        * If `true`, the button will display as downward create next to it to
        * indicate that clicking it will display some more options.
        * Typically this value is set to true when it has `children` or a

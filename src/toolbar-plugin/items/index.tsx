@@ -1,10 +1,12 @@
 import { MenuItemData } from "~/src/shared-overlays"
 
-import { blockDropdownItem } from "./block-items"
+import { expandedBlockItems, compactBlockItems } from "./block-items"
 import { compactDialogItems, expandedDialogItems } from "./dialogItems"
 import { dropdownItems } from "./dropdownItems"
 import { linkItem } from "./linkItem"
 import { compactMarkItems, expandedMarkItems } from "./mark-items"
+import { expandedListItems, compactListItems } from "./list-items"
+import { quoteItems } from "./quote-items"
 
 /**
  * A collection of `Item` objects that describe either
@@ -17,39 +19,48 @@ import { compactMarkItems, expandedMarkItems } from "./mark-items"
  */
 
 export const largeItems: MenuItemData[] = [
-  blockDropdownItem,
+  ...expandedBlockItems,
+  "divider",
+  ...expandedListItems,
   "divider",
   ...expandedMarkItems,
   "divider",
   linkItem,
+  ...quoteItems,
   ...dropdownItems,
   "divider",
   ...expandedDialogItems,
 ]
 
 export const mediumItems: MenuItemData[] = [
-  blockDropdownItem,
+  ...compactBlockItems,
+  "divider",
+  ...expandedListItems,
   "divider",
   ...expandedMarkItems,
   "divider",
   linkItem,
+  ...quoteItems,
   ...dropdownItems,
   "divider",
   ...compactDialogItems,
 ]
 
 export const smallItems: MenuItemData[] = [
-  blockDropdownItem,
+  ...compactBlockItems,
+  "divider",
+  ...compactListItems,
   "divider",
   ...compactMarkItems,
   "divider",
   linkItem,
+  ...quoteItems,
   ...dropdownItems,
   "divider",
   ...compactDialogItems,
 ]
 
-export const initialItems: MenuItemData[] = [blockDropdownItem, "divider"]
+export const initialItems: MenuItemData[] = [...expandedBlockItems, "divider"]
 
 export const items = mediumItems
 

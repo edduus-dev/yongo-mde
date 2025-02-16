@@ -1,5 +1,5 @@
 import React from "react"
-import { Descendant, Element, Node, Transforms } from "slate"
+import { Descendant, Editor, Element, Node, Transforms } from "slate"
 
 import {
   createHotkeyHandler,
@@ -15,6 +15,7 @@ export type BlockQuoteEditor = {
   blockQuotePlugin: {
     indent: () => void
     outdent: () => void
+    isActive: () => boolean
   }
 }
 
@@ -64,6 +65,12 @@ export const BlockQuotePlugin = createPlugin<BlockQuotePluginCustomTypes>(
         Transforms.liftNodes(editor, {
           match: (node, path) => matchBlockQuoteSafe(node) && path.length > 1,
         })
+      },
+      isActive: () => {
+        const [match] = Editor.nodes(editor, {
+          match: (n: Node) => Element.isElement(n) && n.type === "block-quote",
+        })
+        return !!match
       },
     }
     return {

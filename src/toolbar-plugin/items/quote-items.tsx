@@ -5,14 +5,15 @@ import * as Icon from "../icons"
 export const quoteItems: MenuItemData[] = [
   {
     icon: Icon.Quote,
-    title: "引用を追加",
+    title: "引用",
     hotkey: "super+.",
-    action: (editor) => editor.blockQuotePlugin.indent(),
-  },
-  {
-    icon: Icon.QuoteOff,
-    title: "引用を削除",
-    hotkey: "super+,",
-    action: (editor) => editor.blockQuotePlugin.outdent(),
+    action: (editor) => {
+      if (editor.blockQuotePlugin.isActive()) {
+        editor.blockQuotePlugin.outdent()
+      } else {
+        editor.blockQuotePlugin.indent()
+      }
+    },
+    active: (editor) => editor.blockQuotePlugin.isActive(),
   },
 ]

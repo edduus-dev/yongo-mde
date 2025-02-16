@@ -1,6 +1,17 @@
+import { Editor } from "slate"
 import { MenuItemData } from "~/src/shared-overlays"
 
 import * as Icon from "../icons"
+
+function getMarks(editor: Editor) {
+  const marks = Editor.marks(editor)
+  return {
+    bold: marks?.bold || false,
+    italic: marks?.italic || false,
+    strike: marks?.strike || false,
+    code: marks?.code || false,
+  }
+}
 
 const primaryMarkItems: MenuItemData[] = [
   {
@@ -8,56 +19,30 @@ const primaryMarkItems: MenuItemData[] = [
     title: "太字",
     hotkey: "mod+b",
     action: (editor) => editor.marksPlugin.toggleBold(),
+    active: (editor) => getMarks(editor).bold,
   },
   {
     icon: Icon.Italic,
     title: "斜体",
     hotkey: "mod+i",
     action: (editor) => editor.marksPlugin.toggleItalic(),
+    active: (editor) => getMarks(editor).italic,
   },
-]
-
-const secondaryMarkItems: MenuItemData[] = [
   {
     icon: Icon.Strikethrough,
     title: "取り消し線",
     hotkey: "super+k",
     action: (editor) => editor.marksPlugin.toggleStrike(),
+    active: (editor) => getMarks(editor).strike,
   },
-  "divider",
   {
     icon: Icon.Code,
     title: "インラインコード",
     hotkey: "mod+j",
     action: (editor) => editor.inlineCode.toggleInlineCode(),
-  },
-  "divider",
-  {
-    icon: Icon.RemoveStyles,
-    title: "スタイル削除",
-    hotkey: "super+0",
-    /**
-     * TODO: Enable remove styles
-     */
-    action: (editor) => editor.marksPlugin.removeMarks(),
+    active: (editor) => getMarks(editor).code,
   },
 ]
 
-export const expandedMarkItems: MenuItemData[] = [
-  ...primaryMarkItems,
-  {
-    icon: Icon.Style,
-    title: "テキストスタイル",
-    more: true,
-    children: secondaryMarkItems,
-  },
-]
-
-export const compactMarkItems: MenuItemData[] = [
-  {
-    icon: Icon.Style,
-    title: "テキストスタイル",
-    more: true,
-    children: [...primaryMarkItems, "divider", ...secondaryMarkItems],
-  },
-]
+export const expandedMarkItems: MenuItemData[] = primaryMarkItems
+export const compactMarkItems: MenuItemData[] = primaryMarkItems
