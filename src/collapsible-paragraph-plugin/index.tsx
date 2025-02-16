@@ -1,4 +1,4 @@
-import { Descendant } from "slate"
+import { Descendant, Editor } from "slate"
 
 import {
   createHotkeyHandler,
@@ -35,8 +35,17 @@ export const CollapsibleParagraphPlugin =
     editor.insertBreak = () => {
       const { selection } = editor
       if (selection && selection.anchor.path[0] === selection.focus.path[0]) {
-        // If we're within the same paragraph, insert a line break
-        editor.insertText('\n')
+        // Get the current node's text
+        const text = Editor.string(editor, [selection.anchor.path[0]])
+
+        // Check if we're about to create a double line break
+        if (text.endsWith('\n') && selection.anchor.offset === text.length) {
+          // Create a new paragraph
+          insertBreak()
+        } else {
+          // Insert a single line break
+          editor.insertText('\n')
+        }
       } else {
         // Otherwise fall back to default behavior
         insertBreak()

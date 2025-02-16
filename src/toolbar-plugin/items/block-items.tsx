@@ -24,6 +24,14 @@ const blockItems: MenuItemData[] = [
     action: (editor) => editor.heading.convertHeading(3, true),
     active: (editor) => editor.heading.isHeadingActive(3),
   },
+  {
+    icon: Icon.Paragraph,
+    title: "段落",
+    hotkey: "super+0",
+    action: (editor) => {
+      editor.collapsibleParagraph.convertParagraph()
+    },
+  },
 ]
 
 export const expandedBlockItems: MenuItemData[] = blockItems
