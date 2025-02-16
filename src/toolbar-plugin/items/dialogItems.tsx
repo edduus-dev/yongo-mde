@@ -17,14 +17,7 @@ export const dialogItems: MenuItemData[] = [
     more: true,
     Component: ImageDialog,
     show: (editor) => editor.toolbar.showUploadButtons ?? false,
-  },
-  {
-    icon: Icon.Attachment,
-    title: "添付ファイルの挿入",
-    more: true,
-    Component: AttachmentDialog,
-    show: (editor) => editor.toolbar.showUploadButtons ?? false,
-  },
+  }
 ]
 
 export const expandedDialogItems: MenuItemData[] = dialogItems

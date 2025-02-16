@@ -2,7 +2,7 @@ import { Editor, Element, Node, NodeEntry, Transforms } from "slate"
 
 import { createIsElementType, normalizeSiblings } from "~/src/sink"
 
-import { OrderedListItemElement } from ".."
+import { isListItem, OrderedListItemElement } from ".."
 
 const isOrderedListItem = createIsElementType<OrderedListItemElement>([
   "ordered-list-item",
@@ -48,7 +48,8 @@ export function normalizeOrderedFirstAtDepth(
      * or the second item is deeper than the first, then we want to set
      * `__firstAtDepth` to `true`.
      */
-    const __firstAtDepth = !isOrderedListItem(a[0]) || b[0].depth > a[0].depth
+    // For non-list items, treat them as depth 0
+    const __firstAtDepth = isOrderedListItem(a[0]) ? b[0].depth > a[0].depth : isListItem(a[0]) ? b[0].depth > a[0].depth : true
     /**
      * Check if the setting is already correct.
      */

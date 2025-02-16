@@ -214,3 +214,15 @@ export const ListNumbers = () => (
     <path d="M11 6h9M11 12h9M12 18h8M4 16a2 2 0 1 1 4 0c0 .591-.5 1-1 1.5L4 20h4M6 10V4L4 6" />
   </TablerIcon>
 )
+
+export const IncreaseDepth = () => (
+  <TablerIcon>
+    <path d="M4 6h16M8 12h12M12 18h8M7 12l-3-3M7 12l-3 3" />
+  </TablerIcon>
+)
+
+export const DecreaseDepth = () => (
+  <TablerIcon>
+    <path d="M4 6h16M8 12h12M12 18h8M4 12l3-3M4 12l3 3" />
+  </TablerIcon>
+)

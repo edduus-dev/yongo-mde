@@ -11,7 +11,7 @@ export type MenuItemData =
       /**
        * Icon to show as a part of the button.
        */
-      icon: React.FunctionComponent
+      icon: React.FunctionComponent<any>
       /**
        * Title to show as a part of the tooltip.
        */

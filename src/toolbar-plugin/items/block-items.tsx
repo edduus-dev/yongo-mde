@@ -2,6 +2,23 @@ import { MenuItemData } from "~/src/shared-overlays/types"
 
 import * as Icon from "../icons"
 
+const listDepthItems: MenuItemData[] = [
+  {
+    icon: Icon.IncreaseDepth,
+    title: "インデントを深くする",
+    hotkey: "tab",
+    action: (editor) => editor.list.increaseDepth(),
+    show: (editor) => editor.list.canIncreaseDepth(),
+  },
+  {
+    icon: Icon.DecreaseDepth,
+    title: "インデントを浅くする",
+    hotkey: "shift+tab",
+    action: (editor) => editor.list.decreaseDepth(),
+    show: (editor) => editor.list.canDecreaseDepth(),
+  },
+]
+
 const blockItems: MenuItemData[] = [
   {
     icon: Icon.H1,
@@ -34,7 +51,7 @@ const blockItems: MenuItemData[] = [
   },
 ]
 
-export const expandedBlockItems: MenuItemData[] = blockItems
+export const expandedBlockItems: MenuItemData[] = [...blockItems, "divider", ...listDepthItems]
 
 export const compactBlockItems: MenuItemData[] = [
   {
@@ -43,4 +60,6 @@ export const compactBlockItems: MenuItemData[] = [
     more: true,
     children: blockItems,
   },
+  "divider",
+  ...listDepthItems,
 ]
