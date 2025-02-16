@@ -144,8 +144,10 @@ function getNextMarks(
   for (let i = index + 1; i < segments.length; i++) {
     const segment = segments[i]
     if (isPlainSpace(segment)) continue
-    if (SlateElement.isElement(segment) && segment.type === "image-inline")
-      continue
+    if (SlateElement.isElement(segment)) {
+      const element = segment as { type?: string }
+      if (element.type === "image-inline") continue
+    }
     return getMarksFromSegment(segment)
   }
   return trailingMarks

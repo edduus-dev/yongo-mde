@@ -13,12 +13,12 @@ describe("marks-combo", () => {
   it("should change two inner marks", async () => {
     const diff = diffMarks(
       ["bold", "italic", "underline"],
-      ["bold", "strike", "sup"]
+      ["bold", "strike"]
     )
     expect(diff).toEqual({
       remove: ["underline", "italic"],
-      add: ["strike", "sup"],
-      nextOrderedMarks: ["bold", "strike", "sup"],
+      add: ["strike"],
+      nextOrderedMarks: ["bold", "strike"],
     })
   })
 

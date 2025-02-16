@@ -5,8 +5,6 @@ export const MARK_KEY_TO_TOKEN = {
   italic: "_",
   // ins: "++",
   strike: "~~",
-  sup: "^",
-  sub: "~",
   /**
    * IMPORTANT!
    *

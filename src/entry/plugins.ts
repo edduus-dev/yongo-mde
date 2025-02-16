@@ -4,6 +4,7 @@ import { ReactEditor } from "slate-react"
 
 import { AnchorPlugin } from "~/src/anchor-plugin"
 import { AtomicDeletePlugin } from "~/src/atomic-delete-plugin"
+import { ImagePlugin } from "~/src/image-plugin"
 import { BlockQuotePlugin } from "~/src/block-quote-plugin"
 import { CollapsibleParagraphPlugin } from "~/src/collapsible-paragraph-plugin"
 import { ConvertElementPlugin } from "~/src/convert-element-plugin"
@@ -20,12 +21,15 @@ import { ToolbarPlugin } from "~/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 import { PasteMarkdownPlugin } from "../paste-markdown-plugin"
 import { PlaceholderPlugin } from "../placeholder-plugin"
+import { UploadPlugin } from "~/src/upload-plugin"
 import { WysimarkEditor } from "./types"
 
 export const plugins = [
   PasteMarkdownPlugin,
   ConvertElementPlugin,
   AnchorPlugin,
+  UploadPlugin,
+  ImagePlugin,
   HeadingPlugin,
   MarksPlugin,
   InlineCodePlugin,

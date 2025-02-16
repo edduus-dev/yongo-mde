@@ -17,8 +17,6 @@ const ORDERED_MARK_KEYS: MarkKey[] = [
   "italic",
   "underline",
   "strike",
-  "sup",
-  "sub",
   "code",
 ]
 
