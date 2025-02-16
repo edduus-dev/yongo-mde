@@ -22,8 +22,6 @@ export function useEditor({
   const [editor] = useState(() => {
     const editor = createEditor()
     const nextEditor = withSink(withReact(withHistory(editor)), {
-      upload: { authToken },
-      image: {},
       toolbar: {
         height,
         minHeight,

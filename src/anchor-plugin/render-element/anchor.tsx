@@ -1,15 +1,14 @@
 import { clsx } from "clsx"
+import React from "react"
 import { useEffect, useRef } from "react"
 import { useSelected } from "slate-react"
 
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
-import { useUpload } from "../../upload-plugin/store"
 import { useLayer } from "../../use-layer"
 import { AnchorElement } from "../index"
 import { $Anchor, $Edge } from "../styles"
 import { AnchorDialog } from "./AnchorDialog"
-import { ProgressBar } from "./ProgressBar"
 
 export function Anchor({
   element,
@@ -19,7 +18,6 @@ export function Anchor({
   const startEdgeRef = useRef<HTMLSpanElement>(null)
   const anchorRef = useRef<HTMLAnchorElement>(null)
   const selected = useSelected()
-  const upload = useUpload(element.href)
   const dialog = useLayer("dialog")
 
   /**
@@ -80,12 +78,6 @@ export function Anchor({
     >
       {/* Edge allow Chrome to differentiate in/out of the link */}
       <$Edge ref={startEdgeRef} contentEditable={false} />
-      {upload?.status === "progress" ? (
-        <ProgressBar
-          anchorRef={anchorRef}
-          progress={upload.sentBytes / upload.totalBytes}
-        />
-      ) : null}
       <span>{children}</span>
       {/* Edge allow Chrome to differentiate in/out of the link */}
       <$Edge contentEditable={false} />
