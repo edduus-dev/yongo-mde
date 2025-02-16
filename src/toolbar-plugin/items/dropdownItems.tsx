@@ -7,13 +7,13 @@ import { quoteItems } from "./quote-items"
 export const dropdownItems: MenuItemData[] = [
   {
     icon: Icon.BulletList,
-    title: "Lists",
+    title: "リスト",
     more: true,
     children: listItems,
   },
   {
     icon: Icon.Blockquote,
-    title: "Block Quote",
+    title: "引用",
     more: true,
     children: quoteItems,
   },

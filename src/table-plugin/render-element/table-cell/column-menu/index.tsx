@@ -41,21 +41,21 @@ export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {
     const items: MenuItemData[] = [
       {
         icon: AlignLeft,
-        title: "Align Column left",
+        title: "左揃え",
         action: () => {
           editor.tablePlugin.setTableColumnAlign({ align: "left" })
         },
       },
       {
         icon: AlignCenter,
-        title: "Align Column Center",
+        title: "中央揃え",
         action: () => {
           editor.tablePlugin.setTableColumnAlign({ align: "center" })
         },
       },
       {
         icon: AlignRight,
-        title: "Align Column Right",
+        title: "右揃え",
         action: () => {
           editor.tablePlugin.setTableColumnAlign({ align: "right" })
         },

@@ -7,20 +7,20 @@ import * as Icon from "../icons"
 export const dialogItems: MenuItemData[] = [
   {
     icon: Icon.Table,
-    title: "Insert Table",
+    title: "表の挿入",
     more: true,
     Component: TableDialog,
   },
   {
     icon: Icon.Image,
-    title: "Insert Image",
+    title: "画像の挿入",
     more: true,
     Component: ImageDialog,
     show: (editor) => editor.toolbar.showUploadButtons ?? false,
   },
   {
     icon: Icon.Attachment,
-    title: "Insert Attachment",
+    title: "添付ファイルの挿入",
     more: true,
     Component: AttachmentDialog,
     show: (editor) => editor.toolbar.showUploadButtons ?? false,
@@ -32,7 +32,7 @@ export const expandedDialogItems: MenuItemData[] = dialogItems
 export const compactDialogItems: MenuItemData[] = [
   {
     icon: Icon.Plus,
-    title: "Insert",
+    title: "挿入",
     more: true,
     children: dialogItems,
   },

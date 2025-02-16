@@ -82,19 +82,19 @@ export function AnchorEditDialog({
   return (
     <$AnchorEditDialog contentEditable={false} style={style}>
       <$FormGroup>
-        <$FormCaption>URL of link</$FormCaption>
+        <$FormCaption>リンクのURL</$FormCaption>
         <$Textarea as="textarea" value={href} onChange={handleHrefChange} />
       </$FormGroup>
       <$FormGroup>
-        <$FormCaption>Tooltip text</$FormCaption>
+        <$FormCaption>ツールチップテキスト</$FormCaption>
         <$Input type="text" value={title} onChange={handleTitleChange} />
-        <$FormHint>Tooltip to display on mouse hover</$FormHint>
+        <$FormHint>マウスホバー時に表示されるツールチップ</$FormHint>
       </$FormGroup>
       <$FormGroup>
-        <$PrimaryButton onClick={handleSubmit}>Apply Edit</$PrimaryButton>
+        <$PrimaryButton onClick={handleSubmit}>適用</$PrimaryButton>
       </$FormGroup>
       <$FormGroup>
-        <$CancelButton onClick={openAnchorDialog}>Cancel</$CancelButton>
+        <$CancelButton onClick={openAnchorDialog}>キャンセル</$CancelButton>
       </$FormGroup>
     </$AnchorEditDialog>
   )

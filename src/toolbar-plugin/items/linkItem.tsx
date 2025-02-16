@@ -5,7 +5,7 @@ import * as Icon from "../icons"
 
 export const linkItem: MenuItemData = {
   icon: Icon.Link,
-  title: "Insert Link",
+  title: "リンクの挿入",
   more: true,
   hotkey: "mod+k",
   Component: AnchorDialog,

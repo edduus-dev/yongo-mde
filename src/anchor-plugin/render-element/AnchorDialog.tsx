@@ -127,8 +127,8 @@ export function AnchorDialog({
     }
   )
 
-  const removeTooltip = useTooltip({ title: "Remove link" })
-  const editTooltip = useTooltip({ title: "Edit link" })
+  const removeTooltip = useTooltip({ title: "リンクを削除" })
+  const editTooltip = useTooltip({ title: "リンクを編集" })
 
   const removeLink = useCallback(() => {
     editor.anchor.removeLink({ at: element })
