@@ -30,6 +30,19 @@ export type CollapsibleParagraphPluginCustomTypes = {
 
 export const CollapsibleParagraphPlugin =
   createPlugin<CollapsibleParagraphPluginCustomTypes>((editor) => {
+    const { insertBreak } = editor
+
+    editor.insertBreak = () => {
+      const { selection } = editor
+      if (selection && selection.anchor.path[0] === selection.focus.path[0]) {
+        // If we're within the same paragraph, insert a line break
+        editor.insertText('\n')
+      } else {
+        // Otherwise fall back to default behavior
+        insertBreak()
+      }
+    }
+
     editor.convertElement.addConvertElementType("paragraph")
     editor.collapsibleParagraph = {
       convertParagraph: () => {
