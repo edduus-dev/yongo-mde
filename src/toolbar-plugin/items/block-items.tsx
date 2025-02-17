@@ -5,17 +5,17 @@ import * as Icon from "../icons"
 const listDepthItems: MenuItemData[] = [
   {
     icon: Icon.IncreaseDepth,
-    title: "インデントを深くする",
+    title: "階層を深くする",
     hotkey: "tab",
     action: (editor) => editor.list.increaseDepth(),
-    show: (editor) => editor.list.canIncreaseDepth(),
+    active: (editor) => editor.list.canIncreaseDepth(),
   },
   {
     icon: Icon.DecreaseDepth,
-    title: "インデントを浅くする",
+    title: "階層を浅くする",
     hotkey: "shift+tab",
     action: (editor) => editor.list.decreaseDepth(),
-    show: (editor) => editor.list.canDecreaseDepth(),
+    active: (editor) => editor.list.canDecreaseDepth(),
   },
 ]
 

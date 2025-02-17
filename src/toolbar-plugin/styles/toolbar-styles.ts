@@ -77,6 +77,11 @@ export const $ToolbarButton = styled("div")`
   transition: all 100ms;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0);
+  &.--disabled {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+  }
   &.--active {
     color: var(--shade-700);
     background: rgba(0, 0, 0, 0.05);
@@ -87,7 +92,7 @@ export const $ToolbarButton = styled("div")`
   svg {
     stroke-width: 1.5px;
   }
-  &:hover {
+  &:not(.--disabled):hover {
     color: var(--shade-700);
     background: var(--blue-100);
     svg {
