@@ -1,4 +1,4 @@
-import { Editor, Location, Text, Transforms } from "slate"
+import { Editor, Location, Point, Range, Text, Transforms } from "slate"
 
 /**
  * Toggles a mark.
@@ -17,24 +17,42 @@ export function toggleMark(
   { at = editor.selection }: { at?: Location | null } = {}
 ) {
   if (at == null) return
-  const [match] = Editor.nodes(editor, {
-    match: (n) => Text.isText(n) && !!n[markKey],
-    at,
-  })
-  Transforms.setNodes(
-    editor,
-    { [markKey]: !match || null },
-    {
-      match: (n) => Text.isText(n),
-      split: true,
-      at,
-    }
+
+  // Check if selection is at end of line
+  const point = Range.isRange(at as any) ? (at as Range).focus : at
+  const isAtLineEnd = Point.isPoint(point) && (
+    Editor.after(editor, point) === null || 
+    Editor.isEnd(editor, point, Editor.end(editor, []))
   )
+
+  const validMarkKey = markKey as 'bold' | 'italic' | 'underline' | 'strike'
+  const marks = Editor.marks(editor) || {}
+  const isActive = marks[validMarkKey] === true
+
+  // Store mark state for next insert if at line end
+  if (isAtLineEnd) {
+    if (!isActive) {
+      // Turning mark on
+      editor.activeMarks = {
+        ...editor.activeMarks,
+        [validMarkKey]: true
+      }
+    } else {
+      // Turning mark off
+      const { [validMarkKey]: _, ...remainingMarks } = editor.activeMarks || {}
+      editor.activeMarks = remainingMarks
+    }
+  }
+
+  // Toggle mark in current selection
+  if (isActive) {
+    Editor.removeMark(editor, validMarkKey)
+  } else {
+    Editor.addMark(editor, validMarkKey, true)
+  }
+
+  // Handle unset key if provided
   if (typeof unsetKey === "string") {
-    Transforms.unsetNodes(editor, unsetKey, {
-      match: (n) => Text.isText(n),
-      split: true,
-      at,
-    })
+    Editor.removeMark(editor, unsetKey)
   }
 }

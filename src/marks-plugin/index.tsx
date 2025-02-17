@@ -1,9 +1,9 @@
 import { clsx } from "clsx"
+import { Editor, Point, Range } from "slate"
 
 import {
   createHotkeyHandler,
   createPlugin,
-  curryOne,
   TypedPlugin,
 } from "~/src/sink"
 
@@ -19,6 +19,12 @@ export type MarksEditor = {
    * built into the BaseEditor.j
    */
   marksPlugin: ReturnType<typeof createMarksMethods>
+  activeMarks?: {
+    bold?: boolean
+    italic?: boolean
+    underline?: boolean
+    strike?: boolean
+  }
 }
 
 export type MarksText = {
@@ -37,6 +43,7 @@ export type MarksPluginCustomTypes = {
 
 export const MarksPlugin = createPlugin<MarksPluginCustomTypes>((editor) => {
   editor.marksPlugin = createMarksMethods(editor)
+  editor.activeMarks = {}
   const hotkeyHandler = createHotkeyHandler({
     "mod+b": editor.marksPlugin.toggleBold,
     "mod+i": editor.marksPlugin.toggleItalic,
@@ -44,11 +51,39 @@ export const MarksPlugin = createPlugin<MarksPluginCustomTypes>((editor) => {
     "super+0": editor.marksPlugin.removeMarks,
     "super+k": editor.marksPlugin.toggleStrike,
   })
+  // Override insertText to apply active marks
+  const { insertText: defaultInsertText } = editor
+  editor.insertText = (text) => {
+    if (editor.activeMarks && Object.keys(editor.activeMarks).length > 0) {
+      const { activeMarks } = editor
+      // Apply marks before inserting text
+      Object.entries(activeMarks).forEach(([mark, isActive]) => {
+        if (isActive) {
+          editor.addMark(mark, true)
+        }
+      })
+    }
+    defaultInsertText(text)
+  }
+
+  // Override removeMarks to clear activeMarks at line end
+  const { removeMarks } = editor.marksPlugin
+  editor.marksPlugin.removeMarks = () => {
+    removeMarks()
+    if (editor.selection) {
+      const point = Range.isRange(editor.selection as any) ? (editor.selection as Range).focus : editor.selection
+      if (Point.isPoint(point)) {
+        const isAtLineEnd = Editor.after(editor, point) === null ||
+          Editor.isEnd(editor, point, Editor.end(editor, []))
+        if (isAtLineEnd) {
+          editor.activeMarks = {}
+        }
+      }
+    }
+  }
+
   return {
     name: "marks",
-    editor: {
-      insertText: curryOne(insertText, editor),
-    },
     editableProps: {
       renderLeaf: ({ leaf, children }) => {
         return (
