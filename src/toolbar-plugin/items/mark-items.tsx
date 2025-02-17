@@ -10,6 +10,7 @@ function getMarks(editor: Editor) {
     italic: marks?.italic || false,
     strike: marks?.strike || false,
     code: marks?.code || false,
+    underline: marks?.underline || false,
   }
 }
 
@@ -41,6 +42,13 @@ const primaryMarkItems: MenuItemData[] = [
     hotkey: "mod+j",
     action: (editor) => editor.inlineCode.toggleInlineCode(),
     active: (editor) => getMarks(editor).code,
+  },
+  {
+    icon: Icon.Underline,
+    title: "下線",
+    hotkey: "mod+u",
+    action: (editor) => editor.marksPlugin.toggleUnderline(),
+    active: (editor) => getMarks(editor).underline,
   },
 ]
 

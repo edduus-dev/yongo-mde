@@ -61,7 +61,7 @@ export const CollapsibleParagraphPlugin =
         const afterCursor = text.slice(currentOffset)
 
         // Check if we're creating an empty line
-        if (beforeCursor.endsWith('\n') && afterCursor.startsWith('\n')) {
+        if (beforeCursor.match(/\n$/)) {
           // Create a new paragraph
           insertBreak()
         } else if (text.includes('\n\n')) {

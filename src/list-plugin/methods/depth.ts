@@ -3,7 +3,7 @@ import { findElementUp, isStartOfElement } from "~/src/sink"
 import { isListItem } from ".."
 import { ListItemElement } from "../types"
 
-const MAX_DEPTH = 3
+const MAX_DEPTH = 2
 
 export function getListDepth(editor: Editor): number {
   const listItem = findElementUp<ListItemElement>(editor, isListItem)

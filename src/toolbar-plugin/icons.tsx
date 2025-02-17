@@ -195,6 +195,12 @@ export const Strikethrough = () => (
   </TablerIcon>
 )
 
+export const Underline = () => (
+  <TablerIcon>
+    <path d="M7 5v5a5 5 0 0 0 10 0V5M5 19h14" />
+  </TablerIcon>
+)
+
 export const RemoveStyles = () => (
   <TablerIcon>
     <path d="m14 6 7 7-2 2M10 10l-4.172 4.172a2.828 2.828 0 1 0 4 4L14 14" />
