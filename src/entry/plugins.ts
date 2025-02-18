@@ -28,8 +28,6 @@ export const plugins = [
   PasteMarkdownPlugin,
   ConvertElementPlugin,
   AnchorPlugin,
-  UploadPlugin,
-  ImagePlugin,
   HeadingPlugin,
   MarksPlugin,
   InlineCodePlugin,
@@ -43,6 +41,8 @@ export const plugins = [
   CollapsibleParagraphPlugin,
   ThemePlugin,
   ToolbarPlugin,
+  UploadPlugin,
+  ImagePlugin,
   PlaceholderPlugin,
 ]
 
