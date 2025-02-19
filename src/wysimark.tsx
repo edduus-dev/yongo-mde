@@ -1,4 +1,3 @@
-import React from "react"
 import {
   createRef,
   RefObject,
@@ -9,7 +8,6 @@ import {
 } from "react"
 import { createRoot } from "react-dom/client"
 import { Editable, useEditor } from './entry/index'
-import { MarkdownDisplay } from './entry/markdown-display'
 
 /**
  * The options passed into the standalone version of Wysimark.
@@ -34,41 +32,6 @@ export type Wysimark = {
   getMarkdown: () => string
   setMarkdown: (markdown: string) => void
 }
-
-type ReadOnlyOptions = {
-  markdown: string
-  className?: string
-  style?: React.CSSProperties
-}
-
-/**
-+ * Creates a read-only version of Wysimark that doesn't show the toolbar and doesn't allow editing.
-+ */
-export function createMarkdownDisplay(
-  containerElement: HTMLElement,
-  options: ReadOnlyOptions = { markdown: "" }
-) {
-  const root = createRoot(containerElement)
-
-  root.render(
-    <MarkdownDisplay
-      markdown={options.markdown}
-      className={options.className}
-      style={options.style}
-    />
-  )
-
-  return {
-    unmount() {
-      try {
-        root.unmount()
-      } catch (e) {
-        /* ignore */
-      }
-    }
-  }
-}
-
 
 function StandaloneEditor({
   standaloneOptions: { onChange, placeholder, className, ...options },

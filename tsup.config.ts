@@ -1,12 +1,13 @@
 import { defineConfig } from "tsup"
 
-export default defineConfig({
-  entry: ["src/index.tsx"],
+export default defineConfig([{
+  entry: ["src/wysimark.tsx"],
   format: ["esm"],
   dts: false,
   tsconfig: "./tsconfig.tsup.json",
+  minify: true,
   splitting: false,
-  sourcemap: true,
+  sourcemap: false,
   clean: true,
   platform: "browser",
   outDir: "dist/",
@@ -22,4 +23,17 @@ export default defineConfig({
       '.tsx': 'tsx',
     }
   }
-})
+},
+{
+  entry: ["src/entry/index.tsx"],
+  format: ["esm"],
+  dts: true,
+  outDir: "dist/",
+  tsconfig: "./tsconfig.tsup.json",
+  splitting: true,
+  sourcemap: true,
+  metafile: true,
+  platform: "browser",
+  external: ["react", "react-dom"],
+}]
+)

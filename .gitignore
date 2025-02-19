@@ -1,6 +1,7 @@
 # build
 .build/
 build/
+*.swp
 
 # dist (`dist` used by Vite)
 .dist/
