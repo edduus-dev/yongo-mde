@@ -30,7 +30,7 @@ function renderPlaceholder(props: RenderPlaceholderProps) {
 }
 
 export const PlaceholderPlugin = createPlugin<PlaceholderPluginCustomTypes>(
-  (editor, options, { createPolicy }) => {
+  (editor, _options, { createPolicy }) => {
     editor.placeholder = {}
     return createPolicy({
       name: "placeholder",

@@ -1,5 +1,3 @@
-import React from "react"
-
 import { createHotkeyHandler, createPlugin, TypedPlugin } from "~/src/sink"
 
 import { HorizontalRule } from "./horizontal-rule"
@@ -9,7 +7,7 @@ export * from "./types"
 
 export const HorizontalRulePlugin =
   createPlugin<HorizontalRulePluginCustomTypes>(
-    (editor, options, { createPolicy }) => {
+    (editor, _options, { createPolicy }) => {
       editor.horizontalRule = createHorizontalRuleMethods(editor)
       return createPolicy({
         name: "horizontal-rule",

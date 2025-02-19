@@ -29,7 +29,7 @@ export type AnchorPluginCustomTypes = {
 }
 
 export const AnchorPlugin = createPlugin<AnchorPluginCustomTypes>(
-  (editor, options, { createPolicy }) => {
+  (editor, _options, { createPolicy }) => {
     editor.anchor = createAnchorMethods(editor)
     return createPolicy({
       name: "anchor",

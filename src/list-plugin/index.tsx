@@ -26,7 +26,7 @@ export const LIST_ITEM_TYPES: ListItemElement["type"][] = [
 export const isListItem = createIsElementType<ListItemElement>(LIST_ITEM_TYPES)
 
 export const ListPlugin = createPlugin<ListPluginCustomTypes>(
-  (editor, options, { createPolicy }) => {
+  (editor, _options, { createPolicy }) => {
     editor.convertElement.addConvertElementType(LIST_ITEM_TYPES)
     const list = (editor.list = createListMethods(editor))
     const hotkeyHandler = createHotkeyHandler({

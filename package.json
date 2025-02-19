@@ -83,7 +83,7 @@
   },
   "scripts": {
     "dev": "vite --host",
-    "build": "rimraf dist && tsup src/wysimark.tsx",
+    "build": "rimraf dist && tsup src/index.tsx",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   }

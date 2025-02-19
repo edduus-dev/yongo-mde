@@ -32,14 +32,14 @@ export type TablePluginCustomTypes = {
   Name: "table"
   Editor: TableEditor
   Element:
-    | TableElement
-    | TableRowElement
-    | TableCellElement
-    | TableContentElement
+  | TableElement
+  | TableRowElement
+  | TableCellElement
+  | TableContentElement
 }
 
 export const TablePlugin = createPlugin<TablePluginCustomTypes>(
-  (editor, options, { createPolicy }) => {
+  (editor, _options, { createPolicy }) => {
     editor.supportsTable = true
     editor.tablePlugin = createTableMethods(editor)
     return createPolicy({

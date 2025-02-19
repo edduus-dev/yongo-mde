@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup"
 
 export default defineConfig({
-  entry: ["src/wysimark.tsx"],
+  entry: ["src/index.tsx"],
   format: ["esm"],
   dts: false,
   tsconfig: "./tsconfig.tsup.json",

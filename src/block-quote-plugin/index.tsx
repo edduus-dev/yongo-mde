@@ -1,4 +1,3 @@
-import React from "react"
 import { Descendant, Editor, Element, Node, Transforms } from "slate"
 
 import {

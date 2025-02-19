@@ -33,20 +33,20 @@ export function Editable({
   className,
   style,
 }: EditableProps) {
-  const ignoreNextChangeRef = useRef(false)
+  const ignoreNextChangeRef = useRef<boolean>(false)
 
   /**
    * This is a temporary ref that is only used once to store the initial value
    * derived from the initial Markdown value.
    */
-  const initialValueRef = useRef<Descendant[]>()
+  const initialValueRef = useRef<Descendant[] | undefined>(undefined)
 
   /**
    * Track the previous value of the editor. This is used to determine if the
    * change from the editor resulted in a change in the contents of the editor
    * as opposed to just a cursor movement for example.
    */
-  const prevValueRef = useRef<Descendant[]>()
+  const prevValueRef = useRef<Descendant[] | undefined>(undefined)
 
   /**
    * Throttled version of `onChange` for the `Slate` component. This method gets

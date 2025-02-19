@@ -58,7 +58,6 @@ export const CollapsibleParagraphPlugin =
 
         // Split text into before and after cursor
         const beforeCursor = text.slice(0, currentOffset)
-        const afterCursor = text.slice(currentOffset)
 
         // Check if we're creating an empty line
         if (beforeCursor.match(/\n$/)) {

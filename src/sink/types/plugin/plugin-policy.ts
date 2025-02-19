@@ -56,7 +56,7 @@ export type BasePluginPolicy = {
       props: RenderElementProps
     ) => React.ReactElement | undefined
     renderLeaf?: (props: RenderLeafProps) => React.ReactElement | undefined
-    renderPlaceholder?: (props: RenderPlaceholderProps) => JSX.Element
+    renderPlaceholder?: (props: RenderPlaceholderProps) => React.ReactElement
     onKeyDown?: EditableVoidToBooleanHandlerType<"onKeyDown">
     onKeyUp?: EditableVoidToBooleanHandlerType<"onKeyDown">
     onPaste?: EditableVoidToBooleanHandlerType<"onPaste">
@@ -184,7 +184,7 @@ export type PluginPolicy<T extends BasePluginSchema> = {
     renderLeaf?: (
       props: ConstrainedRenderLeafProps<T["Text"]>
     ) => React.ReactElement | undefined
-    renderPlaceholder?: (props: RenderPlaceholderProps) => JSX.Element
+    renderPlaceholder?: (props: RenderPlaceholderProps) => React.ReactElement
     /**
      * All of these plugin event handlers work like the standard event handler
      * except they should return a `boolean` instead of `void`.

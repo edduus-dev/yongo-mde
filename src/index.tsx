@@ -35,7 +35,7 @@ export type Wysimark = {
   setMarkdown: (markdown: string) => void
 }
 
-export type ReadOnlyOptions = {
+type ReadOnlyOptions = {
   markdown: string
   className?: string
   style?: React.CSSProperties

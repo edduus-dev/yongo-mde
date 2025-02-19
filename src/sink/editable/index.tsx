@@ -21,7 +21,7 @@ export { SinkReset } from "./styles"
  * In Editable, we use the Slate context to grab the right things from
  * the editor.
  */
-export function SinkEditable(originalProps: EditableProps): JSX.Element {
+export function SinkEditable(originalProps: EditableProps): React.ReactElement {
   const editor = useSlateStatic() as unknown as Editor & SinkEditor
 
   /**

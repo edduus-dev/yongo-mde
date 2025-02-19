@@ -7,7 +7,6 @@ import {
   TypedPlugin,
 } from "~/src/sink"
 
-import { insertText } from "./editor/insert-text"
 import { createMarksMethods } from "./methods"
 import { $MarksSpan } from "./styles"
 
