@@ -1,19 +1,20 @@
 import { MenuItemData } from "~/src/shared-overlays"
 
 import { TableDialog } from "../components"
-import { AttachmentDialog, ImageDialog } from "../components/dialog/file-dialog"
+import { ImageDialog } from "../components/dialog/file-dialog"
 import * as Icon from "../icons"
+import { t } from "~/src/utils/translations"
 
 export const dialogItems: MenuItemData[] = [
   {
     icon: Icon.Table,
-    title: "表の挿入",
+    title: t("insertTable"),
     more: true,
     Component: TableDialog,
   },
   {
     icon: Icon.Image,
-    title: "画像の挿入",
+    title: t("insertImage"),
     more: true,
     Component: ImageDialog,
     show: (editor) => editor.toolbar.showUploadButtons ?? false,
@@ -25,7 +26,7 @@ export const expandedDialogItems: MenuItemData[] = dialogItems
 export const compactDialogItems: MenuItemData[] = [
   {
     icon: Icon.Plus,
-    title: "挿入",
+    title: t("insert"),
     more: true,
     children: dialogItems,
   },

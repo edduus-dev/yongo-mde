@@ -2,6 +2,7 @@ import { Editor } from "slate"
 import { MenuItemData } from "~/src/shared-overlays"
 
 import * as Icon from "../icons"
+import { t } from "~/src/utils/translations"
 
 function getMarks(editor: Editor) {
   const marks = Editor.marks(editor)
@@ -17,35 +18,35 @@ function getMarks(editor: Editor) {
 const primaryMarkItems: MenuItemData[] = [
   {
     icon: Icon.Bold,
-    title: "太字",
+    title: t("bold"),
     hotkey: "mod+b",
     action: (editor) => editor.marksPlugin.toggleBold(),
     active: (editor) => getMarks(editor).bold,
   },
   {
     icon: Icon.Italic,
-    title: "斜体",
+    title: t("italic"),
     hotkey: "mod+i",
     action: (editor) => editor.marksPlugin.toggleItalic(),
     active: (editor) => getMarks(editor).italic,
   },
   {
     icon: Icon.Strikethrough,
-    title: "取り消し線",
+    title: t("strike"),
     hotkey: "super+k",
     action: (editor) => editor.marksPlugin.toggleStrike(),
     active: (editor) => getMarks(editor).strike,
   },
   {
     icon: Icon.Code,
-    title: "インラインコード",
+    title: t("inlineCode"),
     hotkey: "mod+j",
     action: (editor) => editor.inlineCode.toggleInlineCode(),
     active: (editor) => getMarks(editor).code,
   },
   {
     icon: Icon.Underline,
-    title: "下線",
+    title: t("underline"),
     hotkey: "mod+u",
     action: (editor) => editor.marksPlugin.toggleUnderline(),
     active: (editor) => getMarks(editor).underline,

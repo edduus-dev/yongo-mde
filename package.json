@@ -2,7 +2,7 @@
   "name": "wysimark_lite",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "takesy",
+  "author": "takesy<takesy.morito@gmail.com>",
   "files": [
     "README.md",
     "dist/"
@@ -84,25 +84,6 @@
   "scripts": {
     "dev": "vite --host",
     "build": "rimraf dist && tsup src/wysimark.tsx",
-    "build:cli": "rimraf .dist && tsup src/wysimark.tsx --dts --tsconfig=tsconfig.tsup.json --out-dir=.dist",
-    "build:watch": "pnpm build --watch",
-    "-- fix": "# fix syntax",
-    "fix": "pnpm fix:prettier && pnpm fix:eslint",
-    "fix:eslint": "pnpm lint:eslint --fix",
-    "fix:prettier": "pnpm lint:prettier --write",
-    "-- lint": "# lint syntax",
-    "lint": "concurrently 'pnpm lint:prettier' 'pnpm lint:eslint' 'pnpm lint:tsc'",
-    "lint:eslint": "eslint .",
-    "lint:prettier": "prettier --check \"**/*.{css,md,js,jsx,json,ts,tsx}\"",
-    "lint:tsc": "tsc --build ./ --force",
-    "open": "open -a 'google chrome' http://localhost:3732",
-    "--- test": "# Temporarily disabling tests as there are none yet",
-    "test:clearcache": "jest --clearCache",
-    "test:once": "FAST=0 jest --no-cache",
-    "test:watch": "FAST=1 jest --watch",
-    "-- preset": "# Run preset from ~/presets",
-    "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
-    "-- end": "# end",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   }

@@ -3,6 +3,7 @@ import { useCallback, useRef, useState } from "react"
 import { useSlateStatic } from "slate-react"
 
 import { $Panel } from "../../shared-overlays"
+import { t } from "../../utils/translations"
 import {
   $CancelButton,
   $FormCaption,
@@ -82,19 +83,19 @@ export function AnchorEditDialog({
   return (
     <$AnchorEditDialog contentEditable={false} style={style}>
       <$FormGroup>
-        <$FormCaption>リンクのURL</$FormCaption>
+        <$FormCaption>{t("linkUrl")}</$FormCaption>
         <$Textarea as="textarea" value={href} onChange={handleHrefChange} />
       </$FormGroup>
       <$FormGroup>
-        <$FormCaption>ツールチップテキスト</$FormCaption>
+        <$FormCaption>{t("tooltipText")}</$FormCaption>
         <$Input type="text" value={title} onChange={handleTitleChange} />
-        <$FormHint>マウスホバー時に表示されるツールチップ</$FormHint>
+        <$FormHint>{t("tooltipHint")}</$FormHint>
       </$FormGroup>
       <$FormGroup>
-        <$PrimaryButton onClick={handleSubmit}>適用</$PrimaryButton>
+        <$PrimaryButton onClick={handleSubmit}>{t("apply")}</$PrimaryButton>
       </$FormGroup>
       <$FormGroup>
-        <$CancelButton onClick={openAnchorDialog}>キャンセル</$CancelButton>
+        <$CancelButton onClick={openAnchorDialog}>{t("cancel")}</$CancelButton>
       </$FormGroup>
     </$AnchorEditDialog>
   )
