@@ -5,6 +5,7 @@ import { ReactEditor, useSlate, useSlateStatic } from "slate-react"
 import { formatHotkey, Menu, MenuItemData } from "~/src/shared-overlays"
 import { useLayer } from "~/src/use-layer"
 import { useTooltip } from "~/src/use-tooltip"
+import { r } from "~/src/utils/translations"
 
 import * as Icon from "../../icons"
 import { $ToolbarButton } from "../../styles"
@@ -67,6 +68,7 @@ export function ToolbarButton({
     [menuLayer.layer]
   )
 
+  console.log(r(item?.title))
   return (
     <$ToolbarButton
       data-item-type="button"
@@ -75,9 +77,9 @@ export function ToolbarButton({
       onMouseLeave={tooltip.onMouseLeave}
       onClick={onClick}
       className={clsx({
-        "--active": isActive && !item.title.includes("階層"),
+        "--active": isActive && !r(item?.title)?.includes('Depth'),
         "--more": item.more,
-        "--disabled": !isActive && item.title.includes("階層")
+        "--disabled": !isActive && r(item?.title)?.includes('Depth')
       })}
     >
       <item.icon />

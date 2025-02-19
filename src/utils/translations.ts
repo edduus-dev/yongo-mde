@@ -88,9 +88,18 @@ export const translations: Translations = {
   },
 };
 
-type TranslationKey = keyof Translations["en"];
+export type TranslationKey = keyof Translations["en"];
 
 export const t = (key: TranslationKey): string => {
   const lang = window.navigator.language.split("-")[0];
   return translations[lang === "ja" ? "ja" : "en"][key];
+};
+
+export const r = (value: string): string => {
+  const lang = window.navigator.language.split("-")[0];
+  // 値がvalueと一致するキーを取得
+  const key = Object.keys(translations[lang === "ja" ? "ja" : "en"]).find(
+    (k) => translations[lang === "ja" ? "ja" : "en"][k as TranslationKey] === value
+  ) as TranslationKey;
+  return key || "";
 };
