@@ -68,7 +68,6 @@ export function ToolbarButton({
     [menuLayer.layer]
   )
 
-  console.log(r(item?.title))
   return (
     <$ToolbarButton
       data-item-type="button"
