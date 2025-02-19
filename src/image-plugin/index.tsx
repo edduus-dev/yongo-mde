@@ -81,60 +81,6 @@ export const ImagePlugin = //({
         imageBlockPresets: options.imageBlockPresets,
         imageInlinePresets: options.imageInlinePresets,
       }
-      editor.upload.onUploadImageFile = (e) => {
-        const { selection } = editor
-        if (e.width <= 64 && e.height <= 64) {
-          Transforms.insertNodes(editor, {
-            type: "image-inline",
-            url: e.hashUrl,
-            alt: e.file.name,
-            title: e.file.name,
-            bytes: e.file.size,
-            width: e.width,
-            height: e.height,
-            srcWidth: e.width,
-            srcHeight: e.height,
-            children: [{ text: "" }],
-          })
-        } else {
-          const initialSize = resizeInBounds(
-            { width: e.width, height: e.height },
-            options.maxInitialImageSize || options.maxImageSize
-          )
-          Transforms.insertNodes(editor, {
-            type: "image-block",
-            url: e.hashUrl,
-            alt: e.file.name,
-            title: e.file.name,
-            bytes: e.file.size,
-            width: initialSize.width,
-            height: initialSize.height,
-            srcWidth: e.width,
-            srcHeight: e.height,
-            children: [{ text: "" }],
-          })
-        }
-
-        /**
-         * If there is no selection the element is inserted at the bottom of the
-         * editor. When this happens, the insertion point may not be visible and
-         * so this code scrolls to the bottom of the editor. We don't do this if
-         * there is a selection because if the user made a selection, it is
-         * likely already in view.
-         */
-        if (!selection) {
-          const lastPos = Editor.end(editor, [])
-          Transforms.select(editor, lastPos)
-          ReactEditor.focus(editor)
-        }
-        return true
-      }
-      editor.upload.onUploadImageFileSuccess = (e) => {
-        editor.upload.setElementTimeTraveling<
-          ImageBlockElement | ImageInlineElement
-        >({ url: e.hashUrl }, { url: e.url })
-        return true
-      }
 
       return createPolicy({
         name: "image",

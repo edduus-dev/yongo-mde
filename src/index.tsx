@@ -9,6 +9,8 @@ import {
 import { createRoot } from "react-dom/client"
 import { Editable, useEditor } from './entry/index'
 
+export { Editable, useEditor }
+
 /**
  * The options passed into the standalone version of Wysimark.
  */

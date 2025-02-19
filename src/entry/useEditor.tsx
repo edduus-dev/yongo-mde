@@ -31,8 +31,7 @@ export function useEditor({
          */
         showUploadButtons: !!authToken,
       },
-      image: {},
-      upload: authToken ? { authToken } : undefined,
+      image: {}
     })
     nextEditor.convertElement.addConvertElementType("paragraph")
     editor.wysimark = {

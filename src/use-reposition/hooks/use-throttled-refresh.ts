@@ -9,7 +9,7 @@
  * executed and there were leftover `refresh` calls without a trailing
  * execution.
  */
-import {throttle} from "lodash"
+import throttle from "lodash.throttle"
 import { useState } from "react"
 
 export type UseThrottledRefreshReturnType = ReturnType<typeof throttle> & {

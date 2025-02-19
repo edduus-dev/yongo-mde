@@ -1,17 +1,17 @@
 {
   "name": "wysimark-lite",
-  "version": "0.9.7",
+  "version": "0.13.1",
   "license": "MIT",
   "author": "takesy<takesy.morito@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/takeshy/wysimark-lite"
   },
-  "main": "./dist/wysimark.mjs",
-  "module": "./dist/wysimark.mjs",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
   "exports": {
-    ".": "./dist/wysimark.mjs",
-    "./bundled": "./dist/wysimark.js"
+    ".": "./dist/index.mjs",
+    "./bundled": "./dist/index.js"
   },
   "types": "./dist/index.d.ts",
   "files": [
@@ -32,7 +32,7 @@
     "@types/handlebars-helpers": "^0.5.3",
     "@types/is-hotkey": "^0.1.7",
     "@types/jest": "^29",
-    "@types/lodash": "^4.1.7",
+    "@types/lodash.throttle": "^4.1.7",
     "@types/mdast": "^3.0.0",
     "@types/react": ">=17.x",
     "@types/react-dom": ">=17.x",
@@ -75,7 +75,7 @@
     "clsx": "^1.2.1",
     "dotenv": "^16.3",
     "is-hotkey": "^0.2.0",
-    "lodash": "^4.1.1",
+    "lodash.throttle": "^4.1.1",
     "mdast-util-definitions": "^5.1.1",
     "nanoid": "^3.3.6",
     "react": ">=17.x",
@@ -91,7 +91,7 @@
   },
   "scripts": {
     "dev": "vite --host",
-    "build": "rimraf dist && tsup src/wysimark.tsx",
+    "build": "rimraf dist && tsup src/index.tsx",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   }

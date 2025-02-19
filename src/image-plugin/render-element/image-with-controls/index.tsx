@@ -2,8 +2,6 @@ import { clsx } from "clsx"
 import React, { useState } from "react"
 import { useSelected } from "slate-react"
 
-import { useUpload } from "~/src/upload-plugin/store"
-
 import {
   $Image,
   $ImageContainer,
@@ -37,7 +35,7 @@ export function ImageWithControls({
   element: ImageBlockElement | ImageInlineElement
   presets: ImageSizePreset[]
 }) {
-  const upload = useUpload(element.url)
+  const url = element.url
   const selected = useSelected()
   const [isDragging, setIsDragging] = useState(false)
   const [size, setSize] = useState(
@@ -69,7 +67,6 @@ export function ImageWithControls({
     "--selected": selected,
     "--dragging": isDragging,
     "--small": size && (size.width <= 64 || size.height <= 64),
-    "--loaded": upload.status === "success",
   })
 
   /**
@@ -90,7 +87,7 @@ export function ImageWithControls({
    */
   return (
     <$ImageContainer className={className}>
-      <$Image src={upload.url} width={size?.width} height={size?.height} />
+      <$Image src={url} width={size?.width} height={size?.height} />
       {showControls ? (
         <ImageToolbar
           element={element}

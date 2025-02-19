@@ -1,4 +1,4 @@
-import { throttle } from "lodash"
+import throttle from "lodash.throttle"
 import { useEffect, useRef, useState } from "react"
 import { useSlateStatic } from "slate-react"
 

@@ -90,13 +90,26 @@ export const translations: Translations = {
 
 export type TranslationKey = keyof Translations["en"];
 
+const getLanguage = (): string => {
+  try {
+    // Check if we're in a browser environment
+    if (typeof window !== 'undefined' && window.navigator) {
+      return window.navigator.language.split("-")[0];
+    }
+  } catch (e) {
+    // Ignore any errors
+  }
+  // Default to 'en' in server environment
+  return 'en';
+};
+
 export const t = (key: TranslationKey): string => {
-  const lang = window.navigator.language.split("-")[0];
+  const lang = getLanguage();
   return translations[lang === "ja" ? "ja" : "en"][key];
 };
 
 export const r = (value: string): string => {
-  const lang = window.navigator.language.split("-")[0];
+  const lang = getLanguage();
   // 値がvalueと一致するキーを取得
   const key = Object.keys(translations[lang === "ja" ? "ja" : "en"]).find(
     (k) => translations[lang === "ja" ? "ja" : "en"][k as TranslationKey] === value

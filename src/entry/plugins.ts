@@ -21,7 +21,6 @@ import { ToolbarPlugin } from "~/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 import { PasteMarkdownPlugin } from "../paste-markdown-plugin"
 import { PlaceholderPlugin } from "../placeholder-plugin"
-import { UploadPlugin } from "~/src/upload-plugin"
 import { WysimarkEditor } from "./types"
 
 export const plugins = [
@@ -41,7 +40,6 @@ export const plugins = [
   CollapsibleParagraphPlugin,
   ThemePlugin,
   ToolbarPlugin,
-  UploadPlugin,
   ImagePlugin,
   PlaceholderPlugin,
 ]
