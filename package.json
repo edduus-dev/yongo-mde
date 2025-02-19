@@ -1,15 +1,19 @@
 {
   "name": "wysimark-lite",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "license": "MIT",
   "author": "takesy<takesy.morito@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/takeshy/wysimark-lite"
   },
-  "main": "dist/wysimark.js",
-  "module": "dist/wysimark.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./dist/wysimark.mjs",
+  "module": "./dist/wysimark.mjs",
+  "exports": {
+    ".": "./dist/wysimark.mjs",
+    "./bundled": "./dist/wysimark.js"
+  },
+  "types": "./dist/index.d.ts",
   "files": [
     "README.md",
     "dist/"
