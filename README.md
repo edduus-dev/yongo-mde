@@ -26,22 +26,15 @@ const Editor: React.FC = () => {
 };
 ```
 
-With initial value:
-
-```tsx
-const Editor: React.FC = () => {
-  const [value, setValue] = React.useState(`# Welcome to Wysimark
-
-This is a **rich text editor** with _markdown_ support.`);
-  const editor = useEditor({});
-
-  return <Editable editor={editor} value={value} onChange={setValue} />;
-};
-```
-
 ### Direct Initialization
 
 You can also initialize the editor directly on an HTML element:
+
+# you use rails importmap, add the following line to your importmap.rb
+※ @latest is the latest version of wysimark-lite. If you want to specify a version, replace @latest with the version you want to use.
+```
+pin "wysimark-lite", to: "https://cdn.jsdelivr.net/npm/wysimark-lite@latest/dist/index.js"
+```
 
 ```html
 <div id="editor"></div>

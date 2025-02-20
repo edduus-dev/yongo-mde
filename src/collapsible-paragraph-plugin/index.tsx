@@ -1,4 +1,4 @@
-import { Descendant, Editor, Transforms } from "slate"
+import { Descendant, Editor } from "slate"
 
 import {
   createHotkeyHandler,
@@ -38,7 +38,7 @@ export const CollapsibleParagraphPlugin =
         const text = Editor.string(editor, [selection.anchor.path[0]])
 
         // Check if we're creating an empty line
-        if (text.match(/\n$/)) {
+        if (text.match(/\n$/) || text.match(/\n\n/)) {
           // Create a new paragraph
           insertBreak()
         } else {
