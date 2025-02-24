@@ -92,11 +92,13 @@ export const $ToolbarButton = styled("div")`
   svg {
     stroke-width: 1.5px;
   }
-  &:not(.--disabled):hover {
-    color: var(--shade-700);
-    background: var(--blue-100);
-    svg {
-      /* stroke-width: 2px; */
+  @media (hover: hover) {
+    &:not(.--disabled):hover {
+      color: var(--shade-700);
+      background: var(--blue-100);
+      svg {
+        /* stroke-width: 2px; */
+      }
     }
   }
 
