@@ -1,0 +1,49 @@
+name: Deploy Storybook to GitHub Pages
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+
+env:
+  WORKING_DIRECTORY: .
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+    steps:
+      - name: Chekcout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js ${{ matrix.node-version }} 🔧
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies
+        run: npm install
+      - name: Build storybook
+        run: npm run build-storybook
+      - name: Upload Documents
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 絶対パスを指定
+          path: ${{ env.WORKING_DIRECTORY }}/storybook-static
+
+  # Deploy the artifact to GitHub pages.
+  # This is a separate job so that only actions/deploy-pages has the necessary permissions.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
