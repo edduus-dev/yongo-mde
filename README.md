@@ -6,6 +6,11 @@ wysimark ( https://github.com/portive/wysimark ) is a modern and clean rich text
 
 Thanks to the original author of wysimark, portive m(_ _)m
 
+## Demo
+
+You can try out  the editor using storybook in the following link:
+https://takeshy.github.io/wysimark-lite
+
 ## Usage
 
 ### As React Component
