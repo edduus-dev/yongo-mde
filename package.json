@@ -49,6 +49,8 @@
     "json-beautify": "^1.1.1",
     "just-map-values": "^3.2.0",
     "mdast-util-definitions": "^5.1.1",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "pretty-bytes": "^6.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -93,6 +95,7 @@
     "dev": "vite --host",
     "build": "rimraf dist && tsup src/index.tsx",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "postinstall": "patch-package"
   }
 }
