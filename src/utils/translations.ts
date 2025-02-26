@@ -25,7 +25,13 @@ interface Translations {
     quote: string;
     insertTable: string;
     insertImage: string;
+    insertImageFromUrl: string;
     insert: string;
+    imageUrlRequired: string;
+    altText: string;
+    title: string;
+    imageDescription: string;
+    imageTitle: string;
   };
 }
 
@@ -56,7 +62,13 @@ export const translations: Translations = {
     quote: "引用",
     insertTable: "表の挿入",
     insertImage: "画像の挿入",
+    insertImageFromUrl: "URLから画像を挿入",
     insert: "挿入",
+    imageUrlRequired: "画像URL（必須）：",
+    altText: "代替テキスト：",
+    title: "タイトル：",
+    imageDescription: "画像の説明",
+    imageTitle: "画像のタイトル",
   },
   en: {
     bold: "Bold",
@@ -84,7 +96,13 @@ export const translations: Translations = {
     quote: "Quote",
     insertTable: "Insert Table",
     insertImage: "Insert Image",
+    insertImageFromUrl: "Insert Image from URL",
     insert: "Insert",
+    imageUrlRequired: "Image URL (required):",
+    altText: "Alt Text:",
+    title: "Title:",
+    imageDescription: "Description of the image",
+    imageTitle: "Image title",
   },
 };
 

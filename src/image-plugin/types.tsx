@@ -100,14 +100,10 @@ export type ImageBlockElement = {
  * Smaller images can be converted to block images though.
  */
 
-export type ImageInlineElement = {
-  type: "image-inline"
-} & ImageSharedElement
-
 export type ImagePluginCustomTypes = {
   Name: "image"
   Editor: ImageEditor
-  Element: ImageBlockElement | ImageInlineElement
+  Element: ImageBlockElement
   Options: ImagePluginOptions
 }
 
@@ -121,15 +117,15 @@ export type ImagePluginCustomTypes = {
 
 export type ImageSizePreset =
   | {
-      name: string
-      title: string
-      type: "bounds"
-      width: number
-      height: number
-    }
+    name: string
+    title: string
+    type: "bounds"
+    width: number
+    height: number
+  }
   | {
-      name: string
-      title: string
-      type: "scale"
-      scale: number
-    }
+    name: string
+    title: string
+    type: "scale"
+    scale: number
+  }

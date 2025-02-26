@@ -1,7 +1,7 @@
 import { MenuItemData } from "~/src/shared-overlays"
 
 import { TableDialog } from "../components"
-import { ImageDialog } from "../components/dialog/file-dialog"
+import { ImageUrlDialog } from "../components/dialog/image-url-dialog"
 import * as Icon from "../icons"
 import { t } from "~/src/utils/translations"
 
@@ -14,10 +14,9 @@ export const dialogItems: MenuItemData[] = [
   },
   {
     icon: Icon.Image,
-    title: t("insertImage"),
+    title: t("insertImageFromUrl"),
     more: true,
-    Component: ImageDialog,
-    show: (editor) => editor.toolbar.showUploadButtons ?? false,
+    Component: ImageUrlDialog,
   }
 ]
 
