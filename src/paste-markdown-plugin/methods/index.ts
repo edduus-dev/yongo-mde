@@ -2,8 +2,7 @@ import { Editor, Transforms } from "slate"
 
 import { curryOne } from "~/src/sink"
 
-import { parse } from "../../convert"
-import { escapeUrlSlashes } from "../../index"
+import { parse, escapeUrlSlashes } from "../../convert"
 
 function pasteMarkdown(editor: Editor, markdown: string) {
   // Escape forward slashes in URLs before parsing

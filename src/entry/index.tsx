@@ -3,8 +3,7 @@ import { useCallback, useRef } from "react"
 import { Descendant, Editor, Element, Transforms } from "slate"
 import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
 
-import { parse, serialize } from "../convert"
-import { escapeUrlSlashes } from "../index"
+import { parse, serialize, escapeUrlSlashes } from "../convert"
 import { SinkEditable } from "./SinkEditable"
 import { useEditor } from "./useEditor"
 
