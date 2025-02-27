@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import { useCallback } from "react"
 import { useSlateStatic } from "slate-react"
+import { Editor } from "slate"
 
 import { $Panel } from "../../shared-overlays"
 import { useLayer } from "../../use-layer"
@@ -132,7 +133,9 @@ export function AnchorDialog({
 
   const removeLink = useCallback(() => {
     editor.anchor.removeLink({ at: element })
-  }, [editor])
+    // Close the dialog after removing the link
+    dialog.close()
+  }, [editor, dialog])
 
   const openEditDialog = useCallback(() => {
     /**

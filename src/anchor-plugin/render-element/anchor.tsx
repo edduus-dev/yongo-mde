@@ -1,7 +1,7 @@
 import { clsx } from "clsx"
 import React from "react"
 import { useEffect, useRef } from "react"
-import { useSelected } from "slate-react"
+import { useSelected, useSlate } from "slate-react"
 
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
@@ -18,6 +18,7 @@ export function Anchor({
   const startEdgeRef = useRef<HTMLSpanElement>(null)
   const anchorRef = useRef<HTMLAnchorElement>(null)
   const selected = useSelected()
+  const editor = useSlate()
   const dialog = useLayer("dialog")
 
   /**
@@ -48,7 +49,11 @@ export function Anchor({
      * - Closes when the editor loses focus but stays open when the editor loses
      *   focus to the anchor dialog or the anchor edit dialog
      */
-    if (selected) {
+    // Only show dialog when the link is precisely selected (not part of a larger selection)
+    const hasSelection = editor.selection &&
+      editor.selection.anchor.offset !== editor.selection.focus.offset;
+
+    if (selected && !hasSelection) {
       /**
        * The setTimeout delay is necessary when first clicking into the browser
        * and when switching from one link to another. Without it, the dialog
