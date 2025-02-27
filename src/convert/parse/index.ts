@@ -1,13 +1,14 @@
 import type { Root, TopLevelContent } from "mdast"
-import remarkGfm from "remark-gfm"
 import remarkParse from "remark-parse"
 import { unified } from "unified"
 
 import { Element } from "../types"
+import { customRemarkGfm } from "./custom-gfm"
 import { parseContents } from "./parse-content"
 import { transformInlineLinks } from "./transform-inline-links"
 
-const parser = unified().use(remarkParse).use(remarkGfm)
+// @ts-ignore - Ignore TypeScript errors for the unified plugin system
+const parser = unified().use(remarkParse).use(customRemarkGfm())
 
 export function parseToAst(markdown: string) {
   const ast = parser.parse(markdown) as Root

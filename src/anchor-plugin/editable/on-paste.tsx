@@ -7,7 +7,8 @@ export function onPaste(
   const clipboardData = e.clipboardData
   const { types } = clipboardData
 
-  console.log(clipboardData.getData("text/html"))
+  // Remove debug console log
+  // console.log(clipboardData.getData("text/html"))
 
   /**
    * We don't want to handle it if it's not just plain text. If it is
