@@ -14,9 +14,14 @@
   <div id="editor"></div>
   <script type="module">
     import { createWysimark } from './src/index.tsx'
-
+    
+    // Original initialMarkdown with unescaped URLs and markdown links
+    const originalMarkdown = "Plain URL: https://example.com/ \n\nMarkdown link: [example company](https://example.com/)\n\n | item | content |\n|------|------|\n| company | example |\n| URL | https://example.com/ |\n";
+    
+    console.log('Original initialMarkdown:', originalMarkdown);
+    
     const editor = createWysimark(document.getElementById('editor'), {
-      initialMarkdown: '# Hello Wysimark\n\n|a|b|\n|-|-|\n|c|d|',
+      initialMarkdown: originalMarkdown,
       onChange: (markdown) => {
         console.log('Markdown changed:', markdown)
       }

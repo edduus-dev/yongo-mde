@@ -4,6 +4,7 @@ import { withHistory } from "slate-history"
 import { ReactEditor, withReact } from "slate-react"
 
 import { parse, serialize } from "../convert"
+import { escapeUrlSlashes } from "../index"
 import { Element } from "./plugins"
 import { withSink } from "./SinkEditable"
 import { WysimarkEditor } from "./types"
@@ -42,7 +43,9 @@ export function useEditor({
       return serialize(editor.children as Element[])
     }
     editor.setMarkdown = (markdown: string) => {
-      const documentValue = parse(markdown)
+      // Escape forward slashes in URLs before parsing
+      const escapedMarkdown = escapeUrlSlashes(markdown);
+      const documentValue = parse(escapedMarkdown)
       editor.children = documentValue
       editor.selection = null
       Transforms.select(editor, Editor.start(editor, [0]))

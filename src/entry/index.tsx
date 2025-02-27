@@ -4,6 +4,7 @@ import { Descendant, Editor, Element, Transforms } from "slate"
 import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
 
 import { parse, serialize } from "../convert"
+import { escapeUrlSlashes } from "../index"
 import { SinkEditable } from "./SinkEditable"
 import { useEditor } from "./useEditor"
 
@@ -115,10 +116,12 @@ export function Editable({
    */
   if (editor.wysimark.prevValue == null || initialValueRef.current == null) {
     ignoreNextChangeRef.current = true
-    const children = parse(value)
+    // Escape forward slashes in URLs before parsing
+    const escapedValue = escapeUrlSlashes(value);
+    const children = parse(escapedValue)
     prevValueRef.current = initialValueRef.current = children
     editor.wysimark.prevValue = {
-      markdown: value,
+      markdown: value, // Store the original unescaped value
       children,
     }
   } else {
@@ -133,7 +136,9 @@ export function Editable({
      */
     if (value !== editor.wysimark.prevValue.markdown) {
       ignoreNextChangeRef.current = true
-      const documentValue = parse(value)
+      // Escape forward slashes in URLs before parsing
+      const escapedValue = escapeUrlSlashes(value);
+      const documentValue = parse(escapedValue)
       editor.children = documentValue
       editor.selection = null
       Transforms.select(editor, Editor.start(editor, [0]))
