@@ -15,6 +15,10 @@ https://takeshy.github.io/wysimark-lite
 
 ### As React Component
 
+```bash
+npm install wysimark-lite
+```
+
 ```tsx
 import { Editable, useEditor } from "wysimark-lite";
 import React from "react";
