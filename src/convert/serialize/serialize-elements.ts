@@ -10,7 +10,10 @@ export function serializeElements(elements: Element[]): string {
    */
   let orders: number[] = []
 
-  for (const element of elements) {
+  for (let i = 0; i < elements.length; i++) {
+    const element = elements[i];
+    const nextElement = i < elements.length - 1 ? elements[i + 1] : null;
+
     if (element.type === "ordered-list-item") {
       /**
        * When we're at an ordered list item, we increment the order at the
@@ -35,7 +38,22 @@ export function serializeElements(elements: Element[]): string {
       orders = []
     }
 
-    segments.push(serializeElement(element, orders))
+    // Get the serialized element
+    let serialized = serializeElement(element, orders);
+
+    // If this is a list item and the next element is not a list item,
+    // add an extra newline to create proper spacing between list and paragraph
+    if ((element.type === "ordered-list-item" ||
+      element.type === "unordered-list-item" ||
+      element.type === "task-list-item") &&
+      (!nextElement ||
+        (nextElement.type !== "ordered-list-item" &&
+          nextElement.type !== "unordered-list-item" &&
+          nextElement.type !== "task-list-item"))) {
+      serialized = serialized.replace(/\n$/, "\n\n");
+    }
+
+    segments.push(serialized);
   }
   /**
    * NOTE:
