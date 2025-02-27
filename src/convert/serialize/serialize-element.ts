@@ -10,9 +10,8 @@ const LIST_INDENT_SIZE = 4
 export function serializeElement(element: Element, orders: number[]): string {
   switch (element.type) {
     case "anchor":
-      return `[${serializeLine(element.children as Segment[])}](${
-        element.href
-      })`
+      return `[${serializeLine(element.children as Segment[])}](${element.href
+        })`
     case "block-quote": {
       const lines = serializeElements(element.children as Element[])
       return `${lines
@@ -44,13 +43,13 @@ export function serializeElement(element: Element, orders: number[]): string {
      */
     case "unordered-list-item": {
       const indent = " ".repeat(element.depth * LIST_INDENT_SIZE)
-      return `${indent}- ${serializeLine(element.children as Segment[])}\n\n`
+      return `${indent}- ${serializeLine(element.children as Segment[])}\n`
     }
     case "ordered-list-item": {
       const indent = " ".repeat(element.depth * LIST_INDENT_SIZE)
       return `${indent}${orders[element.depth]}. ${serializeLine(
         element.children as Segment[]
-      )}\n\n`
+      )}\n`
     }
     case "task-list-item": {
       const indent = " ".repeat(element.depth * LIST_INDENT_SIZE)
@@ -58,7 +57,7 @@ export function serializeElement(element: Element, orders: number[]): string {
       if (line.trim() === "") {
         line = "&#32;"
       }
-      return `${indent}- [${element.checked ? "x" : " "}] ${line}\n\n`
+      return `${indent}- [${element.checked ? "x" : " "}] ${line}\n`
     }
     case "image-block":
       return serializeImageBlock(element)
