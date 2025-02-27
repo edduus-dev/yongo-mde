@@ -10,6 +10,7 @@ interface Translations {
     heading1: string;
     heading2: string;
     heading3: string;
+    normal: string;
     paragraph: string;
     paragraphStyle: string;
     bulletList: string;
@@ -32,6 +33,8 @@ interface Translations {
     title: string;
     imageDescription: string;
     imageTitle: string;
+    switchToVisualEditor: string;
+    switchToRawMarkdown: string;
   };
 }
 
@@ -47,6 +50,7 @@ export const translations: Translations = {
     heading1: "見出し1",
     heading2: "見出し2",
     heading3: "見出し3",
+    normal: "標準",
     paragraph: "段落",
     paragraphStyle: "段落スタイル",
     bulletList: "箇条書き",
@@ -69,6 +73,8 @@ export const translations: Translations = {
     title: "タイトル：",
     imageDescription: "画像の説明",
     imageTitle: "画像のタイトル",
+    switchToVisualEditor: "ビジュアルエディタに切り替え",
+    switchToRawMarkdown: "マークダウン表示に切り替え",
   },
   en: {
     bold: "Bold",
@@ -81,6 +87,7 @@ export const translations: Translations = {
     heading1: "Heading 1",
     heading2: "Heading 2",
     heading3: "Heading 3",
+    normal: "Normal",
     paragraph: "Paragraph",
     paragraphStyle: "Paragraph Style",
     bulletList: "Bullet List",
@@ -103,6 +110,8 @@ export const translations: Translations = {
     title: "Title:",
     imageDescription: "Description of the image",
     imageTitle: "Image title",
+    switchToVisualEditor: "Switch to visual editor",
+    switchToRawMarkdown: "Switch to raw markdown",
   },
 };
 

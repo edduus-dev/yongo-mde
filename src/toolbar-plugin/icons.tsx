@@ -55,9 +55,9 @@ export const H6 = () => (
   </TablerIcon>
 )
 
-export const Paragraph = () => (
+export const Normal = () => (
   <TablerIcon>
-    <path d="M7 20V4h5.5a4 4 0 0 1 0 9H7" />
+    <path d="M8 18V6h2l6 9V6h2v12h-2l-6-9v9H8z" />
   </TablerIcon>
 )
 

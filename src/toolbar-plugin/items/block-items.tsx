@@ -22,6 +22,14 @@ const listDepthItems: MenuItemData[] = [
 
 const blockItems: MenuItemData[] = [
   {
+    icon: Icon.Normal,
+    title: t("normal"),
+    hotkey: "super+0",
+    action: (editor) => {
+      editor.collapsibleParagraph.convertParagraph()
+    },
+  },
+  {
     icon: Icon.H1,
     title: t("heading1"),
     hotkey: "super+1",
@@ -41,14 +49,6 @@ const blockItems: MenuItemData[] = [
     hotkey: "super+3",
     action: (editor) => editor.heading.convertHeading(3, true),
     active: (editor) => editor.heading.isHeadingActive(3),
-  },
-  {
-    icon: Icon.Paragraph,
-    title: t("paragraph"),
-    hotkey: "super+0",
-    action: (editor) => {
-      editor.collapsibleParagraph.convertParagraph()
-    },
   },
 ]
 

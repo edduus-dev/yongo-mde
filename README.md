@@ -57,8 +57,8 @@ pin "wysimark-lite", to: "https://cdn.jsdelivr.net/npm/wysimark-lite@latest/dist
 
 ## Features
 
-- **Complete Markdown Support**: Full support for CommonMark and GFM Markdown spec
 - **Modern Design**: Clean and contemporary interface that integrates seamlessly with React applications
+- **Raw Markdown Mode**: Switch between WYSIWYG and raw Markdown editing modes
 - **User-Friendly Interface**:
   - Simplified toolbar with toggle buttons (click to activate/deactivate formatting)
   - Markdown shortcuts (e.g., `**` for **bold**, `#` for heading)
@@ -67,18 +67,6 @@ pin "wysimark-lite", to: "https://cdn.jsdelivr.net/npm/wysimark-lite@latest/dist
 - **Enhanced List Support**:
   - Nested lists support (create hierarchical lists with multiple levels)
   - Mix different list types in the hierarchy
-
-## Supported Features
-
-- Tables
-- Ordered and Unordered Lists with nesting support
-- Task lists
-- Headings and paragraphs
-- Code blocks with syntax highlighting
-- Inline code
-- Links
-- Text styling (bold, italic, inline code)
-- Block quotes
 
 ## Browser Support
 

@@ -35,6 +35,17 @@ export function escapeUrlSlashes(text: string): string {
   return result;
 }
 
+/**
+ * Function to unescape forward slashes in URLs that were previously escaped
+ * This is used when switching to raw mode to display the unescaped markdown
+ */
+export function unescapeUrlSlashes(text: string): string {
+  // Unescape all escaped characters in the text
+  return text.replace(/\\(.)/g, (match, char) => {
+    return char;
+  });
+}
+
 export function assert(pass: boolean, message: string) {
   if (!pass) throw new Error(`${message}`)
 }
