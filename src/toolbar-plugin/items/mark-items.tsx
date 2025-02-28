@@ -54,4 +54,11 @@ const primaryMarkItems: MenuItemData[] = [
 ]
 
 export const expandedMarkItems: MenuItemData[] = primaryMarkItems
-export const compactMarkItems: MenuItemData[] = primaryMarkItems
+export const compactMarkItems: MenuItemData[] = [
+  {
+    icon: Icon.Bold,
+    title: t("format"),
+    more: true,
+    children: primaryMarkItems,
+  },
+]

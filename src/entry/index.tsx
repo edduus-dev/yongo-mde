@@ -7,6 +7,7 @@ import { parse, serialize, escapeUrlSlashes, unescapeUrlSlashes } from "../conve
 import { t } from "../utils/translations"
 import { SinkEditable } from "./SinkEditable"
 import { useEditor } from "./useEditor"
+import * as Icon from "../toolbar-plugin/icons"
 
 export type { Element, Text } from "./plugins"
 
@@ -188,7 +189,7 @@ export function Editable({
   }, [editor]);
 
   // Handle mode toggle
-  const handleRawModeToggle = () => {
+  const handleRawModeToggle = useCallback(() => {
     if (isRawMode) {
       // Switching from raw mode to visual mode
       applyRawTextToEditor();
@@ -197,72 +198,50 @@ export function Editable({
       updateRawTextFromEditor();
     }
     setIsRawMode(!isRawMode);
-  };
+  }, [isRawMode, applyRawTextToEditor, updateRawTextFromEditor]);
+
+  // Set the Raw mode state and toggle function on the editor
+  // This allows the toolbar to access these properties
+  editor.wysimark.isRawMode = isRawMode;
+  editor.wysimark.toggleRawMode = handleRawModeToggle;
 
   return (
     <div style={{ position: 'relative' }}>
-      <div style={{ position: 'absolute', top: '5px', right: '25px', zIndex: 10 }}>
-        <div
-          onClick={handleRawModeToggle}
-          style={{
-            background: 'none',
-            border: isRawMode ? '1px solid #4a90e2' : '1px solid transparent',
-            cursor: 'pointer',
-            padding: '6px',
-            borderRadius: '4px',
-            backgroundColor: isRawMode ? 'rgba(74, 144, 226, 0.1)' : 'transparent',
-            boxShadow: isRawMode ? '0 1px 3px rgba(0, 0, 0, 0.1)' : 'none',
-            transition: 'all 0.2s ease-in-out',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-          title={isRawMode ? t("switchToVisualEditor") : t("switchToRawMarkdown")}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              handleRawModeToggle();
-              e.preventDefault();
-            }
-          }}
-        >
-          {/* Improved Markdown code icon */}
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect
-              x="3"
-              y="3"
-              width="18"
-              height="18"
-              rx="2"
-              stroke={isRawMode ? "#4a90e2" : "currentColor"}
-              strokeWidth="1.5"
-              fill={isRawMode ? "rgba(74, 144, 226, 0.05)" : "transparent"}
-            />
-            <path
-              d="M7 15V9L10 12L13 9V15"
-              stroke={isRawMode ? "#4a90e2" : "currentColor"}
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M16 9H18V15"
-              stroke={isRawMode ? "#4a90e2" : "currentColor"}
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M16 12H18"
-              stroke={isRawMode ? "#4a90e2" : "currentColor"}
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+      {/* Only show the Raw mode icon when in Raw mode */}
+      {isRawMode && (
+        <div style={{ position: 'absolute', top: '5px', right: '25px', zIndex: 10 }}>
+          <div
+            onClick={handleRawModeToggle}
+            style={{
+              background: 'none',
+              border: '1px solid #4a90e2',
+              cursor: 'pointer',
+              padding: '6px',
+              borderRadius: '4px',
+              backgroundColor: 'rgba(74, 144, 226, 0.1)',
+              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+              transition: 'all 0.2s ease-in-out',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            title={t("switchToVisualEditor")}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                handleRawModeToggle();
+                e.preventDefault();
+              }
+            }}
+          >
+            {/* Use the VisualEditor icon */}
+            <span style={{ color: '#4a90e2', fontSize: '1.25em' }}>
+              <Icon.VisualEditor />
+            </span>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Raw mode textarea - always in DOM but hidden when not in raw mode */}
       <div style={{ display: isRawMode ? 'block' : 'none', textAlign: 'center' }}>

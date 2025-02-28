@@ -11,6 +11,16 @@ export type WysimarkEditor = {
     }
     // prevMarkdown: string
     // prevValue: Descendant[]
+
+    /**
+     * Whether the editor is in Raw mode
+     */
+    isRawMode?: boolean
+
+    /**
+     * Function to toggle Raw mode
+     */
+    toggleRawMode?: () => void
   }
   /**
    * Public methods for the wysimark editor.

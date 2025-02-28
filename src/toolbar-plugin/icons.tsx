@@ -232,3 +232,24 @@ export const DecreaseDepth = () => (
     <path d="M4 6h16M8 12h12M12 18h8M4 12l3-3M4 12l3 3" />
   </TablerIcon>
 )
+
+/**
+ * Markdown
+ */
+export const Markdown = () => (
+  <TablerIcon>
+    <path d="M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" />
+    <path d="M7 15V9l2 2 2-2v6M14 9v6h4M14 13h2" />
+  </TablerIcon>
+)
+
+/**
+ * Visual Editor
+ */
+export const VisualEditor = () => (
+  <TablerIcon>
+    <path d="M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" />
+    <path d="M8 8h8M8 12h8M8 16h5" />
+    <path d="M16 16h1" />
+  </TablerIcon>
+)
