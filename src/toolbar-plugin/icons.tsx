@@ -147,6 +147,12 @@ export const Code = () => (
   </TablerIcon>
 )
 
+export const CodeBlock = () => (
+  <TablerIcon>
+    <path d="M9 8L5 12L9 16M15 8L19 12L15 16" />
+  </TablerIcon>
+)
+
 /**
  * Media and Files
  */

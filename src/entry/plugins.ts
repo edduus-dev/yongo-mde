@@ -6,6 +6,7 @@ import { AnchorPlugin } from "~/src/anchor-plugin"
 import { AtomicDeletePlugin } from "~/src/atomic-delete-plugin"
 import { ImagePlugin } from "~/src/image-plugin"
 import { BlockQuotePlugin } from "~/src/block-quote-plugin"
+import { CodeBlockPlugin } from "~/src/code-block-plugin"
 import { CollapsibleParagraphPlugin } from "~/src/collapsible-paragraph-plugin"
 import { ConvertElementPlugin } from "~/src/convert-element-plugin"
 import { HeadingPlugin } from "~/src/heading-plugin"
@@ -31,6 +32,7 @@ export const plugins = [
   MarksPlugin,
   InlineCodePlugin,
   BlockQuotePlugin,
+  CodeBlockPlugin,
   TablePlugin,
   HorizontalRulePlugin,
   TrailingBlockPlugin,

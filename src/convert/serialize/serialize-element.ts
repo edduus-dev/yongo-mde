@@ -1,6 +1,7 @@
 import { Element, Segment } from "../types"
 import { assertUnreachable } from "../utils"
 import { serializeElements } from "./serialize-elements"
+import { serializeCodeBlock } from "./serialize-code-block"
 import { serializeImageBlock } from "./serialize-image-block"
 import { serializeLine } from "./serialize-line"
 import { serializeTable } from "./serialize-table"
@@ -61,6 +62,12 @@ export function serializeElement(element: Element, orders: number[]): string {
     }
     case "image-block":
       return serializeImageBlock(element)
+    case "code-block":
+      return serializeCodeBlock(element)
+    case "code-block-line":
+      throw new Error(
+        `Code block line elements should only be present as children of code-block which should be handled by serializeCodeBlock. Got code-block-line may indicate an error in normalization.`
+      )
   }
   assertUnreachable(element)
 }

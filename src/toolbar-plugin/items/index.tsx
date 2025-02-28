@@ -2,7 +2,6 @@ import { MenuItemData } from "~/src/shared-overlays"
 
 import { expandedBlockItems, compactBlockItems } from "./block-items"
 import { compactDialogItems, expandedDialogItems } from "./dialogItems"
-import { dropdownItems } from "./dropdownItems"
 import { compactMarkItems, expandedMarkItems } from "./mark-items"
 import { expandedListItems, compactListItems } from "./list-items"
 import { expandedQuoteItems, compactQuoteItems } from "./quote-items"
@@ -26,7 +25,6 @@ export const largeItems: MenuItemData[] = [
   ...expandedMarkItems,
   "divider",
   ...expandedQuoteItems,
-  ...dropdownItems,
   "divider",
   ...expandedDialogItems,
   "divider",
@@ -42,7 +40,6 @@ export const mediumItems: MenuItemData[] = [
   ...expandedMarkItems,
   "divider",
   ...expandedQuoteItems,
-  ...dropdownItems,
   "divider",
   ...compactDialogItems,
   "divider",
@@ -58,7 +55,6 @@ export const smallItems: MenuItemData[] = [
   ...compactMarkItems,
   "divider",
   ...compactQuoteItems,
-  ...dropdownItems,
   "divider",
   ...compactDialogItems,
   "divider",

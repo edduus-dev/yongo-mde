@@ -36,6 +36,8 @@ interface Translations {
     imageTitle: string;
     switchToVisualEditor: string;
     switchToRawMarkdown: string;
+    codeBlock: string;
+    increaseQuoteDepth: string;
   };
 }
 
@@ -77,6 +79,8 @@ export const translations: Translations = {
     imageTitle: "画像のツールチップ",
     switchToVisualEditor: "ビジュアルエディタに切り替え",
     switchToRawMarkdown: "マークダウン表示に切り替え",
+    codeBlock: "コードブロック",
+    increaseQuoteDepth: "引用を重ねる",
   },
   en: {
     bold: "Bold",
@@ -115,6 +119,8 @@ export const translations: Translations = {
     imageTitle: "tooltip",
     switchToVisualEditor: "Switch to visual editor",
     switchToRawMarkdown: "Switch to raw markdown",
+    codeBlock: "Code Block",
+    increaseQuoteDepth: "Increase Quote Depth",
   },
 };
 

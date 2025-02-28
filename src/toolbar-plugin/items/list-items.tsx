@@ -4,7 +4,7 @@ import * as Icon from "../icons"
 import { t } from "~/src/utils/translations"
 import { listDepthItems } from "./block-items"
 
-const listItems: MenuItemData[] = [
+export const listItems: MenuItemData[] = [
   {
     icon: Icon.BulletList,
     title: t("bulletList"),
