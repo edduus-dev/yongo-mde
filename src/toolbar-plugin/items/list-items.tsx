@@ -2,6 +2,7 @@ import { MenuItemData } from "~/src/shared-overlays"
 
 import * as Icon from "../icons"
 import { t } from "~/src/utils/translations"
+import { listDepthItems } from "./block-items"
 
 const listItems: MenuItemData[] = [
   {
@@ -24,13 +25,13 @@ const listItems: MenuItemData[] = [
   },
 ]
 
-export const expandedListItems: MenuItemData[] = listItems
+export const expandedListItems: MenuItemData[] = [...listItems, "divider", ...listDepthItems]
 
 export const compactListItems: MenuItemData[] = [
   {
     icon: Icon.ListNumbers,
     title: t("list"),
     more: true,
-    children: listItems,
+    children: [...listItems, "divider", ...listDepthItems],
   },
 ]

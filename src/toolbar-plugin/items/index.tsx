@@ -5,7 +5,7 @@ import { compactDialogItems, expandedDialogItems } from "./dialogItems"
 import { dropdownItems } from "./dropdownItems"
 import { compactMarkItems, expandedMarkItems } from "./mark-items"
 import { expandedListItems, compactListItems } from "./list-items"
-import { quoteItems } from "./quote-items"
+import { expandedQuoteItems, compactQuoteItems } from "./quote-items"
 import { rawModeItem, visualModeItem } from "./raw-mode-item"
 
 /**
@@ -25,7 +25,7 @@ export const largeItems: MenuItemData[] = [
   "divider",
   ...expandedMarkItems,
   "divider",
-  ...quoteItems,
+  ...expandedQuoteItems,
   ...dropdownItems,
   "divider",
   ...expandedDialogItems,
@@ -41,7 +41,7 @@ export const mediumItems: MenuItemData[] = [
   "divider",
   ...expandedMarkItems,
   "divider",
-  ...quoteItems,
+  ...expandedQuoteItems,
   ...dropdownItems,
   "divider",
   ...compactDialogItems,
@@ -57,7 +57,7 @@ export const smallItems: MenuItemData[] = [
   "divider",
   ...compactMarkItems,
   "divider",
-  ...quoteItems,
+  ...compactQuoteItems,
   ...dropdownItems,
   "divider",
   ...compactDialogItems,

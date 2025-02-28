@@ -52,7 +52,7 @@ const blockItems: MenuItemData[] = [
   },
 ]
 
-export const expandedBlockItems: MenuItemData[] = [...blockItems, "divider", ...listDepthItems]
+export const expandedBlockItems: MenuItemData[] = [...blockItems]
 
 export const compactBlockItems: MenuItemData[] = [
   {
@@ -60,7 +60,8 @@ export const compactBlockItems: MenuItemData[] = [
     title: t("paragraphStyle"),
     more: true,
     children: blockItems,
-  },
-  "divider",
-  ...listDepthItems,
+  }
 ]
+
+// Export listDepthItems so they can be used in list-items.tsx
+export { listDepthItems }
