@@ -1,6 +1,6 @@
 {
   "name": "wysimark-lite",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "license": "MIT",
   "author": "takesy<takesy.morito@gmail.com>",
   "repository": {
@@ -44,6 +44,7 @@
     "@types/jest": "^29",
     "@types/lodash.throttle": "^4.1.7",
     "@types/mdast": "^3.0.0",
+    "@types/prismjs": "^1.26.5",
     "@types/react": ">=17.x",
     "@types/react-dom": ">=17.x",
     "@types/unist": "^2.0.0",
@@ -82,7 +83,6 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@portive/client": "^10.0.3",
-    "@types/prismjs": "^1.26.5",
     "clsx": "^1.2.1",
     "is-hotkey": "^0.2.0",
     "lodash.throttle": "^4.1.1",

@@ -1,4 +1,5 @@
-import Prism, { languages, tokenize } from "prismjs"
+import Prism from "prismjs"
+const { languages, tokenize } = Prism
 import { Element, Node, Path, Range } from "slate"
 
 import { CodeBlockElement, CodeBlockLineElement } from "./types"
