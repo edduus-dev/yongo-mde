@@ -17,4 +17,10 @@ export const quoteItems: MenuItemData[] = [
     },
     active: (editor) => editor.blockQuotePlugin.isActive(),
   },
+  {
+    icon: Icon.DoubleQuote,
+    title: t("increaseDepth"),
+    action: (editor) => editor.blockQuotePlugin.increaseDepth(),
+    active: (editor) => editor.blockQuotePlugin.canIncreaseDepth(),
+  },
 ]
