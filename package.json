@@ -1,6 +1,6 @@
 {
   "name": "wysimark-lite",
-  "version": "0.17.1",
+  "version": "0.17.2",
   "license": "MIT",
   "author": "takesy<takesy.morito@gmail.com>",
   "repository": {
@@ -10,8 +10,15 @@
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "exports": {
-    ".": "./dist/index.mjs",
-    "./bundled": "./dist/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    },
+    "./bundled": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
   },
   "types": "./dist/index.d.ts",
   "files": [
