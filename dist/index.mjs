@@ -7883,7 +7883,6 @@ var quoteItemsList = [
     active: (editor) => editor.blockQuotePlugin.isActive()
   }
 ];
-var expandedQuoteItems = quoteItemsList;
 var compactQuoteItems = [
   {
     icon: Quote,
@@ -7933,7 +7932,7 @@ var largeItems = [
   "divider",
   ...expandedMarkItems,
   "divider",
-  ...expandedQuoteItems,
+  ...compactQuoteItems,
   "divider",
   ...expandedDialogItems,
   "divider",
@@ -7947,7 +7946,7 @@ var mediumItems = [
   "divider",
   ...expandedMarkItems,
   "divider",
-  ...expandedQuoteItems,
+  ...compactQuoteItems,
   "divider",
   ...compactDialogItems,
   "divider",

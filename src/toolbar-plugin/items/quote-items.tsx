@@ -20,8 +20,6 @@ const quoteItemsList: MenuItemData[] = [
   },
 ];
 
-export const expandedQuoteItems: MenuItemData[] = quoteItemsList;
-
 export const compactQuoteItems: MenuItemData[] = [
   {
     icon: Icon.Quote,
@@ -32,4 +30,4 @@ export const compactQuoteItems: MenuItemData[] = [
 ];
 
 // For backward compatibility
-export const quoteItems = expandedQuoteItems;
+export const quoteItems = compactQuoteItems;

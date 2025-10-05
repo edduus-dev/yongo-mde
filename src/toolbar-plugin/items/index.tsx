@@ -1,11 +1,11 @@
-import { MenuItemData } from "~/src/shared-overlays"
+import { MenuItemData } from "~/src/shared-overlays";
 
-import { expandedBlockItems, compactBlockItems } from "./block-items"
-import { compactDialogItems, expandedDialogItems } from "./dialogItems"
-import { compactMarkItems, expandedMarkItems } from "./mark-items"
-import { expandedListItems, compactListItems } from "./list-items"
-import { expandedQuoteItems, compactQuoteItems } from "./quote-items"
-import { rawModeItem, visualModeItem } from "./raw-mode-item"
+import { expandedBlockItems, compactBlockItems } from "./block-items";
+import { compactDialogItems, expandedDialogItems } from "./dialogItems";
+import { compactMarkItems, expandedMarkItems } from "./mark-items";
+import { expandedListItems, compactListItems } from "./list-items";
+import { compactQuoteItems } from "./quote-items";
+import { rawModeItem, visualModeItem } from "./raw-mode-item";
 
 /**
  * A collection of `Item` objects that describe either
@@ -24,13 +24,13 @@ export const largeItems: MenuItemData[] = [
   "divider",
   ...expandedMarkItems,
   "divider",
-  ...expandedQuoteItems,
+  ...compactQuoteItems,
   "divider",
   ...expandedDialogItems,
   "divider",
   rawModeItem,
   visualModeItem,
-]
+];
 
 export const mediumItems: MenuItemData[] = [
   ...compactBlockItems,
@@ -39,13 +39,13 @@ export const mediumItems: MenuItemData[] = [
   "divider",
   ...expandedMarkItems,
   "divider",
-  ...expandedQuoteItems,
+  ...compactQuoteItems,
   "divider",
   ...compactDialogItems,
   "divider",
   rawModeItem,
   visualModeItem,
-]
+];
 
 export const smallItems: MenuItemData[] = [
   ...compactBlockItems,
@@ -60,10 +60,10 @@ export const smallItems: MenuItemData[] = [
   "divider",
   rawModeItem,
   visualModeItem,
-]
+];
 
-export const initialItems: MenuItemData[] = [...expandedBlockItems, "divider"]
+export const initialItems: MenuItemData[] = [...expandedBlockItems, "divider"];
 
-export const items = mediumItems
+export const items = mediumItems;
 
-export const itemSets: MenuItemData[][] = [largeItems, mediumItems, smallItems]
+export const itemSets: MenuItemData[][] = [largeItems, mediumItems, smallItems];
