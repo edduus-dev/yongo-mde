@@ -20,12 +20,35 @@ const parser = unified().use(remarkParse).use(customRemarkGfm());
 //   return ast
 // }
 
-//fix
+// aggressive fix - works OK
+// export function parseToAst(markdown: string) {
+//   let ast: Root;
+
+//   try {
+//     ast = parser.parse(markdown) as Root;
+//   } catch (error) {
+//     console.error("[wysimark] Error during parsing:", error);
+//     return { type: "root", children: [] } as Root;
+//   }
+
+//   try {
+//     transformInlineLinks(ast);
+//   } catch (error) {
+//     console.error("[wysimark] Error in transformInlineLinks:", error);
+//     // optional: modify ast if needed, or just continue
+//   }
+
+//   return ast;
+// }
+
+// Less aggressive - Strip inline and code block backticks to avoid parser issues
 export function parseToAst(markdown: string) {
+  const safeMarkdown = markdown.replace(/`+/g, "");
+
   let ast: Root;
 
   try {
-    ast = parser.parse(markdown) as Root;
+    ast = parser.parse(safeMarkdown) as Root;
   } catch (error) {
     console.error("[wysimark] Error during parsing:", error);
     return { type: "root", children: [] } as Root;
@@ -35,7 +58,6 @@ export function parseToAst(markdown: string) {
     transformInlineLinks(ast);
   } catch (error) {
     console.error("[wysimark] Error in transformInlineLinks:", error);
-    // optional: modify ast if needed, or just continue
   }
 
   return ast;

@@ -847,9 +847,10 @@ function transformInlineLinks(tree) {
 // src/convert/parse/index.ts
 var parser = unified().use(remarkParse).use(customRemarkGfm());
 function parseToAst(markdown) {
+  const safeMarkdown = markdown.replace(/`+/g, "");
   let ast;
   try {
-    ast = parser.parse(markdown);
+    ast = parser.parse(safeMarkdown);
   } catch (error) {
     console.error("[wysimark] Error during parsing:", error);
     return { type: "root", children: [] };
