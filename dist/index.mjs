@@ -7980,7 +7980,10 @@ function renderEditable({ attributes, Editable: Editable3 }) {
     $OuterContainer,
     {
       ref: outerContainerRef,
-      className: clsx10({ "--focused": focused }),
+      className: clsx10({
+        "--focused": focused,
+        "--unfocused": !focused
+      }),
       style: {
         height: editor.toolbar.height,
         minHeight: editor.toolbar.minHeight,
