@@ -7585,10 +7585,6 @@ var Link = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
   /* @__PURE__ */ jsx56("path", { d: "M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5" })
 ] });
 var Quote = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5M19 11h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5" }) });
-var DoubleQuote = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
-  /* @__PURE__ */ jsx56("path", { d: "M10 9l4 3-4 3" }),
-  /* @__PURE__ */ jsx56("path", { d: "M16 9l4 3-4 3" })
-] });
 var BulletList = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01" }) });
 var Table2 = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
   /* @__PURE__ */ jsx56("rect", { x: 4, y: 4, width: 16, height: 16, rx: 2 }),
@@ -7602,8 +7598,6 @@ var ListCheck = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
   /* @__PURE__ */ jsx56("path", { d: "M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9" })
 ] });
 var ListNumbers = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M11 6h9M11 12h9M12 18h8M4 16a2 2 0 1 1 4 0c0 .591-.5 1-1 1.5L4 20h4M6 10V4L4 6" }) });
-var IncreaseDepth = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M4 6h16M8 12h12M12 18h8M7 12l-3-3M7 12l-3 3" }) });
-var DecreaseDepth = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M4 6h16M8 12h12M12 18h8M4 12l3-3M4 12l3 3" }) });
 var Markdown = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
   /* @__PURE__ */ jsx56("path", { d: "M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" }),
   /* @__PURE__ */ jsx56("path", { d: "M7 15V9l2 2 2-2v6M14 9v6h4M14 13h2" })
@@ -7615,22 +7609,6 @@ var VisualEditor = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
 ] });
 
 // src/toolbar-plugin/items/block-items.tsx
-var listDepthItems = [
-  {
-    icon: IncreaseDepth,
-    title: t("increaseDepth"),
-    hotkey: "tab",
-    action: (editor) => editor.list.increaseDepth(),
-    active: (editor) => editor.list.canIncreaseDepth()
-  },
-  {
-    icon: DecreaseDepth,
-    title: t("decreaseDepth"),
-    hotkey: "shift+tab",
-    action: (editor) => editor.list.decreaseDepth(),
-    active: (editor) => editor.list.canDecreaseDepth()
-  }
-];
 var blockItems = [
   {
     icon: Normal,
@@ -7879,13 +7857,13 @@ var listItems = [
     action: (editor) => editor.list.convertTaskList(true)
   }
 ];
-var expandedListItems = [...listItems, "divider", ...listDepthItems];
+var expandedListItems = [...listItems];
 var compactListItems = [
   {
     icon: ListNumbers,
     title: t("list"),
     more: true,
-    children: [...listItems, "divider", ...listDepthItems]
+    children: [...listItems]
   }
 ];
 
@@ -7903,12 +7881,6 @@ var quoteItemsList = [
       }
     },
     active: (editor) => editor.blockQuotePlugin.isActive()
-  },
-  {
-    icon: DoubleQuote,
-    title: t("increaseQuoteDepth"),
-    action: (editor) => editor.blockQuotePlugin.increaseDepth(),
-    active: (editor) => editor.blockQuotePlugin.canIncreaseDepth()
   }
 ];
 var expandedQuoteItems = quoteItemsList;

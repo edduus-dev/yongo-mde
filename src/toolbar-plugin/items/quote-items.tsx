@@ -18,12 +18,6 @@ const quoteItemsList: MenuItemData[] = [
     },
     active: (editor) => editor.blockQuotePlugin.isActive(),
   },
-  {
-    icon: Icon.DoubleQuote,
-    title: t("increaseQuoteDepth"),
-    action: (editor) => editor.blockQuotePlugin.increaseDepth(),
-    active: (editor) => editor.blockQuotePlugin.canIncreaseDepth(),
-  },
 ];
 
 export const expandedQuoteItems: MenuItemData[] = quoteItemsList;

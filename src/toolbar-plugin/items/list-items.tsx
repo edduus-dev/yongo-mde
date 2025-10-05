@@ -1,8 +1,7 @@
-import { MenuItemData } from "~/src/shared-overlays"
+import { MenuItemData } from "~/src/shared-overlays";
 
-import * as Icon from "../icons"
-import { t } from "~/src/utils/translations"
-import { listDepthItems } from "./block-items"
+import * as Icon from "../icons";
+import { t } from "~/src/utils/translations";
 
 export const listItems: MenuItemData[] = [
   {
@@ -23,15 +22,15 @@ export const listItems: MenuItemData[] = [
     hotkey: "super+9",
     action: (editor) => editor.list.convertTaskList(true),
   },
-]
+];
 
-export const expandedListItems: MenuItemData[] = [...listItems, "divider", ...listDepthItems]
+export const expandedListItems: MenuItemData[] = [...listItems];
 
 export const compactListItems: MenuItemData[] = [
   {
     icon: Icon.ListNumbers,
     title: t("list"),
     more: true,
-    children: [...listItems, "divider", ...listDepthItems],
+    children: [...listItems],
   },
-]
+];

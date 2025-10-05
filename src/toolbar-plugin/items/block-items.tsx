@@ -1,24 +1,7 @@
-import { MenuItemData } from "~/src/shared-overlays/types"
+import { MenuItemData } from "~/src/shared-overlays/types";
 
-import * as Icon from "../icons"
-import { t } from "~/src/utils/translations"
-
-const listDepthItems: MenuItemData[] = [
-  {
-    icon: Icon.IncreaseDepth,
-    title: t("increaseDepth"),
-    hotkey: "tab",
-    action: (editor) => editor.list.increaseDepth(),
-    active: (editor) => editor.list.canIncreaseDepth(),
-  },
-  {
-    icon: Icon.DecreaseDepth,
-    title: t("decreaseDepth"),
-    hotkey: "shift+tab",
-    action: (editor) => editor.list.decreaseDepth(),
-    active: (editor) => editor.list.canDecreaseDepth(),
-  },
-]
+import * as Icon from "../icons";
+import { t } from "~/src/utils/translations";
 
 const blockItems: MenuItemData[] = [
   {
@@ -26,7 +9,7 @@ const blockItems: MenuItemData[] = [
     title: t("normal"),
     hotkey: "super+0",
     action: (editor) => {
-      editor.collapsibleParagraph.convertParagraph()
+      editor.collapsibleParagraph.convertParagraph();
     },
   },
   {
@@ -50,9 +33,9 @@ const blockItems: MenuItemData[] = [
     action: (editor) => editor.heading.convertHeading(3, true),
     active: (editor) => editor.heading.isHeadingActive(3),
   },
-]
+];
 
-export const expandedBlockItems: MenuItemData[] = [...blockItems]
+export const expandedBlockItems: MenuItemData[] = [...blockItems];
 
 export const compactBlockItems: MenuItemData[] = [
   {
@@ -60,8 +43,5 @@ export const compactBlockItems: MenuItemData[] = [
     title: t("paragraphStyle"),
     more: true,
     children: blockItems,
-  }
-]
-
-// Export listDepthItems so they can be used in list-items.tsx
-export { listDepthItems }
+  },
+];
