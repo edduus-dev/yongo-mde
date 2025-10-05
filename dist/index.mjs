@@ -847,8 +847,18 @@ function transformInlineLinks(tree) {
 // src/convert/parse/index.ts
 var parser = unified().use(remarkParse).use(customRemarkGfm());
 function parseToAst(markdown) {
-  const ast = parser.parse(markdown);
-  transformInlineLinks(ast);
+  let ast;
+  try {
+    ast = parser.parse(markdown);
+  } catch (error) {
+    console.error("[wysimark] Error during parsing:", error);
+    return { type: "root", children: [] };
+  }
+  try {
+    transformInlineLinks(ast);
+  } catch (error) {
+    console.error("[wysimark] Error in transformInlineLinks:", error);
+  }
   return ast;
 }
 function parse(markdown) {
