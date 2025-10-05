@@ -4,8 +4,8 @@ build/
 *.swp
 
 # dist (`dist` used by Vite)
-.dist/
-dist/
+# .dist/
+# dist/
 
 # dotenv
 .env/
