@@ -4,7 +4,6 @@ import { expandedBlockItems, compactBlockItems } from "./block-items";
 import { compactDialogItems, expandedDialogItems } from "./dialogItems";
 import { compactMarkItems, expandedMarkItems } from "./mark-items";
 import { expandedListItems, compactListItems } from "./list-items";
-import { compactQuoteItems } from "./quote-items";
 import { rawModeItem, visualModeItem } from "./raw-mode-item";
 
 /**
@@ -24,8 +23,6 @@ export const largeItems: MenuItemData[] = [
   "divider",
   ...expandedMarkItems,
   "divider",
-  ...compactQuoteItems,
-  "divider",
   ...expandedDialogItems,
   "divider",
   rawModeItem,
@@ -39,8 +36,6 @@ export const mediumItems: MenuItemData[] = [
   "divider",
   ...expandedMarkItems,
   "divider",
-  ...compactQuoteItems,
-  "divider",
   ...compactDialogItems,
   "divider",
   rawModeItem,
@@ -53,8 +48,6 @@ export const smallItems: MenuItemData[] = [
   ...compactListItems,
   "divider",
   ...compactMarkItems,
-  "divider",
-  ...compactQuoteItems,
   "divider",
   ...compactDialogItems,
   "divider",

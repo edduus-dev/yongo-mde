@@ -1,4 +1,4 @@
-import { MarkKey } from "../../../../types"
+import { MarkKey } from "../../../../types";
 
 /**
  * When adding back marks, this is the order in which we add them back.
@@ -12,13 +12,7 @@ import { MarkKey } from "../../../../types"
  * Having a superscript inside of a bold. But it's probably rare to have bold
  * switched on/off inside a superscript.
  */
-const ORDERED_MARK_KEYS: MarkKey[] = [
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "code",
-]
+const ORDERED_MARK_KEYS: MarkKey[] = ["bold", "italic", "underline", "strike"];
 
 /**
  * Sort Algorithm
@@ -28,5 +22,7 @@ const ORDERED_MARK_KEYS: MarkKey[] = [
 export function sortMarks(marks: MarkKey[]): MarkKey[] {
   return marks
     .slice()
-    .sort((a, b) => ORDERED_MARK_KEYS.indexOf(a) - ORDERED_MARK_KEYS.indexOf(b))
+    .sort(
+      (a, b) => ORDERED_MARK_KEYS.indexOf(a) - ORDERED_MARK_KEYS.indexOf(b)
+    );
 }

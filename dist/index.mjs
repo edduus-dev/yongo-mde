@@ -1,18 +1,18 @@
 // src/index.tsx
 import {
   createRef,
-  useCallback as useCallback17,
+  useCallback as useCallback16,
   useImperativeHandle,
-  useRef as useRef13,
-  useState as useState12
+  useRef as useRef12,
+  useState as useState11
 } from "react";
 import { createRoot } from "react-dom/client";
 
 // src/entry/index.tsx
 import throttle3 from "lodash.throttle";
-import { useCallback as useCallback16, useRef as useRef12, useState as useState11 } from "react";
+import { useCallback as useCallback15, useRef as useRef11, useState as useState10 } from "react";
 import { Editor as Editor62, Transforms as Transforms44 } from "slate";
-import { ReactEditor as ReactEditor17, Slate as Slate2 } from "slate-react";
+import { ReactEditor as ReactEditor16, Slate as Slate2 } from "slate-react";
 
 // src/convert/parse/index.ts
 import remarkParse from "remark-parse";
@@ -316,15 +316,11 @@ function getCommonAnchorMarks(segments) {
 }
 
 // src/convert/serialize/serialize-line/utils/mark-utils/mark-order-utils.ts
-var ORDERED_MARK_KEYS = [
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "code"
-];
+var ORDERED_MARK_KEYS = ["bold", "italic", "underline", "strike"];
 function sortMarks(marks) {
-  return marks.slice().sort((a, b) => ORDERED_MARK_KEYS.indexOf(a) - ORDERED_MARK_KEYS.indexOf(b));
+  return marks.slice().sort(
+    (a, b) => ORDERED_MARK_KEYS.indexOf(a) - ORDERED_MARK_KEYS.indexOf(b)
+  );
 }
 
 // src/convert/serialize/serialize-line/utils/text-utils.ts
@@ -2679,16 +2675,6 @@ function useAbsoluteReposition(elementLikeRecord, fn) {
     (element) => getAbsoluteRect(element)
   );
   return fn(rectRecord, getAbsoluteViewport(), refresh);
-}
-
-// src/use-reposition/position-methods/index.ts
-function positionInside(src, container, pos, { margin = 0 } = {}) {
-  if (src == null)
-    return { ...pos, left: -1024 };
-  const right = pos.left + src.width;
-  if (right <= container.right - margin)
-    return pos;
-  return { ...pos, left: container.right - src.width - margin };
 }
 
 // src/toolbar-plugin/styles/anchor-dialog-styles.ts
@@ -7482,9 +7468,9 @@ var ThemePlugin = createPlugin((editor) => {
 
 // src/toolbar-plugin/render-editable/index.tsx
 import { clsx as clsx10 } from "clsx";
-import { useCallback as useCallback15, useRef as useRef11 } from "react";
+import { useCallback as useCallback14, useRef as useRef10 } from "react";
 import { Editor as Editor58, Transforms as Transforms40 } from "slate";
-import { ReactEditor as ReactEditor15, useFocused, useSlateStatic as useSlateStatic20 } from "slate-react";
+import { ReactEditor as ReactEditor14, useFocused, useSlateStatic as useSlateStatic19 } from "slate-react";
 
 // src/toolbar-plugin/components/dialog/table-dialog.tsx
 import { clsx as clsx8 } from "clsx";
@@ -7566,25 +7552,19 @@ function TableDialog({
 
 // src/toolbar-plugin/components/toolbar/toolbar.tsx
 import throttle2 from "lodash.throttle";
-import { useEffect as useEffect7, useRef as useRef10, useState as useState9 } from "react";
-import { useSlateStatic as useSlateStatic19 } from "slate-react";
+import { useEffect as useEffect7, useRef as useRef9, useState as useState8 } from "react";
+import { useSlateStatic as useSlateStatic18 } from "slate-react";
 
 // src/toolbar-plugin/icons.tsx
 import { jsx as jsx56, jsxs as jsxs26 } from "react/jsx-runtime";
 var H = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M7 12h10M7 5v14M17 5v14M15 19h4M15 5h4M5 19h4M5 5h4" }) });
 var More = () => /* @__PURE__ */ jsx56(TablerIcon, { className: "--more-icon", width: "0.5em", viewBox: "0 0 12 24", children: /* @__PURE__ */ jsx56("path", { d: "m2 12 4 4 4-4" }) });
-var LinkPlus = () => /* @__PURE__ */ jsx56(TablerIcon, { width: "0.5em", viewBox: "6 0 12 24", children: /* @__PURE__ */ jsx56("path", { d: "M9 12h6M12 9v6" }) });
 var H1 = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M19 18v-8l-2 2M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" }) });
 var H2 = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M17 12a2 2 0 1 1 4 0c0 .591-.417 1.318-.816 1.858L17 18.001h4M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" }) });
 var H3 = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M19 14a2 2 0 1 0-2-2M17 16a2 2 0 1 0 2-2M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" }) });
 var Normal = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M8 18V6h2l6 9V6h2v12h-2l-6-9v9H8z" }) });
 var Bold = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M7 5h6a3.5 3.5 0 0 1 0 7H7zM13 12h1a3.5 3.5 0 0 1 0 7H7v-7" }) });
 var Italic = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M11 5h6M7 19h6M14 5l-4 14" }) });
-var Link = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
-  /* @__PURE__ */ jsx56("path", { d: "M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-.5.5" }),
-  /* @__PURE__ */ jsx56("path", { d: "M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5" })
-] });
-var Quote = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5M19 11h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5" }) });
 var BulletList = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01" }) });
 var Table2 = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
   /* @__PURE__ */ jsx56("rect", { x: 4, y: 4, width: 16, height: 16, rx: 2 }),
@@ -7650,124 +7630,8 @@ var compactBlockItems = [
   }
 ];
 
-// src/toolbar-plugin/components/dialog/anchor-dialog.tsx
-import { isHotkey as isHotkey3 } from "is-hotkey";
-import {
-  useCallback as useCallback13,
-  useRef as useRef8,
-  useState as useState8
-} from "react";
-import { ReactEditor as ReactEditor13, useSlateStatic as useSlateStatic17 } from "slate-react";
-
-// src/toolbar-plugin/styles/dialog-shared-styles.ts
-import styled33 from "@emotion/styled";
-var $DialogButton = styled33("div")`
-  /* Center vertically and horizontally */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  /* font-size: 1.25em; */
-  padding: 0.25em 0.75em;
-  text-align: center;
-  color: var(--blue-100);
-  color: white;
-  background: var(--blue-500);
-  transition: all 100ms;
-  &:hover {
-    color: var(--blue-50);
-    background: var(--blue-600);
-    outline: 2px solid var(--blue-200);
-  }
-  border-radius: 0.25em;
-  svg {
-    color: var(--blue-200);
-    font-size: 1.25em;
-    stroke-width: 2px;
-  }
-`;
-var $DialogHint = styled33("div")`
-  font-size: 0.875em;
-  margin-top: 0.5em;
-  color: var(--shade-500);
-  line-height: 1.375;
-`;
-
-// src/toolbar-plugin/components/dialog/anchor-dialog.tsx
-import { Fragment as Fragment8, jsx as jsx57, jsxs as jsxs27 } from "react/jsx-runtime";
-var isEnter = isHotkey3("enter");
-function AnchorDialog2({
-  dest,
-  close
-}) {
-  const editor = useSlateStatic17();
-  const ref = useRef8(null);
-  const style = useAbsoluteReposition(
-    { src: ref, dest },
-    ({ src, dest: dest2 }, viewport) => {
-      return positionInside(
-        src,
-        viewport,
-        {
-          left: dest2.left - 12,
-          top: dest2.top + dest2.height
-        },
-        { margin: 16 }
-      );
-    }
-  );
-  const [url, setUrl] = useState8("");
-  const insertLink2 = () => {
-    editor.anchor.insertLink(url, url, { select: true });
-    ReactEditor13.focus(editor);
-    close();
-  };
-  const onChangeInput = useCallback13(
-    (e) => {
-      setUrl(e.currentTarget.value);
-    },
-    [setUrl]
-  );
-  const onKeyDown = (e) => {
-    if (!isEnter(e))
-      return;
-    e.preventDefault();
-    e.stopPropagation();
-    insertLink2();
-  };
-  return /* @__PURE__ */ jsxs27(Fragment8, { children: [
-    /* @__PURE__ */ jsx57(CloseMask, { close }),
-    /* @__PURE__ */ jsxs27($AnchorDialog, { ref, style, children: [
-      /* @__PURE__ */ jsxs27($AnchorDialogInputLine, { children: [
-        /* @__PURE__ */ jsx57(
-          $AnchorDialogInput,
-          {
-            type: "text",
-            value: url,
-            autoFocus: true,
-            onChange: onChangeInput,
-            onKeyDown
-          }
-        ),
-        /* @__PURE__ */ jsxs27($DialogButton, { onClick: insertLink2, children: [
-          /* @__PURE__ */ jsx57(Link, {}),
-          /* @__PURE__ */ jsx57(LinkPlus, {})
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx57($DialogHint, { children: "Enter URL of link" })
-    ] })
-  ] });
-}
-
 // src/toolbar-plugin/items/dialogItems.tsx
 var dialogItems = [
-  {
-    icon: Link,
-    title: t("insertLink"),
-    more: true,
-    hotkey: "mod+k",
-    Component: AnchorDialog2
-  },
   {
     icon: Table2,
     title: t("insertTable"),
@@ -7867,31 +7731,6 @@ var compactListItems = [
   }
 ];
 
-// src/toolbar-plugin/items/quote-items.tsx
-var quoteItemsList = [
-  {
-    icon: Quote,
-    title: t("quote"),
-    hotkey: "super+.",
-    action: (editor) => {
-      if (editor.blockQuotePlugin.isActive()) {
-        editor.blockQuotePlugin.outdent();
-      } else {
-        editor.blockQuotePlugin.indent();
-      }
-    },
-    active: (editor) => editor.blockQuotePlugin.isActive()
-  }
-];
-var compactQuoteItems = [
-  {
-    icon: Quote,
-    title: t("quote"),
-    more: true,
-    children: quoteItemsList
-  }
-];
-
 // src/toolbar-plugin/items/raw-mode-item.tsx
 var rawModeItem = {
   icon: Markdown,
@@ -7932,8 +7771,6 @@ var largeItems = [
   "divider",
   ...expandedMarkItems,
   "divider",
-  ...compactQuoteItems,
-  "divider",
   ...expandedDialogItems,
   "divider",
   rawModeItem,
@@ -7945,8 +7782,6 @@ var mediumItems = [
   ...expandedListItems,
   "divider",
   ...expandedMarkItems,
-  "divider",
-  ...compactQuoteItems,
   "divider",
   ...compactDialogItems,
   "divider",
@@ -7960,8 +7795,6 @@ var smallItems = [
   "divider",
   ...compactMarkItems,
   "divider",
-  ...compactQuoteItems,
-  "divider",
   ...compactDialogItems,
   "divider",
   rawModeItem,
@@ -7972,37 +7805,37 @@ var itemSets = [largeItems, mediumItems, smallItems];
 
 // src/toolbar-plugin/components/toolbar/toolbar-button.tsx
 import { clsx as clsx9 } from "clsx";
-import { useCallback as useCallback14, useRef as useRef9 } from "react";
-import { ReactEditor as ReactEditor14, useSlate as useSlate2, useSlateStatic as useSlateStatic18 } from "slate-react";
-import { jsx as jsx58, jsxs as jsxs28 } from "react/jsx-runtime";
+import { useCallback as useCallback13, useRef as useRef8 } from "react";
+import { ReactEditor as ReactEditor13, useSlate as useSlate2, useSlateStatic as useSlateStatic17 } from "slate-react";
+import { jsx as jsx57, jsxs as jsxs27 } from "react/jsx-runtime";
 function ToolbarButton({
   item
 }) {
-  const staticEditor = useSlateStatic18();
+  const staticEditor = useSlateStatic17();
   const editor = useSlate2();
   const isActive = item.active ? item.active(editor) : false;
-  const ref = useRef9(null);
+  const ref = useRef8(null);
   const tooltip = useTooltip({
     title: item.title,
     hotkey: () => item.hotkey ? formatHotkey(item.hotkey) : void 0
   });
   const menuLayer = useLayer("menu");
-  const openMenu = useCallback14(() => {
+  const openMenu = useCallback13(() => {
     const dest = ref.current;
     const items = item.children;
     const Component = item.Component;
     if (!dest)
       return;
     if (items) {
-      menuLayer.open(() => /* @__PURE__ */ jsx58(Menu, { dest, items, close: menuLayer.close }));
+      menuLayer.open(() => /* @__PURE__ */ jsx57(Menu, { dest, items, close: menuLayer.close }));
     } else if (Component) {
-      menuLayer.open(() => /* @__PURE__ */ jsx58(Component, { dest, close: menuLayer.close }));
+      menuLayer.open(() => /* @__PURE__ */ jsx57(Component, { dest, close: menuLayer.close }));
     }
   }, [item]);
-  const onClick = useCallback14(() => {
+  const onClick = useCallback13(() => {
     if (item.action) {
       item.action(staticEditor);
-      ReactEditor14.focus(staticEditor);
+      ReactEditor13.focus(staticEditor);
       return;
     }
     if (menuLayer.layer) {
@@ -8011,7 +7844,7 @@ function ToolbarButton({
       openMenu();
     }
   }, [menuLayer.layer, item]);
-  const onMouseEnter = useCallback14(
+  const onMouseEnter = useCallback13(
     (e) => {
       tooltip.onMouseEnter(e);
       if (menuLayer.layer)
@@ -8019,7 +7852,7 @@ function ToolbarButton({
     },
     [menuLayer.layer]
   );
-  return /* @__PURE__ */ jsxs28(
+  return /* @__PURE__ */ jsxs27(
     $ToolbarButton,
     {
       "data-item-type": "button",
@@ -8033,24 +7866,24 @@ function ToolbarButton({
         "--disabled": !isActive && r(item?.title)?.includes("Depth")
       }),
       children: [
-        /* @__PURE__ */ jsx58(item.icon, {}),
-        item.more ? /* @__PURE__ */ jsx58(More, {}) : null
+        /* @__PURE__ */ jsx57(item.icon, {}),
+        item.more ? /* @__PURE__ */ jsx57(More, {}) : null
       ]
     }
   );
 }
 
 // src/toolbar-plugin/components/toolbar/toolbar.tsx
-import { jsx as jsx59 } from "react/jsx-runtime";
+import { jsx as jsx58 } from "react/jsx-runtime";
 function ToolbarItem({ item }) {
-  const editor = useSlateStatic19();
+  const editor = useSlateStatic18();
   if (item === "divider") {
-    return /* @__PURE__ */ jsx59($ToolbarDividerContainer, { "data-item-type": "divider", children: /* @__PURE__ */ jsx59($ToolbarDivider, {}) });
+    return /* @__PURE__ */ jsx58($ToolbarDividerContainer, { "data-item-type": "divider", children: /* @__PURE__ */ jsx58($ToolbarDivider, {}) });
   }
   const show = item.show === void 0 ? true : item.show(editor);
   if (!show)
     return null;
-  return /* @__PURE__ */ jsx59(ToolbarButton, { item });
+  return /* @__PURE__ */ jsx58(ToolbarButton, { item });
 }
 function getWidths(toolbar) {
   const button = toolbar.querySelector(
@@ -8075,8 +7908,8 @@ function measureItemSetWidth(items, buttonWidth, dividerWidth) {
   return width;
 }
 function Toolbar() {
-  const ref = useRef10(null);
-  const [items, setItems] = useState9(initialItems);
+  const ref = useRef9(null);
+  const [items, setItems] = useState8(initialItems);
   useEffect7(() => {
     const refresh = throttle2(
       () => {
@@ -8106,7 +7939,7 @@ function Toolbar() {
       window.removeEventListener("resize", refresh);
     };
   }, []);
-  return /* @__PURE__ */ jsx59($ToolbarContainer, { ref, children: /* @__PURE__ */ jsx59($Toolbar, { children: items.map((item, index) => /* @__PURE__ */ jsx59(
+  return /* @__PURE__ */ jsx58($ToolbarContainer, { ref, children: /* @__PURE__ */ jsx58($Toolbar, { children: items.map((item, index) => /* @__PURE__ */ jsx58(
     ToolbarItem,
     {
       item
@@ -8116,21 +7949,21 @@ function Toolbar() {
 }
 
 // src/toolbar-plugin/render-editable/index.tsx
-import { jsx as jsx60, jsxs as jsxs29 } from "react/jsx-runtime";
+import { jsx as jsx59, jsxs as jsxs28 } from "react/jsx-runtime";
 function renderEditable({ attributes, Editable: Editable3 }) {
-  const outerContainerRef = useRef11(null);
-  const editor = useSlateStatic20();
+  const outerContainerRef = useRef10(null);
+  const editor = useSlateStatic19();
   const focused = useFocused();
-  const onClickOuterContainer = useCallback15(
+  const onClickOuterContainer = useCallback14(
     (e) => {
       if (e.target !== e.currentTarget)
         return;
       Transforms40.select(editor, Editor58.end(editor, []));
-      ReactEditor15.focus(editor);
+      ReactEditor14.focus(editor);
     },
     [editor]
   );
-  return /* @__PURE__ */ jsx60(Layers, { children: /* @__PURE__ */ jsxs29(
+  return /* @__PURE__ */ jsx59(Layers, { children: /* @__PURE__ */ jsxs28(
     $OuterContainer,
     {
       ref: outerContainerRef,
@@ -8142,8 +7975,8 @@ function renderEditable({ attributes, Editable: Editable3 }) {
       },
       onClick: onClickOuterContainer,
       children: [
-        /* @__PURE__ */ jsx60(Toolbar, {}),
-        /* @__PURE__ */ jsx60(
+        /* @__PURE__ */ jsx59(Toolbar, {}),
+        /* @__PURE__ */ jsx59(
           Editable3,
           {
             as: $Editable,
@@ -8243,7 +8076,7 @@ var PasteMarkdownPlugin = createPlugin(
 );
 
 // src/placeholder-plugin/index.tsx
-import { jsx as jsx61 } from "react/jsx-runtime";
+import { jsx as jsx60 } from "react/jsx-runtime";
 function renderPlaceholder(props) {
   const nextAttributes = {
     ...props.attributes,
@@ -8253,7 +8086,7 @@ function renderPlaceholder(props) {
       maxWidth: void 0
     }
   };
-  return /* @__PURE__ */ jsx61("span", { ...nextAttributes, children: props.children });
+  return /* @__PURE__ */ jsx60("span", { ...nextAttributes, children: props.children });
 }
 var PlaceholderPlugin = createPlugin(
   (editor, _options, { createPolicy }) => {
@@ -8294,7 +8127,7 @@ var Sink = createSink(plugins);
 var { withSink, SinkEditable: SinkEditable2 } = Sink;
 
 // src/entry/useEditor.tsx
-import { useState as useState10 } from "react";
+import { useState as useState9 } from "react";
 import { createEditor, Editor as Editor61, Transforms as Transforms43 } from "slate";
 import { withHistory } from "slate-history";
 import { withReact } from "slate-react";
@@ -8304,7 +8137,7 @@ function useEditor({
   minHeight,
   maxHeight
 }) {
-  const [editor] = useState10(() => {
+  const [editor] = useState9(() => {
     const editor2 = createEditor();
     const nextEditor = withSink(withReact(withHistory(editor2)), {
       toolbar: {
@@ -8339,9 +8172,9 @@ function useEditor({
 }
 
 // src/entry/index.tsx
-import { jsx as jsx62, jsxs as jsxs30 } from "react/jsx-runtime";
+import { jsx as jsx61, jsxs as jsxs29 } from "react/jsx-runtime";
 function renderLeaf({ children, attributes }) {
-  return /* @__PURE__ */ jsx62("span", { ...attributes, children });
+  return /* @__PURE__ */ jsx61("span", { ...attributes, children });
 }
 function Editable2({
   editor,
@@ -8352,12 +8185,12 @@ function Editable2({
   className,
   style
 }) {
-  const [isRawMode, setIsRawMode] = useState11(false);
-  const [rawText, setRawText] = useState11(value);
-  const ignoreNextChangeRef = useRef12(false);
-  const initialValueRef = useRef12(void 0);
-  const prevValueRef = useRef12(void 0);
-  const onThrottledSlateChange = useCallback16(
+  const [isRawMode, setIsRawMode] = useState10(false);
+  const [rawText, setRawText] = useState10(value);
+  const ignoreNextChangeRef = useRef11(false);
+  const initialValueRef = useRef11(void 0);
+  const prevValueRef = useRef11(void 0);
+  const onThrottledSlateChange = useCallback15(
     throttle3(
       () => {
         const markdown = serialize(editor.children);
@@ -8372,7 +8205,7 @@ function Editable2({
     ),
     [editor, onChange, throttleInMs]
   );
-  const onSlateChange = useCallback16(() => {
+  const onSlateChange = useCallback15(() => {
     if (prevValueRef.current === editor.children) {
       return;
     }
@@ -8399,12 +8232,12 @@ function Editable2({
       Transforms44.select(editor, Editor62.start(editor, [0]));
     }
   }
-  const onSinkeEditableMouseDown = useCallback16(() => {
+  const onSinkeEditableMouseDown = useCallback15(() => {
     if (navigator.userAgent.toLowerCase().includes("firefox")) {
-      ReactEditor17.focus(editor);
+      ReactEditor16.focus(editor);
     }
   }, [editor]);
-  const onBlur = useCallback16(() => {
+  const onBlur = useCallback15(() => {
     onThrottledSlateChange.flush();
   }, [onThrottledSlateChange]);
   const handleRawTextChange = (e) => {
@@ -8412,16 +8245,16 @@ function Editable2({
     setRawText(newText);
     onChange(newText);
   };
-  const applyRawTextToEditor = useCallback16(() => {
+  const applyRawTextToEditor = useCallback15(() => {
     if (rawText !== editor.getMarkdown()) {
       editor.setMarkdown(rawText);
     }
   }, [editor, rawText]);
-  const updateRawTextFromEditor = useCallback16(() => {
+  const updateRawTextFromEditor = useCallback15(() => {
     const currentMarkdown = editor.getMarkdown();
     setRawText(currentMarkdown);
   }, [editor]);
-  const handleRawModeToggle = useCallback16(() => {
+  const handleRawModeToggle = useCallback15(() => {
     if (isRawMode) {
       applyRawTextToEditor();
     } else {
@@ -8431,8 +8264,8 @@ function Editable2({
   }, [isRawMode, applyRawTextToEditor, updateRawTextFromEditor]);
   editor.wysimark.isRawMode = isRawMode;
   editor.wysimark.toggleRawMode = handleRawModeToggle;
-  return /* @__PURE__ */ jsxs30("div", { style: { position: "relative" }, children: [
-    isRawMode && /* @__PURE__ */ jsx62("div", { style: { position: "absolute", top: "5px", right: "25px", zIndex: 10 }, children: /* @__PURE__ */ jsx62(
+  return /* @__PURE__ */ jsxs29("div", { style: { position: "relative" }, children: [
+    isRawMode && /* @__PURE__ */ jsx61("div", { style: { position: "absolute", top: "5px", right: "25px", zIndex: 10 }, children: /* @__PURE__ */ jsx61(
       "div",
       {
         onClick: handleRawModeToggle,
@@ -8458,10 +8291,10 @@ function Editable2({
             e.preventDefault();
           }
         },
-        children: /* @__PURE__ */ jsx62("span", { style: { color: "#4a90e2", fontSize: "1.25em" }, children: /* @__PURE__ */ jsx62(VisualEditor, {}) })
+        children: /* @__PURE__ */ jsx61("span", { style: { color: "#4a90e2", fontSize: "1.25em" }, children: /* @__PURE__ */ jsx61(VisualEditor, {}) })
       }
     ) }),
-    /* @__PURE__ */ jsx62("div", { style: { display: isRawMode ? "block" : "none", textAlign: "center" }, children: /* @__PURE__ */ jsx62(
+    /* @__PURE__ */ jsx61("div", { style: { display: isRawMode ? "block" : "none", textAlign: "center" }, children: /* @__PURE__ */ jsx61(
       "textarea",
       {
         value: unescapeUrlSlashes(rawText).replace(/&nbsp;/g, ""),
@@ -8486,13 +8319,13 @@ function Editable2({
         }
       }
     ) }),
-    /* @__PURE__ */ jsx62("div", { style: { display: isRawMode ? "none" : "block" }, children: /* @__PURE__ */ jsx62(
+    /* @__PURE__ */ jsx61("div", { style: { display: isRawMode ? "none" : "block" }, children: /* @__PURE__ */ jsx61(
       Slate2,
       {
         editor,
         value: initialValueRef.current,
         onChange: onSlateChange,
-        children: /* @__PURE__ */ jsx62(
+        children: /* @__PURE__ */ jsx61(
           SinkEditable2,
           {
             renderLeaf,
@@ -8509,13 +8342,13 @@ function Editable2({
 }
 
 // src/index.tsx
-import { jsx as jsx63 } from "react/jsx-runtime";
+import { jsx as jsx62 } from "react/jsx-runtime";
 function StandaloneEditor({
   standaloneOptions: { onChange, placeholder, className, ...options },
   standaloneMethodsRef
 }) {
-  const [markdown, setMarkdown] = useState12(options.initialMarkdown || "");
-  const markdownRef = useRef13(markdown);
+  const [markdown, setMarkdown] = useState11(options.initialMarkdown || "");
+  const markdownRef = useRef12(markdown);
   const editor = useEditor(options);
   markdownRef.current = markdown;
   useImperativeHandle(
@@ -8533,7 +8366,7 @@ function StandaloneEditor({
     },
     [markdownRef, setMarkdown]
   );
-  const onChangeEditable = useCallback17(
+  const onChangeEditable = useCallback16(
     (markdown2) => {
       markdownRef.current = markdown2;
       setMarkdown(markdown2);
@@ -8541,7 +8374,7 @@ function StandaloneEditor({
     },
     [editor]
   );
-  return /* @__PURE__ */ jsx63(
+  return /* @__PURE__ */ jsx62(
     Editable2,
     {
       editor,
@@ -8556,7 +8389,7 @@ function createWysimark(containerElement, options) {
   const standaloneMethodsRef = createRef();
   const root = createRoot(containerElement);
   root.render(
-    /* @__PURE__ */ jsx63(
+    /* @__PURE__ */ jsx62(
       StandaloneEditor,
       {
         standaloneMethodsRef,

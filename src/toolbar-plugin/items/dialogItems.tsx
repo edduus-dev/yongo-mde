@@ -7,13 +7,6 @@ import { t } from "~/src/utils/translations";
 
 export const dialogItems: MenuItemData[] = [
   {
-    icon: Icon.Link,
-    title: t("insertLink"),
-    more: true,
-    hotkey: "mod+k",
-    Component: AnchorDialog,
-  },
-  {
     icon: Icon.Table,
     title: t("insertTable"),
     more: true,
