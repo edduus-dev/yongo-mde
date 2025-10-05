@@ -241,20 +241,8 @@ function isPlainSpace(segment) {
 var MARK_KEY_TO_TOKEN = {
   bold: "**",
   italic: "_",
-  // ins: "++",
   strike: "~~",
-  /**
-   * IMPORTANT!
-   *
-   * We noop `code` here.
-   *
-   * We accept the `code` mark so as not to throw an error if it is found. We do
-   * this because we handle `code` text specially because of the way it needs to
-   * be escaped.
-   *
-   * This is handled in the `serializeLine` code.
-   */
-  code: ""
+  underline: "__"
 };
 function convertMarkToSymbol(mark) {
   if (mark in MARK_KEY_TO_TOKEN)
