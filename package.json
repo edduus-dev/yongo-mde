@@ -1,11 +1,11 @@
 {
-  "name": "wysimark-lite",
-  "version": "0.17.2",
+  "name": "yongo-mde",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": "takesy<takesy.morito@gmail.com>",
+  "author": "Edduus",
   "repository": {
     "type": "git",
-    "url": "https://github.com/takeshy/wysimark-lite"
+    "url": "npm i git+ssh://git@github.com:edduus-dev/yongo-mde.git"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
