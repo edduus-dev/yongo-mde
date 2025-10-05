@@ -1,6 +1,6 @@
-import { EditableProps } from "slate-react/dist/components/editable"
+import { EditableProps } from "slate-react/dist/components/editable";
 
-import { BasePluginPolicy } from "../types"
+import { BasePluginPolicy } from "../types";
 
 /**
  * Create the substituted event handler method.
@@ -48,7 +48,7 @@ import { BasePluginPolicy } from "../types"
 type CreateHandler<K extends keyof EditableProps> = (
   originalFn: EditableProps[K],
   plugins: BasePluginPolicy[]
-) => NonNullable<EditableProps[K]>
+) => NonNullable<EditableProps[K]>;
 
 /**
  * Takes an array of Plugin objects and extracts all of the specified
@@ -62,12 +62,12 @@ function extractEditableFns<
   plugins: BasePluginPolicy[],
   key: K
 ): NonNullable<Required<BasePluginPolicy>["editableProps"][K]>[] {
-  const fns: NonNullable<Required<BasePluginPolicy>["editableProps"][K]>[] = []
+  const fns: NonNullable<Required<BasePluginPolicy>["editableProps"][K]>[] = [];
   for (const plugin of plugins) {
-    const maybeFn = plugin.editableProps?.[key]
-    if (maybeFn) fns.push(maybeFn)
+    const maybeFn = plugin.editableProps?.[key];
+    if (maybeFn) fns.push(maybeFn);
   }
-  return fns
+  return fns;
 }
 
 /**
@@ -80,16 +80,45 @@ function extractEditableFns<
  * If none of the plugin fns handle it, then we check to see if there was an
  * original function defined and execute that if there is.
  */
+
+// Causing it to break pasting bad code
+// function createHandlerFn<A>(
+//   fns: ((arg: A) => boolean)[],
+//   originalFn: ((arg: A) => void) | undefined
+// ) {
+//   return function (event: A) {
+//     for (const fn of fns) {
+//       if (fn(event)) return
+//     }
+//     originalFn?.(event)
+//   }
+// }
+
 function createHandlerFn<A>(
   fns: ((arg: A) => boolean)[],
   originalFn: ((arg: A) => void) | undefined
 ) {
   return function (event: A) {
     for (const fn of fns) {
-      if (fn(event)) return
+      try {
+        if (fn(event)) return;
+      } catch (error) {
+        console.error(
+          "[wysimark] Plugin handler error in createHandlerFn:",
+          error
+        );
+        // Optional: You could also notify the user or show a fallback message here
+      }
     }
-    originalFn?.(event)
-  }
+    try {
+      originalFn?.(event);
+    } catch (error) {
+      console.error(
+        "[wysimark] Original handler error in createHandlerFn:",
+        error
+      );
+    }
+  };
 }
 
 /**
@@ -99,9 +128,9 @@ export const createOnKeyDown: CreateHandler<"onKeyDown"> = (
   originalFn,
   plugins
 ) => {
-  const fns = extractEditableFns(plugins, "onKeyDown")
-  return createHandlerFn(fns, originalFn)
-}
+  const fns = extractEditableFns(plugins, "onKeyDown");
+  return createHandlerFn(fns, originalFn);
+};
 
 /**
  * keyUp handler
@@ -110,9 +139,9 @@ export const createOnKeyUp: CreateHandler<"onKeyUp"> = (
   originalFn,
   plugins
 ) => {
-  const fns = extractEditableFns(plugins, "onKeyUp")
-  return createHandlerFn(fns, originalFn)
-}
+  const fns = extractEditableFns(plugins, "onKeyUp");
+  return createHandlerFn(fns, originalFn);
+};
 
 /**
  * onPaste handler
@@ -121,14 +150,14 @@ export const createOnPaste: CreateHandler<"onPaste"> = (
   originalFn,
   plugins
 ) => {
-  const fns = extractEditableFns(plugins, "onPaste")
-  return createHandlerFn(fns, originalFn)
-}
+  const fns = extractEditableFns(plugins, "onPaste");
+  return createHandlerFn(fns, originalFn);
+};
 
 /**
  * onDrop handler
  */
 export const createOnDrop: CreateHandler<"onDrop"> = (originalFn, plugins) => {
-  const fns = extractEditableFns(plugins, "onDrop")
-  return createHandlerFn(fns, originalFn)
-}
+  const fns = extractEditableFns(plugins, "onDrop");
+  return createHandlerFn(fns, originalFn);
+};

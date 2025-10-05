@@ -1694,10 +1694,24 @@ function extractEditableFns(plugins2, key2) {
 function createHandlerFn(fns, originalFn) {
   return function(event) {
     for (const fn of fns) {
-      if (fn(event))
-        return;
+      try {
+        if (fn(event))
+          return;
+      } catch (error) {
+        console.error(
+          "[wysimark] Plugin handler error in createHandlerFn:",
+          error
+        );
+      }
     }
-    originalFn?.(event);
+    try {
+      originalFn?.(event);
+    } catch (error) {
+      console.error(
+        "[wysimark] Original handler error in createHandlerFn:",
+        error
+      );
+    }
   };
 }
 var createOnKeyDown = (originalFn, plugins2) => {
