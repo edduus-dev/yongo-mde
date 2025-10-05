@@ -25,14 +25,27 @@ export const BasicLayoutPlugin = () =>
     };
   });
 
+// original
+// const renderEditable: RenderEditable = ({ attributes, Editable }) => {
+//   const focused = useFocused();
+//   return (
+//     <Editable
+//       className={clsx({ "--focused": focused })}
+//       as={$Editable}
+//       {...attributes}
+//     />
+//   );
+// };
+
+//patched to inject a role for styling
 const renderEditable: RenderEditable = ({ attributes, Editable }) => {
   const focused = useFocused();
-  return (
-    <Editable
-      className={clsx({ "--focused": focused })}
-      role="wysimark-editor"
-      as={$Editable}
-      {...attributes}
-    />
-  );
+
+  const patchedAttributes = {
+    ...attributes,
+    role: "wysimark-editor",
+    className: clsx(attributes.className, { "--focused": focused }),
+  };
+
+  return <Editable as={$Editable} {...patchedAttributes} />;
 };
