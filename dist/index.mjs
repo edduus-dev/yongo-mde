@@ -3,15 +3,15 @@ import {
   createRef,
   useCallback as useCallback17,
   useImperativeHandle,
-  useRef as useRef14,
-  useState as useState13
+  useRef as useRef13,
+  useState as useState12
 } from "react";
 import { createRoot } from "react-dom/client";
 
 // src/entry/index.tsx
 import throttle3 from "lodash.throttle";
-import { useCallback as useCallback16, useRef as useRef13, useState as useState12 } from "react";
-import { Editor as Editor63, Transforms as Transforms45 } from "slate";
+import { useCallback as useCallback16, useRef as useRef12, useState as useState11 } from "react";
+import { Editor as Editor62, Transforms as Transforms44 } from "slate";
 import { ReactEditor as ReactEditor17, Slate as Slate2 } from "slate-react";
 
 // src/convert/parse/index.ts
@@ -5685,75 +5685,6 @@ var HorizontalRulePlugin = createPlugin(
   }
 );
 
-// src/inline-code-plugin/styles.ts
-import styled27 from "@emotion/styled";
-var $InlineCode = styled27("code")`
-  color: var(--shade-600);
-  background-color: var(--inline-code-bgcolor);
-  border: 1px solid var(--inline-code-border-color);
-  border-radius: 0.25em;
-  padding: 0.1375em 0.125em;
-  /**
-   * Font Stack from
-   * https://qwtel.com/posts/software/the-monospaced-system-ui-css-font-stack/
-   */
-  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-  /**
-   * This font size may seem smaller but any larger (including 0.875) means that
-   * it messes up the line height of the normal text. Not sure why this happens
-   * with the monospace font but seems to happen on both the default 'monospace'
-   * font as well as the font stack above.
-   */
-  font-size: 0.75em;
-  vertical-align: baseline;
-`;
-var $InvisibleSpan = styled27("span")`
-  display: inline-block;
-  opacity: 0;
-  width: 1px;
-  overflow: hidden;
-`;
-
-// src/inline-code-plugin/index.tsx
-import { jsx as jsx39, jsxs as jsxs18 } from "react/jsx-runtime";
-var InlineCodePlugin = createPlugin(
-  (editor) => {
-    if (!editor.marksPlugin)
-      throw new Error(
-        "InlineCodePlugin has a dependency on the MarksPlugin but the MarksPlugin has not been added or is added after the InlineCodePlugin"
-      );
-    editor.inlineCode = {
-      toggleInlineCode: () => editor.marksPlugin.toggleMark("code")
-    };
-    return {
-      name: "inline-code",
-      editableProps: {
-        renderLeaf: ({ leaf, children }) => {
-          if (leaf.code) {
-            return (
-              /**
-               * Disable spellCheck because it's computer code usually.
-               */
-              /* @__PURE__ */ jsxs18($InlineCode, { spellCheck: false, children: [
-                /* @__PURE__ */ jsx39($InvisibleSpan, { contentEditable: false, children: "|" }),
-                children,
-                /* @__PURE__ */ jsx39($InvisibleSpan, { contentEditable: false, children: "|" })
-              ] })
-            );
-          } else {
-            return children;
-          }
-        },
-        onKeyDown: createHotkeyHandler({
-          "mod+j": () => editor.inlineCode.toggleInlineCode()
-        })
-      }
-    };
-  }
-);
-
 // src/list-plugin/index.tsx
 import { Editor as Editor39, Path as Path9 } from "slate";
 
@@ -5956,14 +5887,14 @@ import { useEffect as useEffect5 } from "react";
 import { ReactEditor as ReactEditor9, useSlateStatic as useSlateStatic11 } from "slate-react";
 
 // src/list-plugin/render-element/styles.ts
-import styled28 from "@emotion/styled";
-var $ListItem = styled28("li")`
+import styled27 from "@emotion/styled";
+var $ListItem = styled27("li")`
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   list-style-position: outside;
   margin-left: calc(2em + var(--list-item-depth) * 2em);
 `;
-var $UnorderedListItem = styled28($ListItem)`
+var $UnorderedListItem = styled27($ListItem)`
   position: relative;
   list-style-type: none;
   .--list-item-icon {
@@ -5974,7 +5905,7 @@ var $UnorderedListItem = styled28($ListItem)`
     color: var(--shade-600);
   }
 `;
-var $OrderedListItem = styled28($ListItem)`
+var $OrderedListItem = styled27($ListItem)`
   position: relative;
   list-style-type: none;
   counter-increment: var(--list-item-var);
@@ -6000,7 +5931,7 @@ var $OrderedListItem = styled28($ListItem)`
     font-variant-numeric: tabular-nums;
   }
 `;
-var $TaskListItem = styled28($ListItem)`
+var $TaskListItem = styled27($ListItem)`
   position: relative;
   list-style-type: none;
   .--list-item-icon {
@@ -6017,7 +5948,7 @@ var $TaskListItem = styled28($ListItem)`
 `;
 
 // src/list-plugin/render-element/ordered-list-item.tsx
-import { jsx as jsx40 } from "react/jsx-runtime";
+import { jsx as jsx39 } from "react/jsx-runtime";
 function OrderedListItem({
   element,
   attributes,
@@ -6033,7 +5964,7 @@ function OrderedListItem({
     "--list-item-var": `list-item-depth-${element.depth}`
   };
   const className = clsx6({ "--first-at-depth": element.__firstAtDepth });
-  return /* @__PURE__ */ jsx40($OrderedListItem, { ...attributes, className, style, children });
+  return /* @__PURE__ */ jsx39($OrderedListItem, { ...attributes, className, style, children });
 }
 
 // src/list-plugin/render-element/task-list-item.tsx
@@ -6041,8 +5972,8 @@ import { useCallback as useCallback10 } from "react";
 import { useSlateStatic as useSlateStatic12 } from "slate-react";
 
 // src/list-plugin/render-element/list-icons.tsx
-import { jsx as jsx41, jsxs as jsxs19 } from "react/jsx-runtime";
-var UncheckedIcon = (props) => /* @__PURE__ */ jsxs19(
+import { jsx as jsx40, jsxs as jsxs18 } from "react/jsx-runtime";
+var UncheckedIcon = (props) => /* @__PURE__ */ jsxs18(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -6056,12 +5987,12 @@ var UncheckedIcon = (props) => /* @__PURE__ */ jsxs19(
     viewBox: "0 0 24 24",
     ...props,
     children: [
-      /* @__PURE__ */ jsx41("path", { d: "M0 0h24v24H0z", stroke: "none" }),
-      /* @__PURE__ */ jsx41("rect", { x: 4, y: 4, width: 16, height: 16, rx: 2 })
+      /* @__PURE__ */ jsx40("path", { d: "M0 0h24v24H0z", stroke: "none" }),
+      /* @__PURE__ */ jsx40("rect", { x: 4, y: 4, width: 16, height: 16, rx: 2 })
     ]
   }
 );
-var CheckedIcon = (props) => /* @__PURE__ */ jsxs19(
+var CheckedIcon = (props) => /* @__PURE__ */ jsxs18(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -6076,13 +6007,13 @@ var CheckedIcon = (props) => /* @__PURE__ */ jsxs19(
     viewBox: "0 0 24 24",
     ...props,
     children: [
-      /* @__PURE__ */ jsx41("path", { d: "M0 0h24v24H0z", stroke: "none" }),
-      /* @__PURE__ */ jsx41("path", { d: "m9 11 3 3 8-8", className: "--checkmark" }),
-      /* @__PURE__ */ jsx41("path", { d: "M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9" })
+      /* @__PURE__ */ jsx40("path", { d: "M0 0h24v24H0z", stroke: "none" }),
+      /* @__PURE__ */ jsx40("path", { d: "m9 11 3 3 8-8", className: "--checkmark" }),
+      /* @__PURE__ */ jsx40("path", { d: "M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9" })
     ]
   }
 );
-var BulletIcon = (props) => /* @__PURE__ */ jsx41(
+var BulletIcon = (props) => /* @__PURE__ */ jsx40(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -6091,12 +6022,12 @@ var BulletIcon = (props) => /* @__PURE__ */ jsx41(
     width: "1em",
     height: "1em",
     ...props,
-    children: /* @__PURE__ */ jsx41("path", { d: "M12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5z" })
+    children: /* @__PURE__ */ jsx40("path", { d: "M12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5z" })
   }
 );
 
 // src/list-plugin/render-element/task-list-item.tsx
-import { jsx as jsx42, jsxs as jsxs20 } from "react/jsx-runtime";
+import { jsx as jsx41, jsxs as jsxs19 } from "react/jsx-runtime";
 function TaskListItem({
   element,
   attributes,
@@ -6107,28 +6038,28 @@ function TaskListItem({
     editor.list.toggleTaskListItem({ at: element });
   }, [editor, element]);
   const style = { "--list-item-depth": element.depth };
-  return /* @__PURE__ */ jsxs20($TaskListItem, { ...attributes, style, children: [
-    /* @__PURE__ */ jsx42("div", { className: "--list-item-icon", contentEditable: false, children: element.checked ? /* @__PURE__ */ jsx42(CheckedIcon, { onClick: toggle, style: { cursor: "pointer" } }) : /* @__PURE__ */ jsx42(UncheckedIcon, { onClick: toggle, style: { cursor: "pointer" } }) }),
+  return /* @__PURE__ */ jsxs19($TaskListItem, { ...attributes, style, children: [
+    /* @__PURE__ */ jsx41("div", { className: "--list-item-icon", contentEditable: false, children: element.checked ? /* @__PURE__ */ jsx41(CheckedIcon, { onClick: toggle, style: { cursor: "pointer" } }) : /* @__PURE__ */ jsx41(UncheckedIcon, { onClick: toggle, style: { cursor: "pointer" } }) }),
     children
   ] });
 }
 
 // src/list-plugin/render-element/unordered-list-item.tsx
-import { jsx as jsx43, jsxs as jsxs21 } from "react/jsx-runtime";
+import { jsx as jsx42, jsxs as jsxs20 } from "react/jsx-runtime";
 function UnorderedListItem({
   element,
   attributes,
   children
 }) {
   const style = { "--list-item-depth": element.depth };
-  return /* @__PURE__ */ jsxs21($UnorderedListItem, { ...attributes, style, children: [
-    /* @__PURE__ */ jsx43("div", { className: "--list-item-icon", contentEditable: false, children: /* @__PURE__ */ jsx43(BulletIcon, {}) }),
+  return /* @__PURE__ */ jsxs20($UnorderedListItem, { ...attributes, style, children: [
+    /* @__PURE__ */ jsx42("div", { className: "--list-item-icon", contentEditable: false, children: /* @__PURE__ */ jsx42(BulletIcon, {}) }),
     children
   ] });
 }
 
 // src/list-plugin/render-element/index.tsx
-import { jsx as jsx44 } from "react/jsx-runtime";
+import { jsx as jsx43 } from "react/jsx-runtime";
 function renderElement3({
   element,
   attributes,
@@ -6136,11 +6067,11 @@ function renderElement3({
 }) {
   switch (element.type) {
     case "ordered-list-item":
-      return /* @__PURE__ */ jsx44(OrderedListItem, { element, attributes, children });
+      return /* @__PURE__ */ jsx43(OrderedListItem, { element, attributes, children });
     case "unordered-list-item":
-      return /* @__PURE__ */ jsx44(UnorderedListItem, { element, attributes, children });
+      return /* @__PURE__ */ jsx43(UnorderedListItem, { element, attributes, children });
     case "task-list-item":
-      return /* @__PURE__ */ jsx44(TaskListItem, { element, attributes, children });
+      return /* @__PURE__ */ jsx43(TaskListItem, { element, attributes, children });
   }
 }
 
@@ -6274,8 +6205,8 @@ function createMarksMethods(editor) {
 }
 
 // src/marks-plugin/styles.tsx
-import styled29 from "@emotion/styled";
-var $MarksSpan = styled29("span")`
+import styled28 from "@emotion/styled";
+var $MarksSpan = styled28("span")`
   &.--bold {
     font-weight: bold;
   }
@@ -6298,7 +6229,7 @@ var $MarksSpan = styled29("span")`
 `;
 
 // src/marks-plugin/index.tsx
-import { jsx as jsx45 } from "react/jsx-runtime";
+import { jsx as jsx44 } from "react/jsx-runtime";
 var MarksPlugin = createPlugin((editor) => {
   editor.marksPlugin = createMarksMethods(editor);
   editor.activeMarks = {};
@@ -6338,7 +6269,7 @@ var MarksPlugin = createPlugin((editor) => {
     name: "marks",
     editableProps: {
       renderLeaf: ({ leaf, children }) => {
-        return /* @__PURE__ */ jsx45(
+        return /* @__PURE__ */ jsx44(
           $MarksSpan,
           {
             className: clsx7({
@@ -6879,11 +6810,11 @@ import { useEffect as useEffect6 } from "react";
 import { ReactEditor as ReactEditor11, useSelected as useSelected7, useSlateStatic as useSlateStatic13 } from "slate-react";
 
 // src/table-plugin/render-element/styles/index.ts
-import styled31 from "@emotion/styled";
+import styled30 from "@emotion/styled";
 
 // src/table-plugin/render-element/styles/table-menu-styles.ts
-import styled30 from "@emotion/styled";
-var $BaseMenu = styled30("div")`
+import styled29 from "@emotion/styled";
+var $BaseMenu = styled29("div")`
   position: absolute;
   /**
    * very slightly shaded
@@ -6908,7 +6839,7 @@ var $BaseMenu = styled30("div")`
     }
   }
 `;
-var $ColumnMenu = styled30($BaseMenu)`
+var $ColumnMenu = styled29($BaseMenu)`
   cursor: pointer;
   /**
    * hangs out on top
@@ -6919,7 +6850,7 @@ var $ColumnMenu = styled30($BaseMenu)`
   height: 3em;
   top: -3em;
 `;
-var $RowMenu = styled30($BaseMenu)`
+var $RowMenu = styled29($BaseMenu)`
   /**
    * hangs out on left
    */
@@ -6928,7 +6859,7 @@ var $RowMenu = styled30($BaseMenu)`
   width: 3em;
   left: -3em;
 `;
-var $MenuTile = styled30("div")`
+var $MenuTile = styled29("div")`
   position: absolute;
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -6941,7 +6872,7 @@ var $MenuTile = styled30("div")`
   right: 0;
   bottom: 0;
 `;
-var $ColumnMenuTile = styled30($MenuTile)`
+var $ColumnMenuTile = styled29($MenuTile)`
   top: 50%;
   border-bottom: none;
   border-right: none;
@@ -6968,7 +6899,7 @@ var $ColumnMenuTile = styled30($MenuTile)`
   /* border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em; */
 `;
-var $RowMenuTile = styled30($MenuTile)`
+var $RowMenuTile = styled29($MenuTile)`
   left: 50%;
   border-right: none;
   border-bottom: none;
@@ -6995,7 +6926,7 @@ var $RowMenuTile = styled30($MenuTile)`
   /* border-top-left-radius: 0.5em;
   border-bottom-left-radius: 0.5em; */
 `;
-var $MenuButton = styled30("div")`
+var $MenuButton = styled29("div")`
   position: absolute;
   font-size: 1.5em;
   background: white;
@@ -7005,13 +6936,13 @@ var $MenuButton = styled30("div")`
     display: block;
   }
 `;
-var $AddMenuButton = styled30($MenuButton)`
+var $AddMenuButton = styled29($MenuButton)`
   color: #c0c0c0;
   &:hover {
     color: royalblue;
   }
 `;
-var $RemoveMenuButton = styled30($MenuButton)`
+var $RemoveMenuButton = styled29($MenuButton)`
   color: #c0c0c0;
   &:hover {
     color: firebrick;
@@ -7019,20 +6950,20 @@ var $RemoveMenuButton = styled30($MenuButton)`
 `;
 
 // src/table-plugin/render-element/styles/index.ts
-var $Table = styled31("table")`
+var $Table = styled30("table")`
   border-collapse: collapse;
   margin: 1em 0;
   ${({ columns }) => columns.map(
   (column, index) => `td:nth-of-type(${index + 1}) { text-align: ${column.align}; }`
 ).join("\n")}
 `;
-var $TableRow = styled31("tr")`
+var $TableRow = styled30("tr")`
   position: relative;
   &:first-of-type {
     background: var(--table-head-bgcolor);
   }
 `;
-var $TableCell = styled31("td")`
+var $TableCell = styled30("td")`
   position: relative;
   border-width: 1px;
   border-style: solid;
@@ -7053,7 +6984,7 @@ var $TableCell = styled31("td")`
     border-right-color: var(--table-border-color);
   }
 `;
-var $TableContent = styled31("div")`
+var $TableContent = styled30("div")`
   /**
    * Smaller font inside a table than outside of it
    */
@@ -7074,7 +7005,7 @@ var TableContext = createContext2({
 });
 
 // src/table-plugin/render-element/table.tsx
-import { jsx as jsx46 } from "react/jsx-runtime";
+import { jsx as jsx45 } from "react/jsx-runtime";
 function Table({
   element,
   attributes,
@@ -7086,7 +7017,7 @@ function Table({
     const path = ReactEditor11.findPath(editor, element);
     normalizeTableIndexes(editor, [element, path]);
   }, []);
-  return /* @__PURE__ */ jsx46(TableContext.Provider, { value: { isSelected }, children: /* @__PURE__ */ jsx46($Table, { ...attributes, columns: element.columns, children: /* @__PURE__ */ jsx46("tbody", { children }) }) });
+  return /* @__PURE__ */ jsx45(TableContext.Provider, { value: { isSelected }, children: /* @__PURE__ */ jsx45($Table, { ...attributes, columns: element.columns, children: /* @__PURE__ */ jsx45("tbody", { children }) }) });
 }
 
 // src/table-plugin/render-element/table-cell/index.tsx
@@ -7098,8 +7029,8 @@ import { useCallback as useCallback11, useRef as useRef6, useState as useState5 
 import { useSlateStatic as useSlateStatic14 } from "slate-react";
 
 // src/table-plugin/icons.tsx
-import { jsx as jsx47 } from "react/jsx-runtime";
-var PlusIcon = (props) => /* @__PURE__ */ jsx47(
+import { jsx as jsx46 } from "react/jsx-runtime";
+var PlusIcon = (props) => /* @__PURE__ */ jsx46(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -7108,7 +7039,7 @@ var PlusIcon = (props) => /* @__PURE__ */ jsx47(
     width: "1em",
     height: "1em",
     ...props,
-    children: /* @__PURE__ */ jsx47(
+    children: /* @__PURE__ */ jsx46(
       "path",
       {
         fillRule: "evenodd",
@@ -7118,7 +7049,7 @@ var PlusIcon = (props) => /* @__PURE__ */ jsx47(
     )
   }
 );
-var MinusIcon = (props) => /* @__PURE__ */ jsx47(
+var MinusIcon = (props) => /* @__PURE__ */ jsx46(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -7127,7 +7058,7 @@ var MinusIcon = (props) => /* @__PURE__ */ jsx47(
     width: "1em",
     height: "1em",
     ...props,
-    children: /* @__PURE__ */ jsx47(
+    children: /* @__PURE__ */ jsx46(
       "path",
       {
         fillRule: "evenodd",
@@ -7137,13 +7068,13 @@ var MinusIcon = (props) => /* @__PURE__ */ jsx47(
     )
   }
 );
-var BarsIcon = () => /* @__PURE__ */ jsx47(TablerIcon, { children: /* @__PURE__ */ jsx47("path", { d: "M4 6h16M4 12h16M4 18h16" }) });
-var AlignLeft = () => /* @__PURE__ */ jsx47(TablerIcon, { children: /* @__PURE__ */ jsx47("path", { d: "M4 6h16M4 12h10M4 18h14" }) });
-var AlignCenter = () => /* @__PURE__ */ jsx47(TablerIcon, { children: /* @__PURE__ */ jsx47("path", { d: "M4 6h16M8 12h8M6 18h12" }) });
-var AlignRight = () => /* @__PURE__ */ jsx47(TablerIcon, { children: /* @__PURE__ */ jsx47("path", { d: "M4 6h16M10 12h10M6 18h14" }) });
+var BarsIcon = () => /* @__PURE__ */ jsx46(TablerIcon, { children: /* @__PURE__ */ jsx46("path", { d: "M4 6h16M4 12h16M4 18h16" }) });
+var AlignLeft = () => /* @__PURE__ */ jsx46(TablerIcon, { children: /* @__PURE__ */ jsx46("path", { d: "M4 6h16M4 12h10M4 18h14" }) });
+var AlignCenter = () => /* @__PURE__ */ jsx46(TablerIcon, { children: /* @__PURE__ */ jsx46("path", { d: "M4 6h16M8 12h8M6 18h12" }) });
+var AlignRight = () => /* @__PURE__ */ jsx46(TablerIcon, { children: /* @__PURE__ */ jsx46("path", { d: "M4 6h16M10 12h10M6 18h14" }) });
 
 // src/table-plugin/render-element/table-cell/column-menu/index.tsx
-import { Fragment as Fragment4, jsx as jsx48, jsxs as jsxs22 } from "react/jsx-runtime";
+import { Fragment as Fragment4, jsx as jsx47, jsxs as jsxs21 } from "react/jsx-runtime";
 function ColumnMenu({ cellElement }) {
   const editor = useSlateStatic14();
   const menu = useLayer("column-menu");
@@ -7184,9 +7115,9 @@ function ColumnMenu({ cellElement }) {
         }
       }
     ];
-    menu.open(() => /* @__PURE__ */ jsx48(Menu, { dest, items, close: menu.close }));
+    menu.open(() => /* @__PURE__ */ jsx47(Menu, { dest, items, close: menu.close }));
   }, []);
-  return /* @__PURE__ */ jsxs22(
+  return /* @__PURE__ */ jsxs21(
     $ColumnMenu,
     {
       ref: buttonRef,
@@ -7195,9 +7126,9 @@ function ColumnMenu({ cellElement }) {
       onMouseEnter,
       onMouseLeave,
       children: [
-        /* @__PURE__ */ jsx48($ColumnMenuTile, { className: "--tile", children: /* @__PURE__ */ jsx48(BarsIcon, {}) }),
-        hover ? /* @__PURE__ */ jsxs22(Fragment4, { children: [
-          /* @__PURE__ */ jsx48(
+        /* @__PURE__ */ jsx47($ColumnMenuTile, { className: "--tile", children: /* @__PURE__ */ jsx47(BarsIcon, {}) }),
+        hover ? /* @__PURE__ */ jsxs21(Fragment4, { children: [
+          /* @__PURE__ */ jsx47(
             $RemoveMenuButton,
             {
               style: {
@@ -7206,23 +7137,23 @@ function ColumnMenu({ cellElement }) {
                 marginLeft: "-0.5em"
               },
               onMouseDown: () => editor.tablePlugin.removeColumn({ at: cellElement }),
-              children: /* @__PURE__ */ jsx48(MinusIcon, {})
+              children: /* @__PURE__ */ jsx47(MinusIcon, {})
             }
           ),
-          /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsx47(
             $AddMenuButton,
             {
               style: { left: "-0.5em", top: 0 },
               onMouseDown: () => editor.tablePlugin.insertColumn({ at: cellElement }),
-              children: /* @__PURE__ */ jsx48(PlusIcon, {})
+              children: /* @__PURE__ */ jsx47(PlusIcon, {})
             }
           ),
-          /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsx47(
             $AddMenuButton,
             {
               style: { right: "-0.5em", top: 0 },
               onMouseDown: () => editor.tablePlugin.insertColumn({ at: cellElement, offset: 1 }),
-              children: /* @__PURE__ */ jsx48(PlusIcon, {})
+              children: /* @__PURE__ */ jsx47(PlusIcon, {})
             }
           )
         ] }) : null
@@ -7234,20 +7165,20 @@ function ColumnMenu({ cellElement }) {
 // src/table-plugin/render-element/table-cell/row-menu/index.tsx
 import { useState as useState6 } from "react";
 import { useSlateStatic as useSlateStatic15 } from "slate-react";
-import { Fragment as Fragment5, jsx as jsx49, jsxs as jsxs23 } from "react/jsx-runtime";
+import { Fragment as Fragment5, jsx as jsx48, jsxs as jsxs22 } from "react/jsx-runtime";
 function RowMenu({ cellElement }) {
   const editor = useSlateStatic15();
   const [hover, setHover] = useState6(false);
-  return /* @__PURE__ */ jsxs23(
+  return /* @__PURE__ */ jsxs22(
     $RowMenu,
     {
       contentEditable: false,
       onMouseEnter: () => setHover(true),
       onMouseLeave: () => setHover(false),
       children: [
-        /* @__PURE__ */ jsx49($RowMenuTile, { className: "--tile", children: /* @__PURE__ */ jsx49(BarsIcon, {}) }),
-        hover ? /* @__PURE__ */ jsxs23(Fragment5, { children: [
-          /* @__PURE__ */ jsx49(
+        /* @__PURE__ */ jsx48($RowMenuTile, { className: "--tile", children: /* @__PURE__ */ jsx48(BarsIcon, {}) }),
+        hover ? /* @__PURE__ */ jsxs22(Fragment5, { children: [
+          /* @__PURE__ */ jsx48(
             $RemoveMenuButton,
             {
               style: {
@@ -7256,23 +7187,23 @@ function RowMenu({ cellElement }) {
                 marginTop: "-0.5em"
               },
               onMouseDown: () => editor.tablePlugin.removeRow({ at: cellElement }),
-              children: /* @__PURE__ */ jsx49(MinusIcon, {})
+              children: /* @__PURE__ */ jsx48(MinusIcon, {})
             }
           ),
-          /* @__PURE__ */ jsx49(
+          /* @__PURE__ */ jsx48(
             $AddMenuButton,
             {
               style: { top: "-0.5em", left: "0.5em" },
               onMouseDown: () => editor.tablePlugin.insertRow({ at: cellElement }),
-              children: /* @__PURE__ */ jsx49(PlusIcon, {})
+              children: /* @__PURE__ */ jsx48(PlusIcon, {})
             }
           ),
-          /* @__PURE__ */ jsx49(
+          /* @__PURE__ */ jsx48(
             $AddMenuButton,
             {
               style: { bottom: "-0.5em", left: "0.5em" },
               onMouseDown: () => editor.tablePlugin.insertRow({ at: cellElement, offset: 1 }),
-              children: /* @__PURE__ */ jsx49(PlusIcon, {})
+              children: /* @__PURE__ */ jsx48(PlusIcon, {})
             }
           )
         ] }) : null
@@ -7282,8 +7213,8 @@ function RowMenu({ cellElement }) {
 }
 
 // src/table-plugin/render-element/table-cell/table-menu/$table-menu.tsx
-import styled32 from "@emotion/styled";
-var $TableMenu = styled32("div")`
+import styled31 from "@emotion/styled";
+var $TableMenu = styled31("div")`
   position: absolute;
   /**
    * very slightly shaded
@@ -7316,7 +7247,7 @@ var $TableMenu = styled32("div")`
     }
   }
 `;
-var $TableMenuTile = styled32("div")`
+var $TableMenuTile = styled31("div")`
   position: absolute;
   left: 0;
   top: 0;
@@ -7327,13 +7258,13 @@ var $TableMenuTile = styled32("div")`
 `;
 
 // src/table-plugin/render-element/table-cell/table-menu/index.tsx
-import { jsx as jsx50 } from "react/jsx-runtime";
+import { jsx as jsx49 } from "react/jsx-runtime";
 function TableMenu() {
-  return /* @__PURE__ */ jsx50($TableMenu, { contentEditable: false, children: /* @__PURE__ */ jsx50($TableMenuTile, { className: "--table-menu-tile" }) });
+  return /* @__PURE__ */ jsx49($TableMenu, { contentEditable: false, children: /* @__PURE__ */ jsx49($TableMenuTile, { className: "--table-menu-tile" }) });
 }
 
 // src/table-plugin/render-element/table-cell/index.tsx
-import { jsx as jsx51, jsxs as jsxs24 } from "react/jsx-runtime";
+import { jsx as jsx50, jsxs as jsxs23 } from "react/jsx-runtime";
 function TableCell({
   element,
   attributes,
@@ -7344,7 +7275,7 @@ function TableCell({
   const showTableMenu = tableContext.isSelected && element.x === 0 && element.y === 0;
   const showRowMenu = tableContext.isSelected && element.x === 0;
   const showColumnMenu = tableContext.isSelected && element.y === 0;
-  return /* @__PURE__ */ jsxs24(
+  return /* @__PURE__ */ jsxs23(
     $TableCell,
     {
       className: selected ? "--selected" : "",
@@ -7353,34 +7284,34 @@ function TableCell({
       "data-y": element.y,
       children: [
         children,
-        showTableMenu ? /* @__PURE__ */ jsx51(TableMenu, {}) : null,
-        showRowMenu ? /* @__PURE__ */ jsx51(RowMenu, { cellElement: element }) : null,
-        showColumnMenu ? /* @__PURE__ */ jsx51(ColumnMenu, { cellElement: element }) : null
+        showTableMenu ? /* @__PURE__ */ jsx50(TableMenu, {}) : null,
+        showRowMenu ? /* @__PURE__ */ jsx50(RowMenu, { cellElement: element }) : null,
+        showColumnMenu ? /* @__PURE__ */ jsx50(ColumnMenu, { cellElement: element }) : null
       ]
     }
   );
 }
 
 // src/table-plugin/render-element/table-content.tsx
-import { jsx as jsx52 } from "react/jsx-runtime";
+import { jsx as jsx51 } from "react/jsx-runtime";
 function TableContent({
   attributes,
   children
 }) {
-  return /* @__PURE__ */ jsx52($TableContent, { ...attributes, children });
+  return /* @__PURE__ */ jsx51($TableContent, { ...attributes, children });
 }
 
 // src/table-plugin/render-element/table-row.tsx
-import { jsx as jsx53 } from "react/jsx-runtime";
+import { jsx as jsx52 } from "react/jsx-runtime";
 function TableRow({
   attributes,
   children
 }) {
-  return /* @__PURE__ */ jsx53($TableRow, { ...attributes, children });
+  return /* @__PURE__ */ jsx52($TableRow, { ...attributes, children });
 }
 
 // src/table-plugin/render-element/index.tsx
-import { jsx as jsx54 } from "react/jsx-runtime";
+import { jsx as jsx53 } from "react/jsx-runtime";
 function renderElement4({
   element,
   attributes,
@@ -7388,13 +7319,13 @@ function renderElement4({
 }) {
   switch (element.type) {
     case "table":
-      return /* @__PURE__ */ jsx54(Table, { element, attributes, children });
+      return /* @__PURE__ */ jsx53(Table, { element, attributes, children });
     case "table-row":
-      return /* @__PURE__ */ jsx54(TableRow, { element, attributes, children });
+      return /* @__PURE__ */ jsx53(TableRow, { element, attributes, children });
     case "table-cell":
-      return /* @__PURE__ */ jsx54(TableCell, { element, attributes, children });
+      return /* @__PURE__ */ jsx53(TableCell, { element, attributes, children });
     case "table-content":
-      return /* @__PURE__ */ jsx54(TableContent, { element, attributes, children });
+      return /* @__PURE__ */ jsx53(TableContent, { element, attributes, children });
   }
 }
 
@@ -7533,16 +7464,16 @@ var globalStyles = css2`
 `;
 
 // src/theme-plugin/index.tsx
-import { Fragment as Fragment6, jsx as jsx55, jsxs as jsxs25 } from "react/jsx-runtime";
+import { Fragment as Fragment6, jsx as jsx54, jsxs as jsxs24 } from "react/jsx-runtime";
 var ThemePlugin = createPlugin((editor) => {
   editor.theme = true;
   return {
     name: "theme",
     editor: {},
     renderEditable: ({ attributes, Editable: Editable3 }) => {
-      return /* @__PURE__ */ jsxs25(Fragment6, { children: [
-        /* @__PURE__ */ jsx55(Global, { styles: globalStyles }),
-        /* @__PURE__ */ jsx55(Editable3, { ...attributes })
+      return /* @__PURE__ */ jsxs24(Fragment6, { children: [
+        /* @__PURE__ */ jsx54(Global, { styles: globalStyles }),
+        /* @__PURE__ */ jsx54(Editable3, { ...attributes })
       ] });
     },
     editableProps: {}
@@ -7551,9 +7482,9 @@ var ThemePlugin = createPlugin((editor) => {
 
 // src/toolbar-plugin/render-editable/index.tsx
 import { clsx as clsx10 } from "clsx";
-import { useCallback as useCallback15, useRef as useRef12 } from "react";
-import { Editor as Editor59, Transforms as Transforms41 } from "slate";
-import { ReactEditor as ReactEditor15, useFocused, useSlateStatic as useSlateStatic21 } from "slate-react";
+import { useCallback as useCallback15, useRef as useRef11 } from "react";
+import { Editor as Editor58, Transforms as Transforms40 } from "slate";
+import { ReactEditor as ReactEditor15, useFocused, useSlateStatic as useSlateStatic20 } from "slate-react";
 
 // src/toolbar-plugin/components/dialog/table-dialog.tsx
 import { clsx as clsx8 } from "clsx";
@@ -7561,17 +7492,17 @@ import { useCallback as useCallback12, useRef as useRef7, useState as useState7 
 import { ReactEditor as ReactEditor12, useSlateStatic as useSlateStatic16 } from "slate-react";
 
 // src/toolbar-plugin/styles/table-styles.ts
-import styled33 from "@emotion/styled";
-var $TableDialog = styled33($Panel)`
+import styled32 from "@emotion/styled";
+var $TableDialog = styled32($Panel)`
   padding: 0.5em;
 `;
-var $TableDialogGrid = styled33("div")`
+var $TableDialogGrid = styled32("div")`
   display: grid;
   grid-template-columns: repeat(5, 1.75em);
   grid-template-rows: 1.5em;
   /* grid-gap: 1px; */
 `;
-var $TableDialogGridCell = styled33("div")`
+var $TableDialogGridCell = styled32("div")`
   background: var(--shade-100);
   height: 1.5em;
   border-radius: 0.125em;
@@ -7584,7 +7515,7 @@ var $TableDialogGridCell = styled33("div")`
 `;
 
 // src/toolbar-plugin/components/dialog/table-dialog.tsx
-import { Fragment as Fragment7, jsx as jsx56, jsxs as jsxs26 } from "react/jsx-runtime";
+import { Fragment as Fragment7, jsx as jsx55, jsxs as jsxs25 } from "react/jsx-runtime";
 function createRange2(size) {
   return [...Array(size).keys()];
 }
@@ -7614,12 +7545,12 @@ function TableDialog({
     },
     [editor]
   );
-  return /* @__PURE__ */ jsxs26(Fragment7, { children: [
-    /* @__PURE__ */ jsx56(CloseMask, { close }),
-    /* @__PURE__ */ jsx56($TableDialog, { ref, style, children: /* @__PURE__ */ jsx56($TableDialogGrid, { onMouseLeave: () => hoverCell(0, 0), children: rows.map((y) => {
+  return /* @__PURE__ */ jsxs25(Fragment7, { children: [
+    /* @__PURE__ */ jsx55(CloseMask, { close }),
+    /* @__PURE__ */ jsx55($TableDialog, { ref, style, children: /* @__PURE__ */ jsx55($TableDialogGrid, { onMouseLeave: () => hoverCell(0, 0), children: rows.map((y) => {
       return cols.map((x) => {
         const selected = x <= hover.x && y <= hover.y;
-        return /* @__PURE__ */ jsx56(
+        return /* @__PURE__ */ jsx55(
           $TableDialogGridCell,
           {
             className: clsx8({ "--selected": selected }),
@@ -7635,66 +7566,52 @@ function TableDialog({
 
 // src/toolbar-plugin/components/toolbar/toolbar.tsx
 import throttle2 from "lodash.throttle";
-import { useEffect as useEffect7, useRef as useRef11, useState as useState10 } from "react";
-import { useSlateStatic as useSlateStatic20 } from "slate-react";
+import { useEffect as useEffect7, useRef as useRef10, useState as useState9 } from "react";
+import { useSlateStatic as useSlateStatic19 } from "slate-react";
 
 // src/toolbar-plugin/icons.tsx
-import { jsx as jsx57, jsxs as jsxs27 } from "react/jsx-runtime";
-var H = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M7 12h10M7 5v14M17 5v14M15 19h4M15 5h4M5 19h4M5 5h4" }) });
-var More = () => /* @__PURE__ */ jsx57(TablerIcon, { className: "--more-icon", width: "0.5em", viewBox: "0 0 12 24", children: /* @__PURE__ */ jsx57("path", { d: "m2 12 4 4 4-4" }) });
-var LinkPlus = () => /* @__PURE__ */ jsx57(TablerIcon, { width: "0.5em", viewBox: "6 0 12 24", children: /* @__PURE__ */ jsx57("path", { d: "M9 12h6M12 9v6" }) });
-var H1 = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M19 18v-8l-2 2M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" }) });
-var H2 = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M17 12a2 2 0 1 1 4 0c0 .591-.417 1.318-.816 1.858L17 18.001h4M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" }) });
-var H3 = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M19 14a2 2 0 1 0-2-2M17 16a2 2 0 1 0 2-2M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" }) });
-var Normal = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M8 18V6h2l6 9V6h2v12h-2l-6-9v9H8z" }) });
-var Bold = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M7 5h6a3.5 3.5 0 0 1 0 7H7zM13 12h1a3.5 3.5 0 0 1 0 7H7v-7" }) });
-var Italic = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M11 5h6M7 19h6M14 5l-4 14" }) });
-var Link = () => /* @__PURE__ */ jsxs27(TablerIcon, { children: [
-  /* @__PURE__ */ jsx57("path", { d: "M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-.5.5" }),
-  /* @__PURE__ */ jsx57("path", { d: "M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5" })
+import { jsx as jsx56, jsxs as jsxs26 } from "react/jsx-runtime";
+var H = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M7 12h10M7 5v14M17 5v14M15 19h4M15 5h4M5 19h4M5 5h4" }) });
+var More = () => /* @__PURE__ */ jsx56(TablerIcon, { className: "--more-icon", width: "0.5em", viewBox: "0 0 12 24", children: /* @__PURE__ */ jsx56("path", { d: "m2 12 4 4 4-4" }) });
+var LinkPlus = () => /* @__PURE__ */ jsx56(TablerIcon, { width: "0.5em", viewBox: "6 0 12 24", children: /* @__PURE__ */ jsx56("path", { d: "M9 12h6M12 9v6" }) });
+var H1 = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M19 18v-8l-2 2M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" }) });
+var H2 = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M17 12a2 2 0 1 1 4 0c0 .591-.417 1.318-.816 1.858L17 18.001h4M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" }) });
+var H3 = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M19 14a2 2 0 1 0-2-2M17 16a2 2 0 1 0 2-2M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" }) });
+var Normal = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M8 18V6h2l6 9V6h2v12h-2l-6-9v9H8z" }) });
+var Bold = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M7 5h6a3.5 3.5 0 0 1 0 7H7zM13 12h1a3.5 3.5 0 0 1 0 7H7v-7" }) });
+var Italic = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M11 5h6M7 19h6M14 5l-4 14" }) });
+var Link = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
+  /* @__PURE__ */ jsx56("path", { d: "M10 14a3.5 3.5 0 0 0 5 0l4-4a3.5 3.5 0 0 0-5-5l-.5.5" }),
+  /* @__PURE__ */ jsx56("path", { d: "M14 10a3.5 3.5 0 0 0-5 0l-4 4a3.5 3.5 0 0 0 5 5l.5-.5" })
 ] });
-var Quote = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5M19 11h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5" }) });
-var DoubleQuote = () => /* @__PURE__ */ jsxs27(TablerIcon, { children: [
-  /* @__PURE__ */ jsx57("path", { d: "M10 9l4 3-4 3" }),
-  /* @__PURE__ */ jsx57("path", { d: "M16 9l4 3-4 3" })
+var Quote = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5M19 11h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5" }) });
+var DoubleQuote = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
+  /* @__PURE__ */ jsx56("path", { d: "M10 9l4 3-4 3" }),
+  /* @__PURE__ */ jsx56("path", { d: "M16 9l4 3-4 3" })
 ] });
-var BulletList = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01" }) });
-var Table2 = () => /* @__PURE__ */ jsxs27(TablerIcon, { children: [
-  /* @__PURE__ */ jsx57("rect", { x: 4, y: 4, width: 16, height: 16, rx: 2 }),
-  /* @__PURE__ */ jsx57("path", { d: "M4 10h16M10 4v16" })
+var BulletList = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01" }) });
+var Table2 = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
+  /* @__PURE__ */ jsx56("rect", { x: 4, y: 4, width: 16, height: 16, rx: 2 }),
+  /* @__PURE__ */ jsx56("path", { d: "M4 10h16M10 4v16" })
 ] });
-var Code = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "m7 8-4 4 4 4M17 8l4 4-4 4M14 4l-4 16" }) });
-var CodeBlock2 = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M9 8L5 12L9 16M15 8L19 12L15 16" }) });
-var Image = () => /* @__PURE__ */ jsxs27(TablerIcon, { children: [
-  /* @__PURE__ */ jsx57("path", { d: "M15 8h.01" }),
-  /* @__PURE__ */ jsx57("rect", { x: 4, y: 4, width: 16, height: 16, rx: 3 }),
-  /* @__PURE__ */ jsx57("path", { d: "m4 15 4-4a3 5 0 0 1 3 0l5 5" }),
-  /* @__PURE__ */ jsx57("path", { d: "m14 14 1-1a3 5 0 0 1 3 0l2 2" })
+var Plus = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M12 5v14M5 12h14" }) });
+var Strikethrough = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M5 12h14M16 6.5A4 2 0 0 0 12 5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1-4-1.5" }) });
+var Underline = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M7 5v5a5 5 0 0 0 10 0V5M5 19h14" }) });
+var ListCheck = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
+  /* @__PURE__ */ jsx56("path", { d: "m9 11 3 3 8-8" }),
+  /* @__PURE__ */ jsx56("path", { d: "M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9" })
 ] });
-var PhotoUp = () => /* @__PURE__ */ jsxs27(TablerIcon, { children: [
-  /* @__PURE__ */ jsx57("path", { stroke: "none", d: "M0 0h24v24H0z" }),
-  /* @__PURE__ */ jsx57("path", { d: "M15 8h.01M12.5 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6.5" }),
-  /* @__PURE__ */ jsx57("path", { d: "m3 16 5-5c.928-.893 2.072-.893 3 0l3.5 3.5" }),
-  /* @__PURE__ */ jsx57("path", { d: "m14 14 1-1c.679-.653 1.473-.829 2.214-.526M19 22v-6M22 19l-3-3-3 3" })
+var ListNumbers = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M11 6h9M11 12h9M12 18h8M4 16a2 2 0 1 1 4 0c0 .591-.5 1-1 1.5L4 20h4M6 10V4L4 6" }) });
+var IncreaseDepth = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M4 6h16M8 12h12M12 18h8M7 12l-3-3M7 12l-3 3" }) });
+var DecreaseDepth = () => /* @__PURE__ */ jsx56(TablerIcon, { children: /* @__PURE__ */ jsx56("path", { d: "M4 6h16M8 12h12M12 18h8M4 12l3-3M4 12l3 3" }) });
+var Markdown = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
+  /* @__PURE__ */ jsx56("path", { d: "M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" }),
+  /* @__PURE__ */ jsx56("path", { d: "M7 15V9l2 2 2-2v6M14 9v6h4M14 13h2" })
 ] });
-var Plus = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M12 5v14M5 12h14" }) });
-var Strikethrough = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M5 12h14M16 6.5A4 2 0 0 0 12 5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1-4-1.5" }) });
-var Underline = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M7 5v5a5 5 0 0 0 10 0V5M5 19h14" }) });
-var ListCheck = () => /* @__PURE__ */ jsxs27(TablerIcon, { children: [
-  /* @__PURE__ */ jsx57("path", { d: "m9 11 3 3 8-8" }),
-  /* @__PURE__ */ jsx57("path", { d: "M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9" })
-] });
-var ListNumbers = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M11 6h9M11 12h9M12 18h8M4 16a2 2 0 1 1 4 0c0 .591-.5 1-1 1.5L4 20h4M6 10V4L4 6" }) });
-var IncreaseDepth = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M4 6h16M8 12h12M12 18h8M7 12l-3-3M7 12l-3 3" }) });
-var DecreaseDepth = () => /* @__PURE__ */ jsx57(TablerIcon, { children: /* @__PURE__ */ jsx57("path", { d: "M4 6h16M8 12h12M12 18h8M4 12l3-3M4 12l3 3" }) });
-var Markdown = () => /* @__PURE__ */ jsxs27(TablerIcon, { children: [
-  /* @__PURE__ */ jsx57("path", { d: "M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" }),
-  /* @__PURE__ */ jsx57("path", { d: "M7 15V9l2 2 2-2v6M14 9v6h4M14 13h2" })
-] });
-var VisualEditor = () => /* @__PURE__ */ jsxs27(TablerIcon, { children: [
-  /* @__PURE__ */ jsx57("path", { d: "M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" }),
-  /* @__PURE__ */ jsx57("path", { d: "M8 8h8M8 12h8M8 16h5" }),
-  /* @__PURE__ */ jsx57("path", { d: "M16 16h1" })
+var VisualEditor = () => /* @__PURE__ */ jsxs26(TablerIcon, { children: [
+  /* @__PURE__ */ jsx56("path", { d: "M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" }),
+  /* @__PURE__ */ jsx56("path", { d: "M8 8h8M8 12h8M8 16h5" }),
+  /* @__PURE__ */ jsx56("path", { d: "M16 16h1" })
 ] });
 
 // src/toolbar-plugin/items/block-items.tsx
@@ -7755,147 +7672,18 @@ var compactBlockItems = [
   }
 ];
 
-// src/toolbar-plugin/components/dialog/image-url-dialog.tsx
-import { useState as useState8, useRef as useRef8 } from "react";
-import { useSlateStatic as useSlateStatic17 } from "slate-react";
-
-// src/toolbar-plugin/styles/file-dialog-styles.ts
-import styled34 from "@emotion/styled";
-var $FileDialog = styled34($Panel)`
-  padding: 1em;
-  width: 18em;
-`;
-
-// src/toolbar-plugin/components/dialog/image-url-dialog.tsx
-import { Fragment as Fragment8, jsx as jsx58, jsxs as jsxs28 } from "react/jsx-runtime";
-function ImageUrlDialog({
-  dest,
-  close
-}) {
-  const editor = useSlateStatic17();
-  const ref = useRef8(void 0);
-  const [url, setUrl] = useState8("");
-  const [alt, setAlt] = useState8("");
-  const [title, setTitle] = useState8("");
-  const style = useAbsoluteReposition(
-    { src: ref, dest },
-    ({ src, dest: dest2 }) => {
-      return positionInside(
-        src,
-        dest2,
-        {
-          left: dest2.left - 16,
-          top: dest2.top + dest2.height
-        },
-        { margin: 16 }
-      );
-    }
-  );
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (url.trim() === "")
-      return;
-    editor.image.insertImageFromUrl(url, alt, title);
-    close();
-  }
-  return /* @__PURE__ */ jsxs28(Fragment8, { children: [
-    /* @__PURE__ */ jsx58(CloseMask, { close }),
-    /* @__PURE__ */ jsx58($FileDialog, { ref, style, children: /* @__PURE__ */ jsxs28("form", { onSubmit: handleSubmit, style: { padding: "8px" }, children: [
-      /* @__PURE__ */ jsxs28("div", { style: { marginBottom: "8px" }, children: [
-        /* @__PURE__ */ jsx58("label", { style: { display: "block", marginBottom: "4px" }, children: t("imageUrlRequired") }),
-        /* @__PURE__ */ jsx58(
-          "input",
-          {
-            type: "text",
-            value: url,
-            onChange: (e) => setUrl(e.target.value),
-            style: {
-              width: "100%",
-              padding: "6px",
-              boxSizing: "border-box",
-              border: "1px solid #ccc",
-              borderRadius: "4px"
-            },
-            placeholder: "https://example.com/image.jpg",
-            required: true
-          }
-        )
-      ] }),
-      /* @__PURE__ */ jsxs28("div", { style: { marginBottom: "8px" }, children: [
-        /* @__PURE__ */ jsx58("label", { style: { display: "block", marginBottom: "4px" }, children: t("altText") }),
-        /* @__PURE__ */ jsx58(
-          "input",
-          {
-            type: "text",
-            value: alt,
-            onChange: (e) => setAlt(e.target.value),
-            style: {
-              width: "100%",
-              padding: "6px",
-              boxSizing: "border-box",
-              border: "1px solid #ccc",
-              borderRadius: "4px"
-            },
-            placeholder: t("imageDescription")
-          }
-        )
-      ] }),
-      /* @__PURE__ */ jsxs28("div", { style: { marginBottom: "8px" }, children: [
-        /* @__PURE__ */ jsx58("label", { style: { display: "block", marginBottom: "4px" }, children: t("title") }),
-        /* @__PURE__ */ jsx58(
-          "input",
-          {
-            type: "text",
-            value: title,
-            onChange: (e) => setTitle(e.target.value),
-            style: {
-              width: "100%",
-              padding: "6px",
-              boxSizing: "border-box",
-              border: "1px solid #ccc",
-              borderRadius: "4px"
-            },
-            placeholder: t("imageTitle")
-          }
-        )
-      ] }),
-      /* @__PURE__ */ jsxs28(
-        "button",
-        {
-          type: "submit",
-          style: {
-            display: "flex",
-            alignItems: "center",
-            padding: "8px 16px",
-            backgroundColor: "#0078d4",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontWeight: "bold"
-          },
-          children: [
-            /* @__PURE__ */ jsx58("span", { style: { marginRight: "8px" }, children: /* @__PURE__ */ jsx58(PhotoUp, {}) }),
-            t("insertImage")
-          ]
-        }
-      )
-    ] }) })
-  ] });
-}
-
 // src/toolbar-plugin/components/dialog/anchor-dialog.tsx
 import { isHotkey as isHotkey3 } from "is-hotkey";
 import {
   useCallback as useCallback13,
-  useRef as useRef9,
-  useState as useState9
+  useRef as useRef8,
+  useState as useState8
 } from "react";
-import { ReactEditor as ReactEditor13, useSlateStatic as useSlateStatic18 } from "slate-react";
+import { ReactEditor as ReactEditor13, useSlateStatic as useSlateStatic17 } from "slate-react";
 
 // src/toolbar-plugin/styles/dialog-shared-styles.ts
-import styled35 from "@emotion/styled";
-var $DialogButton = styled35("div")`
+import styled33 from "@emotion/styled";
+var $DialogButton = styled33("div")`
   /* Center vertically and horizontally */
   display: flex;
   align-items: center;
@@ -7920,7 +7708,7 @@ var $DialogButton = styled35("div")`
     stroke-width: 2px;
   }
 `;
-var $DialogHint = styled35("div")`
+var $DialogHint = styled33("div")`
   font-size: 0.875em;
   margin-top: 0.5em;
   color: var(--shade-500);
@@ -7928,14 +7716,14 @@ var $DialogHint = styled35("div")`
 `;
 
 // src/toolbar-plugin/components/dialog/anchor-dialog.tsx
-import { Fragment as Fragment9, jsx as jsx59, jsxs as jsxs29 } from "react/jsx-runtime";
+import { Fragment as Fragment8, jsx as jsx57, jsxs as jsxs27 } from "react/jsx-runtime";
 var isEnter = isHotkey3("enter");
 function AnchorDialog2({
   dest,
   close
 }) {
-  const editor = useSlateStatic18();
-  const ref = useRef9(null);
+  const editor = useSlateStatic17();
+  const ref = useRef8(null);
   const style = useAbsoluteReposition(
     { src: ref, dest },
     ({ src, dest: dest2 }, viewport) => {
@@ -7950,7 +7738,7 @@ function AnchorDialog2({
       );
     }
   );
-  const [url, setUrl] = useState9("");
+  const [url, setUrl] = useState8("");
   const insertLink2 = () => {
     editor.anchor.insertLink(url, url, { select: true });
     ReactEditor13.focus(editor);
@@ -7969,11 +7757,11 @@ function AnchorDialog2({
     e.stopPropagation();
     insertLink2();
   };
-  return /* @__PURE__ */ jsxs29(Fragment9, { children: [
-    /* @__PURE__ */ jsx59(CloseMask, { close }),
-    /* @__PURE__ */ jsxs29($AnchorDialog, { ref, style, children: [
-      /* @__PURE__ */ jsxs29($AnchorDialogInputLine, { children: [
-        /* @__PURE__ */ jsx59(
+  return /* @__PURE__ */ jsxs27(Fragment8, { children: [
+    /* @__PURE__ */ jsx57(CloseMask, { close }),
+    /* @__PURE__ */ jsxs27($AnchorDialog, { ref, style, children: [
+      /* @__PURE__ */ jsxs27($AnchorDialogInputLine, { children: [
+        /* @__PURE__ */ jsx57(
           $AnchorDialogInput,
           {
             type: "text",
@@ -7983,12 +7771,12 @@ function AnchorDialog2({
             onKeyDown
           }
         ),
-        /* @__PURE__ */ jsxs29($DialogButton, { onClick: insertLink2, children: [
-          /* @__PURE__ */ jsx59(Link, {}),
-          /* @__PURE__ */ jsx59(LinkPlus, {})
+        /* @__PURE__ */ jsxs27($DialogButton, { onClick: insertLink2, children: [
+          /* @__PURE__ */ jsx57(Link, {}),
+          /* @__PURE__ */ jsx57(LinkPlus, {})
         ] })
       ] }),
-      /* @__PURE__ */ jsx59($DialogHint, { children: "Enter URL of link" })
+      /* @__PURE__ */ jsx57($DialogHint, { children: "Enter URL of link" })
     ] })
   ] });
 }
@@ -8007,12 +7795,6 @@ var dialogItems = [
     title: t("insertTable"),
     more: true,
     Component: TableDialog
-  },
-  {
-    icon: Image,
-    title: t("insertImageFromUrl"),
-    more: true,
-    Component: ImageUrlDialog
   }
 ];
 var expandedDialogItems = dialogItems;
@@ -8033,7 +7815,6 @@ function getMarks(editor) {
     bold: marks?.bold || false,
     italic: marks?.italic || false,
     strike: marks?.strike || false,
-    code: marks?.code || false,
     underline: marks?.underline || false
   };
 }
@@ -8058,13 +7839,6 @@ var primaryMarkItems = [
     hotkey: "super+k",
     action: (editor) => editor.marksPlugin.toggleStrike(),
     active: (editor) => getMarks(editor).strike
-  },
-  {
-    icon: Code,
-    title: t("inlineCode"),
-    hotkey: "mod+j",
-    action: (editor) => editor.inlineCode.toggleInlineCode(),
-    active: (editor) => getMarks(editor).code
   },
   {
     icon: Underline,
@@ -8116,7 +7890,6 @@ var compactListItems = [
 ];
 
 // src/toolbar-plugin/items/quote-items.tsx
-import { Editor as Editor58, Transforms as Transforms40 } from "slate";
 var quoteItemsList = [
   {
     icon: Quote,
@@ -8136,52 +7909,6 @@ var quoteItemsList = [
     title: t("increaseQuoteDepth"),
     action: (editor) => editor.blockQuotePlugin.increaseDepth(),
     active: (editor) => editor.blockQuotePlugin.canIncreaseDepth()
-  },
-  {
-    icon: CodeBlock2,
-    title: t("codeBlock"),
-    action: (editor) => {
-      const { selection } = editor;
-      const codeBlockEntry = findElementUp(editor, "code-block");
-      if (codeBlockEntry) {
-        const [codeBlock, path] = codeBlockEntry;
-        const textContent = Editor58.string(editor, path);
-        Transforms40.removeNodes(editor, { at: path });
-        Transforms40.insertNodes(
-          editor,
-          {
-            type: "paragraph",
-            children: [{ text: textContent }]
-          },
-          { at: path }
-        );
-        return;
-      }
-      if (selection && JSON.stringify(selection.anchor.path) !== JSON.stringify(selection.focus.path)) {
-        editor.codeBlock.createCodeBlock({ language: "text" });
-        return;
-      }
-      if (selection && (selection.anchor.offset !== selection.focus.offset || JSON.stringify(selection.anchor.path) !== JSON.stringify(selection.focus.path))) {
-        const selectedText = Editor58.string(editor, selection);
-        Transforms40.delete(editor);
-        Transforms40.insertNodes(
-          editor,
-          {
-            type: "code-block",
-            language: "text",
-            children: [
-              {
-                type: "code-block-line",
-                children: [{ text: selectedText }]
-              }
-            ]
-          }
-        );
-        return;
-      }
-      editor.codeBlock.createCodeBlock({ language: "text" });
-    },
-    active: (editor) => !!findElementUp(editor, "code-block")
   }
 ];
 var expandedQuoteItems = quoteItemsList;
@@ -8274,16 +8001,16 @@ var itemSets = [largeItems, mediumItems, smallItems];
 
 // src/toolbar-plugin/components/toolbar/toolbar-button.tsx
 import { clsx as clsx9 } from "clsx";
-import { useCallback as useCallback14, useRef as useRef10 } from "react";
-import { ReactEditor as ReactEditor14, useSlate as useSlate2, useSlateStatic as useSlateStatic19 } from "slate-react";
-import { jsx as jsx60, jsxs as jsxs30 } from "react/jsx-runtime";
+import { useCallback as useCallback14, useRef as useRef9 } from "react";
+import { ReactEditor as ReactEditor14, useSlate as useSlate2, useSlateStatic as useSlateStatic18 } from "slate-react";
+import { jsx as jsx58, jsxs as jsxs28 } from "react/jsx-runtime";
 function ToolbarButton({
   item
 }) {
-  const staticEditor = useSlateStatic19();
+  const staticEditor = useSlateStatic18();
   const editor = useSlate2();
   const isActive = item.active ? item.active(editor) : false;
-  const ref = useRef10(null);
+  const ref = useRef9(null);
   const tooltip = useTooltip({
     title: item.title,
     hotkey: () => item.hotkey ? formatHotkey(item.hotkey) : void 0
@@ -8296,9 +8023,9 @@ function ToolbarButton({
     if (!dest)
       return;
     if (items) {
-      menuLayer.open(() => /* @__PURE__ */ jsx60(Menu, { dest, items, close: menuLayer.close }));
+      menuLayer.open(() => /* @__PURE__ */ jsx58(Menu, { dest, items, close: menuLayer.close }));
     } else if (Component) {
-      menuLayer.open(() => /* @__PURE__ */ jsx60(Component, { dest, close: menuLayer.close }));
+      menuLayer.open(() => /* @__PURE__ */ jsx58(Component, { dest, close: menuLayer.close }));
     }
   }, [item]);
   const onClick = useCallback14(() => {
@@ -8321,7 +8048,7 @@ function ToolbarButton({
     },
     [menuLayer.layer]
   );
-  return /* @__PURE__ */ jsxs30(
+  return /* @__PURE__ */ jsxs28(
     $ToolbarButton,
     {
       "data-item-type": "button",
@@ -8335,24 +8062,24 @@ function ToolbarButton({
         "--disabled": !isActive && r(item?.title)?.includes("Depth")
       }),
       children: [
-        /* @__PURE__ */ jsx60(item.icon, {}),
-        item.more ? /* @__PURE__ */ jsx60(More, {}) : null
+        /* @__PURE__ */ jsx58(item.icon, {}),
+        item.more ? /* @__PURE__ */ jsx58(More, {}) : null
       ]
     }
   );
 }
 
 // src/toolbar-plugin/components/toolbar/toolbar.tsx
-import { jsx as jsx61 } from "react/jsx-runtime";
+import { jsx as jsx59 } from "react/jsx-runtime";
 function ToolbarItem({ item }) {
-  const editor = useSlateStatic20();
+  const editor = useSlateStatic19();
   if (item === "divider") {
-    return /* @__PURE__ */ jsx61($ToolbarDividerContainer, { "data-item-type": "divider", children: /* @__PURE__ */ jsx61($ToolbarDivider, {}) });
+    return /* @__PURE__ */ jsx59($ToolbarDividerContainer, { "data-item-type": "divider", children: /* @__PURE__ */ jsx59($ToolbarDivider, {}) });
   }
   const show = item.show === void 0 ? true : item.show(editor);
   if (!show)
     return null;
-  return /* @__PURE__ */ jsx61(ToolbarButton, { item });
+  return /* @__PURE__ */ jsx59(ToolbarButton, { item });
 }
 function getWidths(toolbar) {
   const button = toolbar.querySelector(
@@ -8377,8 +8104,8 @@ function measureItemSetWidth(items, buttonWidth, dividerWidth) {
   return width;
 }
 function Toolbar() {
-  const ref = useRef11(null);
-  const [items, setItems] = useState10(initialItems);
+  const ref = useRef10(null);
+  const [items, setItems] = useState9(initialItems);
   useEffect7(() => {
     const refresh = throttle2(
       () => {
@@ -8408,7 +8135,7 @@ function Toolbar() {
       window.removeEventListener("resize", refresh);
     };
   }, []);
-  return /* @__PURE__ */ jsx61($ToolbarContainer, { ref, children: /* @__PURE__ */ jsx61($Toolbar, { children: items.map((item, index) => /* @__PURE__ */ jsx61(
+  return /* @__PURE__ */ jsx59($ToolbarContainer, { ref, children: /* @__PURE__ */ jsx59($Toolbar, { children: items.map((item, index) => /* @__PURE__ */ jsx59(
     ToolbarItem,
     {
       item
@@ -8418,21 +8145,21 @@ function Toolbar() {
 }
 
 // src/toolbar-plugin/render-editable/index.tsx
-import { jsx as jsx62, jsxs as jsxs31 } from "react/jsx-runtime";
+import { jsx as jsx60, jsxs as jsxs29 } from "react/jsx-runtime";
 function renderEditable({ attributes, Editable: Editable3 }) {
-  const outerContainerRef = useRef12(null);
-  const editor = useSlateStatic21();
+  const outerContainerRef = useRef11(null);
+  const editor = useSlateStatic20();
   const focused = useFocused();
   const onClickOuterContainer = useCallback15(
     (e) => {
       if (e.target !== e.currentTarget)
         return;
-      Transforms41.select(editor, Editor59.end(editor, []));
+      Transforms40.select(editor, Editor58.end(editor, []));
       ReactEditor15.focus(editor);
     },
     [editor]
   );
-  return /* @__PURE__ */ jsx62(Layers, { children: /* @__PURE__ */ jsxs31(
+  return /* @__PURE__ */ jsx60(Layers, { children: /* @__PURE__ */ jsxs29(
     $OuterContainer,
     {
       ref: outerContainerRef,
@@ -8444,8 +8171,8 @@ function renderEditable({ attributes, Editable: Editable3 }) {
       },
       onClick: onClickOuterContainer,
       children: [
-        /* @__PURE__ */ jsx62(Toolbar, {}),
-        /* @__PURE__ */ jsx62(
+        /* @__PURE__ */ jsx60(Toolbar, {}),
+        /* @__PURE__ */ jsx60(
           Editable3,
           {
             as: $Editable,
@@ -8477,7 +8204,7 @@ var ToolbarPlugin = createPlugin(
 );
 
 // src/trailing-block-plugin/index.tsx
-import { Editor as Editor60, Node as Node12, Path as Path14, Transforms as Transforms42 } from "slate";
+import { Editor as Editor59, Node as Node12, Path as Path14, Transforms as Transforms41 } from "slate";
 var TrailingBlockPlugin = createPlugin(
   (editor) => {
     editor.allowTrailingBlock = true;
@@ -8485,15 +8212,15 @@ var TrailingBlockPlugin = createPlugin(
       name: "trailing-block",
       editor: {
         normalizeNode: (entry) => {
-          if (!Editor60.isEditor(entry[0]))
+          if (!Editor59.isEditor(entry[0]))
             return false;
           const lastPath = [editor.children.length - 1];
           const lastElement = Node12.child(
             editor,
             editor.children.length - 1
           );
-          if (Editor60.hasBlocks(editor, lastElement) || Editor60.isVoid(editor, lastElement)) {
-            Transforms42.insertNodes(
+          if (Editor59.hasBlocks(editor, lastElement) || Editor59.isVoid(editor, lastElement)) {
+            Transforms41.insertNodes(
               editor,
               { type: "paragraph", children: [{ text: "" }] },
               {
@@ -8509,11 +8236,11 @@ var TrailingBlockPlugin = createPlugin(
 );
 
 // src/paste-markdown-plugin/methods/index.ts
-import { Transforms as Transforms43 } from "slate";
+import { Transforms as Transforms42 } from "slate";
 function pasteMarkdown(editor, markdown) {
   const escapedMarkdown = escapeUrlSlashes(markdown);
   const fragment = parse(escapedMarkdown);
-  Transforms43.insertNodes(editor, fragment);
+  Transforms42.insertNodes(editor, fragment);
 }
 function createPasteMarkdownMethods(editor) {
   return {
@@ -8545,7 +8272,7 @@ var PasteMarkdownPlugin = createPlugin(
 );
 
 // src/placeholder-plugin/index.tsx
-import { jsx as jsx63 } from "react/jsx-runtime";
+import { jsx as jsx61 } from "react/jsx-runtime";
 function renderPlaceholder(props) {
   const nextAttributes = {
     ...props.attributes,
@@ -8555,7 +8282,7 @@ function renderPlaceholder(props) {
       maxWidth: void 0
     }
   };
-  return /* @__PURE__ */ jsx63("span", { ...nextAttributes, children: props.children });
+  return /* @__PURE__ */ jsx61("span", { ...nextAttributes, children: props.children });
 }
 var PlaceholderPlugin = createPlugin(
   (editor, _options, { createPolicy }) => {
@@ -8576,7 +8303,6 @@ var plugins = [
   AnchorPlugin,
   HeadingPlugin,
   MarksPlugin,
-  InlineCodePlugin,
   BlockQuotePlugin,
   CodeBlockPlugin,
   TablePlugin,
@@ -8597,8 +8323,8 @@ var Sink = createSink(plugins);
 var { withSink, SinkEditable: SinkEditable2 } = Sink;
 
 // src/entry/useEditor.tsx
-import { useState as useState11 } from "react";
-import { createEditor, Editor as Editor62, Transforms as Transforms44 } from "slate";
+import { useState as useState10 } from "react";
+import { createEditor, Editor as Editor61, Transforms as Transforms43 } from "slate";
 import { withHistory } from "slate-history";
 import { withReact } from "slate-react";
 function useEditor({
@@ -8607,7 +8333,7 @@ function useEditor({
   minHeight,
   maxHeight
 }) {
-  const [editor] = useState11(() => {
+  const [editor] = useState10(() => {
     const editor2 = createEditor();
     const nextEditor = withSink(withReact(withHistory(editor2)), {
       toolbar: {
@@ -8634,7 +8360,7 @@ function useEditor({
       const documentValue = parse(escapedMarkdown);
       editor2.children = documentValue;
       editor2.selection = null;
-      Transforms44.select(editor2, Editor62.start(editor2, [0]));
+      Transforms43.select(editor2, Editor61.start(editor2, [0]));
     };
     return nextEditor;
   });
@@ -8642,9 +8368,9 @@ function useEditor({
 }
 
 // src/entry/index.tsx
-import { jsx as jsx64, jsxs as jsxs32 } from "react/jsx-runtime";
+import { jsx as jsx62, jsxs as jsxs30 } from "react/jsx-runtime";
 function renderLeaf({ children, attributes }) {
-  return /* @__PURE__ */ jsx64("span", { ...attributes, children });
+  return /* @__PURE__ */ jsx62("span", { ...attributes, children });
 }
 function Editable2({
   editor,
@@ -8655,11 +8381,11 @@ function Editable2({
   className,
   style
 }) {
-  const [isRawMode, setIsRawMode] = useState12(false);
-  const [rawText, setRawText] = useState12(value);
-  const ignoreNextChangeRef = useRef13(false);
-  const initialValueRef = useRef13(void 0);
-  const prevValueRef = useRef13(void 0);
+  const [isRawMode, setIsRawMode] = useState11(false);
+  const [rawText, setRawText] = useState11(value);
+  const ignoreNextChangeRef = useRef12(false);
+  const initialValueRef = useRef12(void 0);
+  const prevValueRef = useRef12(void 0);
   const onThrottledSlateChange = useCallback16(
     throttle3(
       () => {
@@ -8699,7 +8425,7 @@ function Editable2({
       const documentValue = parse(valueToProcess);
       editor.children = documentValue;
       editor.selection = null;
-      Transforms45.select(editor, Editor63.start(editor, [0]));
+      Transforms44.select(editor, Editor62.start(editor, [0]));
     }
   }
   const onSinkeEditableMouseDown = useCallback16(() => {
@@ -8734,8 +8460,8 @@ function Editable2({
   }, [isRawMode, applyRawTextToEditor, updateRawTextFromEditor]);
   editor.wysimark.isRawMode = isRawMode;
   editor.wysimark.toggleRawMode = handleRawModeToggle;
-  return /* @__PURE__ */ jsxs32("div", { style: { position: "relative" }, children: [
-    isRawMode && /* @__PURE__ */ jsx64("div", { style: { position: "absolute", top: "5px", right: "25px", zIndex: 10 }, children: /* @__PURE__ */ jsx64(
+  return /* @__PURE__ */ jsxs30("div", { style: { position: "relative" }, children: [
+    isRawMode && /* @__PURE__ */ jsx62("div", { style: { position: "absolute", top: "5px", right: "25px", zIndex: 10 }, children: /* @__PURE__ */ jsx62(
       "div",
       {
         onClick: handleRawModeToggle,
@@ -8761,10 +8487,10 @@ function Editable2({
             e.preventDefault();
           }
         },
-        children: /* @__PURE__ */ jsx64("span", { style: { color: "#4a90e2", fontSize: "1.25em" }, children: /* @__PURE__ */ jsx64(VisualEditor, {}) })
+        children: /* @__PURE__ */ jsx62("span", { style: { color: "#4a90e2", fontSize: "1.25em" }, children: /* @__PURE__ */ jsx62(VisualEditor, {}) })
       }
     ) }),
-    /* @__PURE__ */ jsx64("div", { style: { display: isRawMode ? "block" : "none", textAlign: "center" }, children: /* @__PURE__ */ jsx64(
+    /* @__PURE__ */ jsx62("div", { style: { display: isRawMode ? "block" : "none", textAlign: "center" }, children: /* @__PURE__ */ jsx62(
       "textarea",
       {
         value: unescapeUrlSlashes(rawText).replace(/&nbsp;/g, ""),
@@ -8789,13 +8515,13 @@ function Editable2({
         }
       }
     ) }),
-    /* @__PURE__ */ jsx64("div", { style: { display: isRawMode ? "none" : "block" }, children: /* @__PURE__ */ jsx64(
+    /* @__PURE__ */ jsx62("div", { style: { display: isRawMode ? "none" : "block" }, children: /* @__PURE__ */ jsx62(
       Slate2,
       {
         editor,
         value: initialValueRef.current,
         onChange: onSlateChange,
-        children: /* @__PURE__ */ jsx64(
+        children: /* @__PURE__ */ jsx62(
           SinkEditable2,
           {
             renderLeaf,
@@ -8812,13 +8538,13 @@ function Editable2({
 }
 
 // src/index.tsx
-import { jsx as jsx65 } from "react/jsx-runtime";
+import { jsx as jsx63 } from "react/jsx-runtime";
 function StandaloneEditor({
   standaloneOptions: { onChange, placeholder, className, ...options },
   standaloneMethodsRef
 }) {
-  const [markdown, setMarkdown] = useState13(options.initialMarkdown || "");
-  const markdownRef = useRef14(markdown);
+  const [markdown, setMarkdown] = useState12(options.initialMarkdown || "");
+  const markdownRef = useRef13(markdown);
   const editor = useEditor(options);
   markdownRef.current = markdown;
   useImperativeHandle(
@@ -8844,7 +8570,7 @@ function StandaloneEditor({
     },
     [editor]
   );
-  return /* @__PURE__ */ jsx65(
+  return /* @__PURE__ */ jsx63(
     Editable2,
     {
       editor,
@@ -8859,7 +8585,7 @@ function createWysimark(containerElement, options) {
   const standaloneMethodsRef = createRef();
   const root = createRoot(containerElement);
   root.render(
-    /* @__PURE__ */ jsx65(
+    /* @__PURE__ */ jsx63(
       StandaloneEditor,
       {
         standaloneMethodsRef,

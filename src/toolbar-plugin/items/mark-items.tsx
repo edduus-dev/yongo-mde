@@ -1,18 +1,17 @@
-import { Editor } from "slate"
-import { MenuItemData } from "~/src/shared-overlays"
+import { Editor } from "slate";
+import { MenuItemData } from "~/src/shared-overlays";
 
-import * as Icon from "../icons"
-import { t } from "~/src/utils/translations"
+import * as Icon from "../icons";
+import { t } from "~/src/utils/translations";
 
 function getMarks(editor: Editor) {
-  const marks = Editor.marks(editor)
+  const marks = Editor.marks(editor);
   return {
     bold: marks?.bold || false,
     italic: marks?.italic || false,
     strike: marks?.strike || false,
-    code: marks?.code || false,
     underline: marks?.underline || false,
-  }
+  };
 }
 
 const primaryMarkItems: MenuItemData[] = [
@@ -38,22 +37,15 @@ const primaryMarkItems: MenuItemData[] = [
     active: (editor) => getMarks(editor).strike,
   },
   {
-    icon: Icon.Code,
-    title: t("inlineCode"),
-    hotkey: "mod+j",
-    action: (editor) => editor.inlineCode.toggleInlineCode(),
-    active: (editor) => getMarks(editor).code,
-  },
-  {
     icon: Icon.Underline,
     title: t("underline"),
     hotkey: "mod+u",
     action: (editor) => editor.marksPlugin.toggleUnderline(),
     active: (editor) => getMarks(editor).underline,
   },
-]
+];
 
-export const expandedMarkItems: MenuItemData[] = primaryMarkItems
+export const expandedMarkItems: MenuItemData[] = primaryMarkItems;
 export const compactMarkItems: MenuItemData[] = [
   {
     icon: Icon.Bold,
@@ -61,4 +53,4 @@ export const compactMarkItems: MenuItemData[] = [
     more: true,
     children: primaryMarkItems,
   },
-]
+];
