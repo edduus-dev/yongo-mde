@@ -2761,9 +2761,9 @@ var $Container = styled6(SinkReset)`
   transition: all 250ms;
   &.--focused {
     /**
-     * !important is required because of role="textbox" I think
+     * !important is required because of role="textbox" I think not
      */
-    outline: 2px solid var(--select-editor-color) !important;
+    outline: 2px solid var(--select-editor-color);
   }
 `;
 

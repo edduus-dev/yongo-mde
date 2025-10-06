@@ -1,6 +1,6 @@
-import styled from "@emotion/styled"
+import styled from "@emotion/styled";
 
-import { SinkReset } from "../sink/editable"
+import { SinkReset } from "../sink/editable";
 
 /**
  * NOTE:
@@ -26,8 +26,8 @@ export const $Container = styled(SinkReset)`
   transition: all 250ms;
   &.--focused {
     /**
-     * !important is required because of role="textbox" I think
+     * !important is required because of role="textbox" I think not
      */
-    outline: 2px solid var(--select-editor-color) !important;
+    outline: 2px solid var(--select-editor-color);
   }
-`
+`;

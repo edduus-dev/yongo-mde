@@ -173,9 +173,9 @@ Error generating stack: `+n.message+`
   transition: all 250ms;
   &.--focused {
     /**
-     * !important is required because of role="textbox" I think
+     * !important is required because of role="textbox" I think not
      */
-    outline: 2px solid var(--select-editor-color) !important;
+    outline: 2px solid var(--select-editor-color);
   }
 `;var IS=j("div")`
   padding: 2em;
