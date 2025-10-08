@@ -815,35 +815,6 @@ function parseContent(content) {
   assertUnreachable(content);
 }
 
-// src/convert/parse/transform-inline-links.ts
-import { definitions } from "mdast-util-definitions";
-import { SKIP, visit } from "unist-util-visit";
-function transformInlineLinks(tree) {
-  const definition = definitions(tree);
-  visit(tree, (n, index, p) => {
-    const node = n;
-    const parent = p;
-    if (node.type === "definition" && parent !== null && typeof index === "number") {
-      parent.children.splice(index, 1);
-      return [SKIP, index];
-    }
-    if (node.type === "imageReference" || node.type === "linkReference") {
-      const identifier = "identifier" in node && typeof node.identifier === "string" ? node.identifier : "";
-      const def = definition(identifier);
-      if (def && parent !== null && typeof index === "number") {
-        const replacement = node.type === "imageReference" ? { type: "image", url: def.url, title: def.title, alt: node.alt } : {
-          type: "link",
-          url: def.url,
-          title: def.title,
-          children: node.children
-        };
-        parent.children[index] = replacement;
-        return [SKIP, index];
-      }
-    }
-  });
-}
-
 // src/convert/parse/index.ts
 var parser = unified().use(remarkParse).use(customRemarkGfm());
 function parseToAst(markdown) {
@@ -855,16 +826,17 @@ function parseToAst(markdown) {
     console.error("[wysimark] Error during parsing:", error);
     return { type: "root", children: [] };
   }
-  try {
-    transformInlineLinks(ast);
-  } catch (error) {
-    console.error("[wysimark] Error in transformInlineLinks:", error);
-  }
   return ast;
 }
-function parse(markdown) {
+function parse(markdown, options) {
   const ast = parseToAst(markdown);
   if (ast.children.length === 0) {
+    if (options?.isEmptyEditor) {
+      return [
+        { type: "paragraph", children: [{ text: markdown.trim() }] },
+        { type: "paragraph", children: [{ text: "" }] }
+      ];
+    }
     return [{ type: "paragraph", children: [{ text: "" }] }];
   }
   return parseContents(ast.children);
@@ -8057,9 +8029,26 @@ var TrailingBlockPlugin = createPlugin(
 
 // src/paste-markdown-plugin/methods/index.ts
 import { Transforms as Transforms42 } from "slate";
+function isEditorEmpty(value) {
+  if (value.length === 0)
+    return true;
+  if (value.length === 1 && value[0].type === "paragraph" && value[0].children.length === 1) {
+    const child = value[0].children[0];
+    if ("text" in child && typeof child.text === "string") {
+      return child.text.trim() === "";
+    }
+  }
+  return false;
+}
 function pasteMarkdown(editor, markdown) {
   const escapedMarkdown = escapeUrlSlashes(markdown);
-  const fragment = parse(escapedMarkdown);
+  const isEmpty = isEditorEmpty(editor.children);
+  let fragment;
+  if (isEmpty) {
+    fragment = [{ type: "paragraph", children: [{ text: markdown.trim() }] }];
+  } else {
+    fragment = parse(escapedMarkdown);
+  }
   Transforms42.insertNodes(editor, fragment);
 }
 function createPasteMarkdownMethods(editor) {

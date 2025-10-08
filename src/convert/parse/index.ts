@@ -5,7 +5,7 @@ import { unified } from "unified";
 import { Element } from "../types";
 import { customRemarkGfm } from "./custom-gfm";
 import { parseContents } from "./parse-content";
-import { transformInlineLinks } from "./transform-inline-links";
+// import { transformInlineLinks } from "./transform-inline-links";
 
 // @ts-ignore - Ignore TypeScript errors for the unified plugin system
 const parser = unified().use(remarkParse).use(customRemarkGfm());
@@ -20,28 +20,7 @@ const parser = unified().use(remarkParse).use(customRemarkGfm());
 //   return ast
 // }
 
-// aggressive fix - works OK
-// export function parseToAst(markdown: string) {
-//   let ast: Root;
-
-//   try {
-//     ast = parser.parse(markdown) as Root;
-//   } catch (error) {
-//     console.error("[wysimark] Error during parsing:", error);
-//     return { type: "root", children: [] } as Root;
-//   }
-
-//   try {
-//     transformInlineLinks(ast);
-//   } catch (error) {
-//     console.error("[wysimark] Error in transformInlineLinks:", error);
-//     // optional: modify ast if needed, or just continue
-//   }
-
-//   return ast;
-// }
-
-// Less aggressive - Strip inline and code block backticks to avoid parser issues
+// Strip inline and code block backticks to avoid parser issues
 export function parseToAst(markdown: string) {
   const safeMarkdown = markdown.replace(/`+/g, "");
 
@@ -54,11 +33,11 @@ export function parseToAst(markdown: string) {
     return { type: "root", children: [] } as Root;
   }
 
-  try {
-    transformInlineLinks(ast);
-  } catch (error) {
-    console.error("[wysimark] Error in transformInlineLinks:", error);
-  }
+  // try {
+  //   transformInlineLinks(ast);
+  // } catch (error) {
+  //   console.error("[wysimark] Error in transformInlineLinks:", error);
+  // }
 
   return ast;
 }
@@ -66,7 +45,10 @@ export function parseToAst(markdown: string) {
 /**
  * Takes a Markdown string as input and returns a remarkParse AST
  */
-export function parse(markdown: string): Element[] {
+export function parse(
+  markdown: string,
+  options?: { isEmptyEditor?: boolean }
+): Element[] {
   const ast = parseToAst(markdown);
   /**
    * If there is no content, remark returns a root ast with no children (i.e.
@@ -75,7 +57,20 @@ export function parse(markdown: string): Element[] {
    * So when this happens, we just generate an empty paragraph and return that
    * s he result.
    */
+  // if (ast.children.length === 0) {
+  //   return [{ type: "paragraph", children: [{ text: "" }] }] as Element[];
+  // }/*  */
+
+  //prevent line breaks when pasting in empty box
+
   if (ast.children.length === 0) {
+    if (options?.isEmptyEditor) {
+      return [
+        { type: "paragraph", children: [{ text: markdown.trim() }] },
+        { type: "paragraph", children: [{ text: "" }] },
+      ] as Element[];
+    }
+
     return [{ type: "paragraph", children: [{ text: "" }] }] as Element[];
   }
 
