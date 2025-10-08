@@ -34,19 +34,17 @@ function pasteMarkdown(editor: Editor, markdown: string) {
   const isEmpty = isEditorEmpty(editor.children as Element[]);
   console.log("[pasteMarkdown] isEmpty:", isEmpty);
 
-  let fragment: Element[];
-
   if (isEmpty) {
-    // If empty, just insert a paragraph with the trimmed markdown text
-    fragment = [{ type: "paragraph", children: [{ text: markdown.trim() }] }];
-    console.log("[pasteMarkdown] using empty fallback fragment:", fragment);
+    // Insert plain text directly to avoid extra paragraphs/line breaks
+    const trimmedText = markdown.trim();
+    console.log("[pasteMarkdown] inserting plain text:", trimmedText);
+    Transforms.insertText(editor, trimmedText);
   } else {
-    // Otherwise, parse normally
-    fragment = parse(escapedMarkdown);
-    console.log("[pasteMarkdown] parse fragment:", fragment);
+    // Parse markdown and insert nodes normally
+    const fragment = parse(escapedMarkdown);
+    console.log("[pasteMarkdown] inserting parsed fragment:", fragment);
+    Transforms.insertNodes(editor, fragment);
   }
-
-  Transforms.insertNodes(editor, fragment);
 }
 ///////////// * END MODIFY */////////////
 

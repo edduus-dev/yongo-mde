@@ -8045,15 +8045,15 @@ function pasteMarkdown(editor, markdown) {
   const escapedMarkdown = escapeUrlSlashes(markdown);
   const isEmpty = isEditorEmpty(editor.children);
   console.log("[pasteMarkdown] isEmpty:", isEmpty);
-  let fragment;
   if (isEmpty) {
-    fragment = [{ type: "paragraph", children: [{ text: markdown.trim() }] }];
-    console.log("[pasteMarkdown] using empty fallback fragment:", fragment);
+    const trimmedText = markdown.trim();
+    console.log("[pasteMarkdown] inserting plain text:", trimmedText);
+    Transforms42.insertText(editor, trimmedText);
   } else {
-    fragment = parse(escapedMarkdown);
-    console.log("[pasteMarkdown] parse fragment:", fragment);
+    const fragment = parse(escapedMarkdown);
+    console.log("[pasteMarkdown] inserting parsed fragment:", fragment);
+    Transforms42.insertNodes(editor, fragment);
   }
-  Transforms42.insertNodes(editor, fragment);
 }
 function createPasteMarkdownMethods(editor) {
   return {
