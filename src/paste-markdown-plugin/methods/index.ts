@@ -25,20 +25,25 @@ function isEditorEmpty(value: Element[]): boolean {
 }
 
 function pasteMarkdown(editor: Editor, markdown: string) {
+  console.log("[pasteMarkdown] called, editor.children:", editor.children);
+
   // Escape forward slashes in URLs before parsing
   const escapedMarkdown = escapeUrlSlashes(markdown);
 
   // Check if the editor is empty
   const isEmpty = isEditorEmpty(editor.children as Element[]);
+  console.log("[pasteMarkdown] isEmpty:", isEmpty);
 
   let fragment: Element[];
 
   if (isEmpty) {
     // If empty, just insert a paragraph with the trimmed markdown text
     fragment = [{ type: "paragraph", children: [{ text: markdown.trim() }] }];
+    console.log("[pasteMarkdown] using empty fallback fragment:", fragment);
   } else {
     // Otherwise, parse normally
     fragment = parse(escapedMarkdown);
+    console.log("[pasteMarkdown] parse fragment:", fragment);
   }
 
   Transforms.insertNodes(editor, fragment);

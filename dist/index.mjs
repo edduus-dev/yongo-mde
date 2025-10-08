@@ -8041,13 +8041,17 @@ function isEditorEmpty(value) {
   return false;
 }
 function pasteMarkdown(editor, markdown) {
+  console.log("[pasteMarkdown] called, editor.children:", editor.children);
   const escapedMarkdown = escapeUrlSlashes(markdown);
   const isEmpty = isEditorEmpty(editor.children);
+  console.log("[pasteMarkdown] isEmpty:", isEmpty);
   let fragment;
   if (isEmpty) {
     fragment = [{ type: "paragraph", children: [{ text: markdown.trim() }] }];
+    console.log("[pasteMarkdown] using empty fallback fragment:", fragment);
   } else {
     fragment = parse(escapedMarkdown);
+    console.log("[pasteMarkdown] parse fragment:", fragment);
   }
   Transforms42.insertNodes(editor, fragment);
 }
