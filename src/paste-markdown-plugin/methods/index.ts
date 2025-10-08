@@ -25,24 +25,19 @@ function isEditorEmpty(value: Element[]): boolean {
 }
 
 function pasteMarkdown(editor: Editor, markdown: string) {
-  console.log("[pasteMarkdown] called, editor.children:", editor.children);
-
   // Escape forward slashes in URLs before parsing
   const escapedMarkdown = escapeUrlSlashes(markdown);
 
   // Check if the editor is empty
   const isEmpty = isEditorEmpty(editor.children as Element[]);
-  console.log("[pasteMarkdown] isEmpty:", isEmpty);
 
   if (isEmpty) {
     // Insert plain text directly to avoid extra paragraphs/line breaks
-    const trimmedText = markdown.trim();
-    console.log("[pasteMarkdown] inserting plain text:", trimmedText);
+    const trimmedText = markdown.trim() + " ";
     Transforms.insertText(editor, trimmedText);
   } else {
     // Parse markdown and insert nodes normally
     const fragment = parse(escapedMarkdown);
-    console.log("[pasteMarkdown] inserting parsed fragment:", fragment);
     Transforms.insertNodes(editor, fragment);
   }
 }
